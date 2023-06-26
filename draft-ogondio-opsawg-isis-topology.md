@@ -27,9 +27,26 @@ author:
     fullname: Victor Lopez
     org: Nokia
     email: victor.lopez@nokia.com
+  -
+    fullname: Daniele Ceccarelli
+    org: Cisco
+    email: dceccare@cisco.com
+  -
+    fullname: Benoit Claise
+    org: Huawei
+    email: benoit.claise@huawei.com
+  
+contributor:
+  
+  -
+    fullname: Olga Havel
+    org: Huawei
+    email: olga.havel@huawei.com
+  -
+    fullname: Pablo Pavon
+    org: "e-lighthouse"
+    email: "ppavon@e-lighthouse.com"
 
-#contributor:
-#  -
 
 
 --- abstract
