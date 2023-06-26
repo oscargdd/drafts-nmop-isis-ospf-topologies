@@ -44,12 +44,10 @@ author:
     fullname: Olga Havel
     org: Huawei
     email: olga.havel@huawei.com
-
 -
     fullname: Pablo Pavon
     org: e-lighthouse
     email: ppavon@e-lighthouse.com
-
 
 --- abstract
 
@@ -57,16 +55,15 @@ This document defines a YANG data model for representing an abstracted view of a
 
 The YANG data model defined in this document conforms to the Network Management Datastore Architecture (NMDA).
 
-
 --- middle
 
 # Introduction
 
-Network Operators perform the capacity planning process and run analysis of what-if scenarios based on representations of the real network. Those tasks require an abstracted view of the network topology with enough detail to carry out the required analysis but on the other hand abstracted enough to make the analysis viable. 
+Network Operators perform the capacity planning process and run analysis of what-if scenarios based on representations of the real network. Those tasks require an abstracted view of the network topology with enough detail to carry out the required analysis but on the other hand abstracted enough to make the analysis viable.
 
 This draft address the use case of modeling the topology of IP/MPLS networks that run IS-IS as IGP protocol. The draft builds on the ietf-network model in {{!RFC8345}}, enhanced in {{!RFC8346}} and {{!RFC8944}} which extend the generic network and network topology data models with topology attributes that are specific to Layer 3 and Layer 2. However, there is not any model that exposes Intermediate System to Intermediate System (ISIS) information neither tells that a specific networks. This information is required in the IP/MPLS planning process to properly assess the required network resources to meet the traffic demands in normal and failure scenarios.
 
-This document defines a YANG data model for representing the ISIS topology. The data model augments ietf-network module {{!RFC8345}} by adding the ISIS information. The proposed Yanga data model in this draft can be used to export the topology of an IP/MPLS network from a Network Controller to an Operation Support System tools with the aim of performing Network Planning and Visualization. 
+This document defines a YANG data model for representing the ISIS topology. The data model augments ietf-network module {{!RFC8345}} by adding the ISIS information. The proposed Yanga data model in this draft can be used to export the topology of an IP/MPLS network from a Network Controller to an Operation Support System tools with the aim of performing Network Planning and Visualization.
 
 This document explains the scope and purpose of the ISIS topology model and how the topology and service models fit together.
 
