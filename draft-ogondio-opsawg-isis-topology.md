@@ -60,7 +60,7 @@ The YANG data model defined in this document conforms to the Network Management 
 
 # Introduction
 
-Network Operators perform the capacity planning process and run analysis of what-if scenarios based on representations of the real network. Those tasks require an abstracted view of the network topology with enough detail to carry out the required analysis but on the other hand abstracted enough to make the analysis viable.
+Network Operators perform the capacity planning process and run regular what-if scenarios analisys based on representations of the real network. Those what-if analysis and capacity planning processes require, among other information, a topological view (nodes, links, network interconnection) of the deployed network. Such topological view requires on the one hand enough detail to carry out the required analysis but on the other hand abstracted enough to make those analysis viable.
 
 This draft address the use case of modeling the topology of IP/MPLS networks that run IS-IS as IGP protocol. The draft builds on the ietf-network model in {{!RFC8345}}, enhanced in {{!RFC8346}} and {{!RFC8944}} which extend the generic network and network topology data models with topology attributes that are specific to Layer 3 and Layer 2. However, there is not any model that exposes Intermediate System to Intermediate System (ISIS) information neither tells that a specific networks. This information is required in the IP/MPLS planning process to properly assess the required network resources to meet the traffic demands in normal and failure scenarios.
 
@@ -98,6 +98,24 @@ The meaning of the symbols in these diagrams is defined in {{!RFC8340}}.
 RFC Editor Note:
 Please replace XXXX with the RFC number assigned to this document.
 Please remove this note.
+
+# Use of IETF-Topology for Representing an IP/MPLS network domain
+
+IP/MPLS Networks can contain multiple domain IGP domains. We can define an IGP domain as the collection of nodes and links that participate in the same IGP process. The topology information of a domain can be structured according to ietf-topology information model
+For example, if BGP-LS is used to collect the information, the nodes and links that are announced with the same combination of AS number / are considered to belong to the same domain. 
+
+If a node and/or layer termination point  participates in more than one IGP it will be present in multiple IGP domain networks.
+
+The ietf-network instance MUST include the following properties to indicate it is a domain running an IGP instance:
+
+A network-id that uniquely identifies such domain in the network.
+The "network-types property should include the l3t:l3-unicast-topology, to indicate it is a network in which the nodes are capable of forwarding unicast packet. Also, this draft proposed to ade a new property, isis-topology, to indicate the topology being represented is running an IGP process. 
+
+Also, should the topology include information such as bandwidth, delay information or color, it must include tet:te-topology.
+To include delay and bandwdith performance measurements , MUST include tet-pkt:te-packet under the previous property
+The supporting-network property can include the network-id of a base layer-3 network.
+The node property should include the list of nodes as described below.
+The ietf-network-topology:link MUST be present, with one link per each IP adjacency (one link for each direction of the adjancency).
 
 # YANG Data Model for ISIS Topology
 
