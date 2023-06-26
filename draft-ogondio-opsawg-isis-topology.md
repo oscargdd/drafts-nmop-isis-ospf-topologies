@@ -3,13 +3,14 @@ title: "A YANG Data Model for Intermediate System to Intermediate System (ISIS) 
 abbrev: "ISIS Topology YANG"
 category: std
 
+stand_alone: true
+ipr: trust200902
 docname: draft-ogondio-opsawg-isis-topology-latest
 submissiontype: IETF  # also: "independent", "IAB", or "IRTF"
-number:
-date:
 consensus: true
 v: 3
 area: "Operations and Management"
+wg: opsawg
 workgroup: "Operations and Management Area Working Group"
 keyword:
  - next generation
