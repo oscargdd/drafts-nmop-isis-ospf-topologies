@@ -1,28 +1,17 @@
 ---
-title: "A YANG Data Model for Intermediate System to Intermediate System (ISIS) Topology"
-abbrev: "ISIS Topology YANG"
-category: std
+title: A YANG Data Model for Intermediate System to intermediate System (ISIS) Topology
+abbrev: ISIS Topology YANG
+docname: draft-ogondio-opsawg-isis-topology-latest
 
 stand_alone: true
 ipr: trust200902
-docname: draft-ogondio-opsawg-isis-topology-latest
-submissiontype: IETF  # also: "independent", "IAB", or "IRTF"
-consensus: true
-v: 3
 area: "Operations and Management"
 wg: opsawg
-workgroup: "Operations and Management Area Working Group"
-keyword:
- - next generation
- - unicorn
- - sparkling distributed ledger
-venue:
-  group: "Operations and Management Area Working Group"
-  type: "Working Group"
-  mail: "opsawg@ietf.org"
-  arch: "https://mailarchive.ietf.org/arch/browse/opsawg/"
-  github: "oscargdd/draft-ogondio-opsawg-isis-topology"
-  latest: "https://oscargdd.github.io/draft-ogondio-opsawg-isis-topology/draft-ogondio-opsawg-isis-topology.html"
+category: std
+submissiontype: IETF  # also: "independent", "IAB", or "IRTF"
+
+consensus: true
+v: 3
 
 author:
   -
@@ -30,31 +19,25 @@ author:
     org: Telefonica
     email: oscar.gonzalezdedios@telefonica.com
   -
+    fullname: Samier Barguil Giraldo
+    org: Nokia
+    email: samier.barguil_giraldo@nokia.com
+
+  -
     fullname: Victor Lopez
     org: Nokia
     email: victor.lopez@nokia.com
-  -
-    fullname: Daniele Ceccarelli
-    org: Cisco
-    email: dceccare@cisco.com
--
-    fullname: Benoit Claise
-    org: Huawei
-    email: benoit.claise@huawei.com
--
-    fullname: Olga Havel
-    org: Huawei
-    email: olga.havel@huawei.com
--
-    fullname: Pablo Pavon
-    org: e-lighthouse
-    email: ppavon@e-lighthouse.com
+
+#contributor:
+#  -
+
 
 --- abstract
 
 This document defines a YANG data model for representing an abstracted view of a provider network topology that contains Intermediate System to Intermediate System (ISIS)  information. This document augments the 'ietf-network' data model by adding ISIS concepts and explains how the data model can be used to represent domains.
 
 The YANG data model defined in this document conforms to the Network Management Datastore Architecture (NMDA).
+
 
 --- middle
 
@@ -413,11 +396,3 @@ This section will be used to track the status of the implementations of the mode
 
 This work is partially supported by the European Commission under   Horizon 2020 Secured autonomic traffic management for a Tera of SDN
  flows (Teraflow) project (grant agreement number 101015857).
-
-
---- back
-
-# Acknowledgments
-{:numbered="false"}
-
-TODO acknowledge.
