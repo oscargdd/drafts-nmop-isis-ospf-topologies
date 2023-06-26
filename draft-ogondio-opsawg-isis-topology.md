@@ -36,16 +36,16 @@ author:
     org: Huawei
     email: benoit.claise@huawei.com
   
-contributor:
-  
-  -
-    fullname: Olga Havel
-    org: Huawei
-    email: olga.havel@huawei.com
-  -
-    fullname: Pablo Pavon
-    org: "e-lighthouse"
-    email: "ppavon@e-lighthouse.com"
+#contributor:
+#  
+#  -
+#    fullname: Olga Havel
+#    org: Huawei
+#    email: olga.havel@huawei.com
+#  -
+#    fullname: Pablo Pavon
+#    org: "e-lighthouse"
+#    email: "ppavon@e-lighthouse.com"
 
 
 
