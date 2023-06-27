@@ -35,9 +35,9 @@ author:
     fullname: Benoit Claise
     org: Huawei
     email: benoit.claise@huawei.com
-  
+
 #contributor:
-#  
+#
 #  -
 #    fullname: Olga Havel
 #    org: Huawei
@@ -102,14 +102,14 @@ Please remove this note.
 # Use of IETF-Topology for Representing an IP/MPLS network domain
 
 IP/MPLS Networks can contain multiple domain IGP domains. We can define an IGP domain as the collection of nodes and links that participate in the same IGP process. The topology information of a domain can be structured according to ietf-topology information model
-For example, if BGP-LS is used to collect the information, the nodes and links that are announced with the same combination of AS number / are considered to belong to the same domain. 
+For example, if BGP-LS is used to collect the information, the nodes and links that are announced with the same combination of AS number / are considered to belong to the same domain.
 
 If a node and/or layer termination point  participates in more than one IGP it will be present in multiple IGP domain networks.
 
 The ietf-network instance MUST include the following properties to indicate it is a domain running an IGP instance:
 
 A network-id that uniquely identifies such domain in the network.
-The "network-types property should include the l3t:l3-unicast-topology, to indicate it is a network in which the nodes are capable of forwarding unicast packet. Also, this draft proposed to ade a new property, isis-topology, to indicate the topology being represented is running an IGP process. 
+The "network-types property should include the l3t:l3-unicast-topology, to indicate it is a network in which the nodes are capable of forwarding unicast packet. Also, this draft proposed to ade a new property, isis-topology, to indicate the topology being represented is running an IGP process.
 
 Also, should the topology include information such as bandwidth, delay information or color, it must include tet:te-topology.
 To include delay and bandwdith performance measurements , MUST include tet-pkt:te-packet under the previous property
