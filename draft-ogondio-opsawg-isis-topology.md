@@ -1,6 +1,6 @@
 ---
-title: A YANG Data Model for Intermediate System to intermediate System (ISIS) Topology
-abbrev: ISIS Topology YANG
+title: A YANG Data Model for Intermediate System to intermediate System (IS-IS) Topology
+abbrev: IS-IS Topology YANG
 docname: draft-ogondio-opsawg-isis-topology-latest
 
 stand_alone: true
@@ -51,7 +51,7 @@ author:
 
 --- abstract
 
-This document defines a YANG data model for representing an abstracted view of a provider network topology that contains Intermediate System to Intermediate System (ISIS)  information. This document augments the 'ietf-network' data model by adding ISIS concepts and explains how the data model can be used to represent domains.
+This document defines a YANG data model for representing an abstracted view of a network topology that contains Intermediate System to Intermediate System (IS-IS). This document augments the 'ietf-network' data model by adding IS-IS concepts and explains how the data model can be used to represent the IS-IS topology.
 
 The YANG data model defined in this document conforms to the Network Management Datastore Architecture (NMDA).
 
@@ -60,19 +60,19 @@ The YANG data model defined in this document conforms to the Network Management 
 
 # Introduction
 
-Network Operators perform the capacity planning process and run regular what-if scenarios analisys based on representations of the real network. Those what-if analysis and capacity planning processes require, among other information, a topological view (nodes, links, network interconnection) of the deployed network. Such topological view requires on the one hand enough detail to carry out the required analysis but on the other hand abstracted enough to make those analysis viable.
+Network operators perform the capacity planning for their networks and run regular what-if scenarios analisys based on representations of the real network. Those what-if analysis and capacity planning processes require, among other information, a topological view (domains, nodes, links, network interconnection) of the deployed network. Such topological view requires on the one hand enough detail to carry out the required analysis but on the other hand abstracted enough to make those analysis viable.
 
-This draft address the use case of modeling the topology of IP/MPLS networks that run IS-IS as IGP protocol. The draft builds on the ietf-network model in {{!RFC8345}}, enhanced in {{!RFC8346}} and {{!RFC8944}} which extend the generic network and network topology data models with topology attributes that are specific to Layer 3 and Layer 2. However, there is not any model that exposes Intermediate System to Intermediate System (ISIS) information neither tells that a specific networks. This information is required in the IP/MPLS planning process to properly assess the required network resources to meet the traffic demands in normal and failure scenarios.
+This draft address the use case of modeling the topology of IP/MPLS networks that run IS-IS as IGP protocol. The draft builds on the ietf-network model in {{!RFC8345}}, enhanced in {{!RFC8346}} and {{!RFC8944}} which extend the generic network and network topology data models with topology attributes specific to Layer 3 and Layer 2. However, there is not any model that exposes Intermediate System to Intermediate System (IS-IS) specific network information. This information is required in the IP/MPLS planning process to properly assess the required network resources to meet the traffic demands in normal and failure scenarios.
 
-This document defines a YANG data model for representing the ISIS topology. The data model augments ietf-network module {{!RFC8345}} by adding the ISIS information. The proposed Yanga data model in this draft can be used to export the topology of an IP/MPLS network from a Network Controller to an Operation Support System tools with the aim of performing Network Planning and Visualization.
+This document defines a YANG data model for representing the IS-IS topology. The data model augments ietf-network module {{!RFC8345}} by adding the IS-IS information. The proposed YANG data model is used to export the topology of an IP/MPLS network from a network controller to an Operation Support System (OSS) tools with the aim of performing network planning and visualization.
 
-This document explains the scope and purpose of the ISIS topology model and how the topology and service models fit together.
+This document explains the scope and purpose of the IS-IS topology model and how the topology and service models fit together.
 
 The YANG data model defined in this document conforms to the Network Management Datastore Architecture {{!RFC8342}}.
 
 ## Terminology and Notations
 
-This document assumes that the reader is familiar with the contents of {{!RFC8345}}. The document uses terms from those documents.
+This document assumes that the reader is familiar with IS-IS and the contents of {{!RFC8345}}. The document uses terms from those documents.
 
 The terminology for describing YANG data models is found in {{!RFC7950}}, {{!RFC8795}} and {{!RFC8346}}.
 
@@ -117,15 +117,15 @@ The supporting-network property can include the network-id of a base layer-3 net
 The node property should include the list of nodes as described below.
 The ietf-network-topology:link MUST be present, with one link per each IP adjacency (one link for each direction of the adjancency).
 
-# YANG Data Model for ISIS Topology
+# YANG Data Model for IS-IS Topology
 
-The abstract (base) network data model is defined in the "ietf-network" module of {{!RFC8345}}. The ISIS-topology builds on the network data model defined in the "ietf-network" module {{!RFC8345}}, augmenting the nodes with ISIS information, which anchor the links and are contained in nodes).
+The abstract (base) network data model is defined in the "ietf-network" module of {{!RFC8345}}. The ISIS-topology builds on the network data model defined in the "ietf-network" module {{!RFC8345}}, augmenting the nodes with IS-IS information, which anchor the links and are contained in nodes).
 
 There is a set of parameters and augmentations that are included at the node level. Each parameter and description are detailed following:
 
-* Network-types: Its presence identifies the ISIS topology type. Thus, the network type MUST be isis-topology.
-+ ISIS timer attributes: Identifies the node timer attributes configured in the network element. They are LSP lifetime and the LSP refresh interval.
-- ISIS status: contains the ISIS status attributes (level, area-address and neighbours).
+* Network-types: Its presence identifies the IS-IS topology type. Thus, the network type MUST be isis-topology.
++ IS-IS timer attributes: Identifies the node timer attributes configured in the network element. They are LSP lifetime and the LSP refresh interval.
+- IS-IS status: contains the IS-IS status attributes (level, area-address and neighbours).
 
 
 There is a second set of parameters and augmentations are included at the termination point level. Each parameter is listed as follows:
@@ -137,7 +137,7 @@ There is a second set of parameters and augmentations are included at the termin
 
 {: #ietf-l3-isis-topology-tree}
 
-# ISIS Topology Tree Diagram
+# IS-IS Topology Tree Diagram
 
 {{fig-ietf-l3-isis-topology-tree}} below shows the tree diagram of the YANG data model defined in module ietf-l3-isis-topology.yang ({{ietf-l3-isis-topology-yang}}).
 
@@ -160,11 +160,11 @@ module: ietf-l3-isis-topology
        +--rw metric?           uint64
        +--rw is-passive?       boolean
 ~~~~
-{: #fig-ietf-l3-isis-topology-tree title="ISIS Topology tree diagram"}
+{: #fig-ietf-l3-isis-topology-tree title="IS-IS Topology tree diagram"}
 
 {: #ietf-l3-isis-topology-yang}
 
-# YANG Model for ISIS topology
+# YANG Model for IS-IS topology
 
 This module imports types from {{!RFC8343}} and {{!RFC8345}}. Following the YANG model is presented.
 
@@ -219,7 +219,7 @@ module ietf-l3-isis-topology {
     Editor:   Victor Lopez
               <mailto:victor.lopez@nokia.com>";
   description
-    "This module defines a model for Layer 3 ISIS
+    "This module defines a model for Layer 3 IS-IS
      topologies.
 
      Copyright (c) 2022 IETF Trust and the persons identified as
@@ -241,15 +241,15 @@ module ietf-l3-isis-topology {
       "Initial version";
     reference
       "RFC XXXX: A YANG Data Model for Intermediate System to
-       Intermediate System (ISIS) Topology";
+       Intermediate System (IS-IS) Topology";
   }
 
   grouping isis-topology-type {
-    description "Identifies the topology type to be ISIS.";
+    description "Identifies the topology type to be IS-IS.";
     container isis-topology {
-      presence "indicates ISIS topology";
+      presence "indicates IS-IS topology";
       description
-        "The presence of the container node indicates ISIS
+        "The presence of the container node indicates IS-IS
         topology";
     }
   }
@@ -278,7 +278,7 @@ module ietf-l3-isis-topology {
     }
     container isis-status {
       description
-        "Contains the ISIS status attributes";
+        "Contains the IS-IS status attributes";
       leaf level {
         type ietf-isis:level;
         description
@@ -308,11 +308,11 @@ module ietf-l3-isis-topology {
   }
 
   grouping isis-termination-point-attributes {
-    description "ISIS termination point scope attributes";
+    description "IS-IS termination point scope attributes";
     container isis-termination-point-attributes {
       description
       "Indicates the termination point from the
-      which the ISIS is configured. A termination
+      which the IS-IS is configured. A termination
       point can be a physical port, an interface, etc.";
 
     leaf interface-type {
@@ -367,7 +367,7 @@ module ietf-l3-isis-topology {
     when "/nw:networks/nw:network/nw:network-types/isisnt:isis-topology" {
       description
         "Augmentation parameters apply only for networks with
-        ISIS topology";
+        IS-IS topology";
     }
     description
       "Augments topology link configuration";
@@ -379,7 +379,7 @@ module ietf-l3-isis-topology {
     when "/nw:networks/nw:network/nw:network-types/isisnt:isis-topology" {
       description
         "Augmentation parameters apply only for networks with
-        ISIS topology";
+        IS-IS topology";
     }
     description
       "Augments topology termination point configuration";
@@ -389,7 +389,7 @@ module ietf-l3-isis-topology {
 
 <CODE ENDS>
 ~~~~
-{: #fig-ietf-isis-topolopy-yang title="ISIS Topology YANG module"}
+{: #fig-ietf-isis-topolopy-yang title="IS-IS Topology YANG module"}
 
 # Security Considerations
 
