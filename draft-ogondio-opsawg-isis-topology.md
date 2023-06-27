@@ -62,7 +62,7 @@ The YANG data model defined in this document conforms to the Network Management 
 
 Network operators perform the capacity planning for their networks and run regular what-if scenarios analisys based on representations of the real network. Those what-if analysis and capacity planning processes require, among other information, a topological view (domains, nodes, links, network interconnection) of the deployed network. Such topological view requires on the one hand enough detail to carry out the required analysis but on the other hand abstracted enough to make those analysis viable.
 
-This draft address the use case of modeling the topology of IP/MPLS networks that run IS-IS as IGP protocol. The draft builds on the ietf-network model in {{!RFC8345}}, enhanced in {{!RFC8346}} and {{!RFC8944}} which extend the generic network and network topology data models with topology attributes specific to Layer 3 and Layer 2. However, there is not any model that exposes Intermediate System to Intermediate System (IS-IS) specific network information. This information is required in the IP/MPLS planning process to properly assess the required network resources to meet the traffic demands in normal and failure scenarios.
+This draft addresses the use case of modeling the topology of IP/MPLS networks that run IS-IS as IGP protocol. The draft builds on the ietf-network model in {{!RFC8345}}, enhanced in {{!RFC8346}} and {{!RFC8944}} which extend the generic network and network topology data models with topology attributes specific to Layer 3 and Layer 2. However, there is not any model that exposes Intermediate System to Intermediate System (IS-IS) specific network information. This information is required in the IP/MPLS planning process to properly assess the required network resources to meet the traffic demands in normal and failure scenarios.
 
 This document defines a YANG data model for representing the IS-IS topology. The data model augments ietf-network module {{!RFC8345}} by adding the IS-IS information. The proposed YANG data model is used to export the topology of an IP/MPLS network from a network controller to an Operation Support System (OSS) tools with the aim of performing network planning and visualization.
 
@@ -393,11 +393,12 @@ module ietf-l3-isis-topology {
 
 # Security Considerations
 
-  The YANG module specified in this document defines a schema for data that is designed to be accessed via network management protocols such as NETCONF {{!RFC6241}} or RESTCONF {{!RFC8040}}.  The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) {{!RFC6242}}. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS {{!RFC5246}}.
 
-   The NETCONF access control model {{!RFC6536}} provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.
+  The YANG module specified in this document defines a schema for data that is designed to be accessed via network management protocols such as NETCONF {!RFC6241}} or RESTCONF {{!RFC8040}}. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) {{!RFC6242}}. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS {{!RFC8446}}.
 
-   There are a number of data nodes defined in this YANG module that are writable/creatable/deletable (i.e., config true, which is the default).  These data nodes may be considered sensitive or vulnerable   in some network environments.  Write operations (e.g., edit-config) to these data nodes without proper protection can have a negative effect on network operations.
+  The Network Configuration Access Control Model (NACM) {{!RFC8341}} provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.
+
+ There are a number of data nodes defined in this YANG module that are writable/creatable/deletable (i.e., config true, which is the default). These data nodes may be considered sensitive or vulnerable in some network environments. Write operations (e.g., edit-config) to these data nodes without proper protection can have a negative effect on network operations.
 
 # IANA Considerations
 
@@ -421,7 +422,14 @@ module ietf-l3-isis-topology {
 
 # Implementation Status
 
-This section will be used to track the status of the implementations of the model. It is aimed at being removed if the document becomes RFC.
+   Note to the RFC-Editor: Please remove this section before publishing.
+
+# Huawei Digital Map PoC Status
+
+   As mentioned in {{?draft-havel-opsawg-digital-map}},  a Digital Map PoC with a real lab has been built, based on multi-
+   vendor devices, with {{!RFC8345}} as the base YANG module for the topology building blocks. This PoC successfully modelled
+   IS-IS routing (among other technologies and layers), but it needs to be further aligned with this latest developments in this draft.
+
 
 --- back
 
@@ -429,5 +437,4 @@ This section will be used to track the status of the implementations of the mode
 
 # Acknowledgments
 
-This work is partially supported by the European Commission under   Horizon 2020 Secured autonomic traffic management for a Tera of SDN
- flows (Teraflow) project (grant agreement number 101015857).
+This work is partially supported by the European Commission under Horizon 2020 Secured autonomic traffic management for a Tera of SDN flows (Teraflow) project (grant agreement number 101015857).
