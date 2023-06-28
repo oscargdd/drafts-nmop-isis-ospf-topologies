@@ -127,7 +127,7 @@ The Digital Map Modelling defines the core topological entities, their role in t
 
 The Digital Map Model is a basic topological model that is linked to other functional parts of the digital twin and connects them all: configuration, maintenance, assurance (KPIs, status, health, symptoms), Traffic Engineering (TE), different behaviors and actions,  simulation, emulation, mathematical abstractions, AI algorithms, etc.
 
-As such the IGP topology of the Digital Map (in this case, IS-IS) is just one of the layers of the Digital Map, for specific user (the network operator in charge of the IGP) for specific IGP use cases as described before. 
+As such the IGP topology of the Digital Map (in this case, IS-IS) is just one of the layers of the Digital Map, for specific user (the network operator in charge of the IGP) for specific IGP use cases as described before.
 
 # Use of IETF-Topology for Representing an IP/MPLS network domain
 
@@ -249,7 +249,7 @@ module ietf-l3-isis-topology {
     Editor:   Victor Lopez
               <mailto:victor.lopez@nokia.com>";
     Editor:   Benoit Claise
-              <mailto:benoit.claise@huwaei.com>";          
+              <mailto:benoit.claise@huwaei.com>";
   description
     "This module defines a model for Layer 3 IS-IS
      topologies.
