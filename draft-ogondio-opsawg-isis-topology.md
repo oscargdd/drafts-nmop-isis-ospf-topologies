@@ -60,14 +60,11 @@ The YANG data model defined in this document conforms to the Network Management 
 
 # Introduction
 
-Network operators perform the capacity planning for their networks and run regular what-if scenarios analisys based on representations of the real network. Those what-if analysis and capacity planning processes require, among other information, a topological view (domains, nodes, links, network interconnection) of the deployed network. Such topological view requires on the one hand enough detail to carry out the required analysis but on the other hand abstracted enough to make those analysis viable.
+Network operators perform the capacity planning for their networks and run regular what-if scenarios analysis based on representations of the real network. Those what-if analysis and capacity planning processes require, among other information, a topological view (domains, nodes, links, network interconnection) of the deployed network.
 
-This draft address the use case of modeling the topology of IP/MPLS networks that run IS-IS as IGP protocol. The draft builds on the ietf-network model in {{!RFC8345}}, enhanced in {{!RFC8346}} and {{!RFC8944}} which extend the generic network and network topology data models with topology attributes specific to Layer 3 and Layer 2. However, there is not any model that exposes Intermediate System to Intermediate System (IS-IS) specific network information. This information is required in the IP/MPLS planning process to properly assess the required network resources to meet the traffic demands in normal and failure scenarios.
-
-This document defines a YANG data model for representing the IS-IS topology. The data model augments ietf-network module {{!RFC8345}} by adding the IS-IS information. The proposed YANG data model is used to export the topology of an IP/MPLS network from a network controller to an Operation Support System (OSS) tools with the aim of performing network planning and visualization.
+This document defines a YANG data model representing an abstracted view of a network topology containing Intermediate System to Intermediate System (IS-IS). It covers the topology of IP/MPLS networks running IS-IS as Interior Gateway Protocol (IGP) protocol. The proposed YANG mode augments the "A YANG Data Model for Network Topologies" {{!RFC8345}} and"A YANG Data Model for Layer 3 Topologies" {{!RFC8346}} by adding IS-IS concepts. This YANG data model is used to export the IS-IS related topology directly from a network controller to an Operation Support System (OSS) tools.
 
 This document explains the scope and purpose of the IS-IS topology model and how the topology and service models fit together.
-
 The YANG data model defined in this document conforms to the Network Management Datastore Architecture {{!RFC8342}}.
 
 ## Terminology and Notations
@@ -75,6 +72,8 @@ The YANG data model defined in this document conforms to the Network Management 
 This document assumes that the reader is familiar with IS-IS and the contents of {{!RFC8345}}. The document uses terms from those documents.
 
 The terminology for describing YANG data models is found in {{!RFC7950}}, {{!RFC8795}} and {{!RFC8346}}.
+
+The term Digital Twin, Digital Map, Digital Map Modelling, Digital Map Model, Digital Map Data, and Topology are specified in {{?I-D.draft-havel-opsawg-digital-map}}.
 
 ## Requirements Language
 
@@ -98,6 +97,37 @@ The meaning of the symbols in these diagrams is defined in {{!RFC8340}}.
 RFC Editor Note:
 Please replace XXXX with the RFC number assigned to this document.
 Please remove this note.
+
+# Use Cases
+
+This information is required in the IP/MPLS planning process to properly assess the required network resources to meet the traffic demands in normal and failure scenarios. Network operators perform the capacity planning for their networks and run regular what-if scenarios analizys based on representations of the real network. Those what-if analysis and capacity planning processes require, among other information, a topological view (domains, nodes, links, network interconnection) of the deployed network.
+
+The standardization of an abstracted view of the IS-IS topology model as NorthBound Interface (NBI) of Software Defined Networking (SDN) controllers allows the inject this information into third party tools covering specialized cases
+
+The IS-IS topological model should export enough IS-IS information to permit these tools simulating the IP routing. By adding the traffic demand, ideally at the IP flow level, we can simulate the traffic growth and its effect on the routing. That is, simulating how IP-level traffic demands would be forwarded, after ISIS convergence is reached, and from there estimating, using appropriate mathematical models, related KPIs like the occupation in the links or end-to-end latencies.
+
+In summary, the network-wide view of the IS-IS topology enables multiple use cases:
+
+* Network design: verifying that the actual deployed IS-IS network conforms to the planned design
++ Failure analysis. Systematic and massive test of the network under multiple simulated failure situations, evaluating the network fault tolerance properties, and using mathematical models to derive statistical network availability metrics.
++ What-if analysis. Estimation of the network KPIs in modified network situations. For instance, failure situations, traffic anomaly situations, addition or deletion of new adjacencies, IGP weight reconfigurations.
+- Capacity planning. Dimensioning or redesign of the IP infrastructure to satisfy target KPI metrics under existing or forecasted traffic demands.
+
+## Relationship with the IS-IS YANG Model
+
+
+{{!RFC9130}} specifies a YANG data model that can be used to configure and manage the IS-IS protocol on network elements. This data model covers the configuration of an IS-IS routing protocol instance, as well as the retrieval of IS-IS operational states.
+{{!RFC9130}} is still expected to be used for individual network elements configuration and monitoring. On the other hand, the proposed YANG model in this document covers the abstracted view of the entire network topology containing Intermediate System to Intermediate System (IS-IS). As such, this model is available via the NBI of SDN controllers.
+
+## Relationship with Digital Map
+
+As described in {{?I-D.draft-havel-opsawg-digital-map}}, the Digital Map provides the core multi-layer topology model and data for the digital twin and connects them to the other digital twin models and data.
+
+The Digital Map Modelling defines the core topological entities, their role in the network, core properties, and relationships both inside each layer and between the layers.
+
+The Digital Map Model is a basic topological model that is linked to other functional parts of the digital twin and connects them all: configuration, maintenance, assurance (KPIs, status, health, symptoms), Traffic Engineering (TE), different behaviors and actions,  simulation, emulation, mathematical abstractions, AI algorithms, etc.
+
+As such the IGP topology of the Digital Map (in this case, IS-IS) is just one of the layers of the Digital Map, for specific user (the network operator in charge of the IGP) for specific IGP use cases as described before. 
 
 # Use of IETF-Topology for Representing an IP/MPLS network domain
 
@@ -197,7 +227,7 @@ module ietf-l3-isis-topology {
   import ietf-isis {
     prefix "ietf-isis";
     reference
-      "RFC 6991: Common YANG Data Types";
+      "RFC 9130: YANG Data Model for the IS-IS Protocol";
   }
 
   import ietf-inet-types {
@@ -218,6 +248,8 @@ module ietf-l3-isis-topology {
               <mailto:samier.barguilgiraldo.ext@telefonica.com>
     Editor:   Victor Lopez
               <mailto:victor.lopez@nokia.com>";
+    Editor:   Benoit Claise
+              <mailto:benoit.claise@huwaei.com>";          
   description
     "This module defines a model for Layer 3 IS-IS
      topologies.
@@ -393,11 +425,12 @@ module ietf-l3-isis-topology {
 
 # Security Considerations
 
-  The YANG module specified in this document defines a schema for data that is designed to be accessed via network management protocols such as NETCONF {{!RFC6241}} or RESTCONF {{!RFC8040}}.  The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) {{!RFC6242}}. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS {{!RFC5246}}.
 
-   The NETCONF access control model {{!RFC6536}} provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.
+  The YANG module specified in this document defines a schema for data that is designed to be accessed via network management protocols such as NETCONF {!RFC6241}} or RESTCONF {{!RFC8040}}. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) {{!RFC6242}}. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS {{!RFC8446}}.
 
-   There are a number of data nodes defined in this YANG module that are writable/creatable/deletable (i.e., config true, which is the default).  These data nodes may be considered sensitive or vulnerable   in some network environments.  Write operations (e.g., edit-config) to these data nodes without proper protection can have a negative effect on network operations.
+  The Network Configuration Access Control Model (NACM) {{!RFC8341}} provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.
+
+ There are a number of data nodes defined in this YANG module that are writable/creatable/deletable (i.e., config true, which is the default). These data nodes may be considered sensitive or vulnerable in some network environments. Write operations (e.g., edit-config) to these data nodes without proper protection can have a negative effect on network operations.
 
 # IANA Considerations
 
@@ -421,7 +454,14 @@ module ietf-l3-isis-topology {
 
 # Implementation Status
 
-This section will be used to track the status of the implementations of the model. It is aimed at being removed if the document becomes RFC.
+   Note to the RFC-Editor: Please remove this section before publishing.
+
+# Huawei Digital Map PoC Status
+
+   As mentioned in {{?I-D.draft-havel-opsawg-digital-map}}, a Digital Map PoC with a real lab has been built, based on multi-
+   vendor devices, with {{!RFC8345}} as the base YANG module for the topology building blocks. This PoC successfully modelled
+   IS-IS routing (among other technologies and layers), but it needs to be further aligned with this latest developments in this draft.
+
 
 --- back
 
@@ -429,5 +469,4 @@ This section will be used to track the status of the implementations of the mode
 
 # Acknowledgments
 
-This work is partially supported by the European Commission under   Horizon 2020 Secured autonomic traffic management for a Tera of SDN
- flows (Teraflow) project (grant agreement number 101015857).
+This work is partially supported by the European Commission under Horizon 2020 Secured autonomic traffic management for a Tera of SDN flows (Teraflow) project (grant agreement number 101015857).
