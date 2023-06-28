@@ -102,7 +102,7 @@ Please remove this note.
 
 This information is required in the IP/MPLS planning process to properly assess the required network resources to meet the traffic demands in normal and failure scenarios. Network operators perform the capacity planning for their networks and run regular what-if scenarios analizys based on representations of the real network. Those what-if analysis and capacity planning processes require, among other information, a topological view (domains, nodes, links, network interconnection) of the deployed network.
 
-The standardization of an abstracted view of the IS-IS topology model as NorthBound Interface (NBI) of Software Defined Networking (SDN) controllers allows the inject this information into third party tools covering specialized cases
+The standardization of an abstracted view of the IS-IS topology model as NorthBound Interface (NBI) of Software Defined Networking (SDN) controllers allows the inject this information into third party tools covering specialized cases. 
 
 The IS-IS topological model should export enough IS-IS information to permit these tools simulating the IP routing. By adding the traffic demand, ideally at the IP flow level, we can simulate the traffic growth and its effect on the routing. That is, simulating how IP-level traffic demands would be forwarded, after ISIS convergence is reached, and from there estimating, using appropriate mathematical models, related KPIs like the occupation in the links or end-to-end latencies.
 
@@ -464,11 +464,20 @@ module ietf-l3-isis-topology {
    expose the network capabilities, together with other models which cover the inventory and service
    provisioning in a vendor-agnostic fashion.
 
+# Implementation Status in E-lighthouse Network Solutions 
+
+E-lighthouse Network Solutions (https://e-lighthouse.com/) is consuming the IS-IS network topology information exported 
+by a commercial controller, using the Yang model proposed in this draft in an ongoing proof-of-concept in 2023, collaborating with Telefonica. 
+The POC is targeted for a lab network, with a pilot in a segment of Telefonica group production network by the end of 2023, in a multivendor deployment. 
+This POC has already successfully retrieved the IS-IS and base IP topology info, and simulated the network behavior under different changes, 
+covering the what-if, failure analysis, dimensioning and other use cases mentioned in this draft.
+
 # Huawei Digital Map PoC Status
 
    As mentioned in {{?I-D.draft-havel-opsawg-digital-map}}, a Digital Map PoC with a real lab has been built, based on multi-
    vendor devices, with {{!RFC8345}} as the base YANG module for the topology building blocks. This PoC successfully modelled
    IS-IS routing (among other technologies and layers), but it needs to be further aligned with this latest developments in this draft.
+
    
 --- back
 
