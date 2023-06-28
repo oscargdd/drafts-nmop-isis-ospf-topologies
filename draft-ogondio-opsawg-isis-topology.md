@@ -456,13 +456,20 @@ module ietf-l3-isis-topology {
 
    Note to the RFC-Editor: Please remove this section before publishing.
 
+# Implementation Status in Telefonica Group
+   The Yang based topology model proposed in this draft is being used today in one of the Telefonica
+   operations to export the Multi-vendor IP/MPLS topology based on multiple IS-IS areas to several
+   Operation Support System tools for visualization, capacity planning and simulation. A commercial
+   controller has implemented the exposure of the information. It is one of the building blocks to
+   expose the network capabilities, together with other models which cover the inventory and service
+   provisioning in a vendor-agnostic fashion.
+
 # Huawei Digital Map PoC Status
 
    As mentioned in {{?I-D.draft-havel-opsawg-digital-map}}, a Digital Map PoC with a real lab has been built, based on multi-
    vendor devices, with {{!RFC8345}} as the base YANG module for the topology building blocks. This PoC successfully modelled
    IS-IS routing (among other technologies and layers), but it needs to be further aligned with this latest developments in this draft.
-
-
+   
 --- back
 
 {: numbered="false"}
