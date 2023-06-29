@@ -464,19 +464,17 @@ module ietf-l3-isis-topology {
    expose the network capabilities, together with other models which cover the inventory and service
    provisioning in a vendor-agnostic fashion.
 
-# Implementation Status in E-lighthouse Network Solutions 
-
-E-lighthouse Network Solutions (https://e-lighthouse.com/) is consuming the IS-IS network topology information exported 
-by a commercial controller, using the Yang model proposed in this draft in an ongoing proof-of-concept in 2023, collaborating with Telefonica. 
-The POC is targeted for a lab network, with a pilot in a segment of Telefonica group production network by the end of 2023, in a multivendor deployment. 
-This POC has already successfully retrieved the IS-IS and base IP topology info, and simulated the network behavior under different changes, 
-covering the what-if, failure analysis, dimensioning and other use cases mentioned in this draft.
-
 # Huawei Digital Map PoC Status
 
    As mentioned in {{?I-D.draft-havel-opsawg-digital-map}}, a Digital Map PoC with a real lab has been built, based on multi-
    vendor devices, with {{!RFC8345}} as the base YANG module for the topology building blocks. This PoC successfully modelled
    IS-IS routing (among other technologies and layers), but it needs to be further aligned with this latest developments in this draft.
+
+# Implementation Status in E-lighthouse Network Solutions 
+
+E-lighthouse Network Solutions (https://e-lighthouse.com/) implementation is consuming the IS-IS network topology information 
+exported by a commercial controller, using the Yang model proposed in this draft . It is able to simulate the network behavior
+under different changes, covering the what-if, failure analysis, dimensioning and other use cases mentioned in this draft.
 
    
 --- back
