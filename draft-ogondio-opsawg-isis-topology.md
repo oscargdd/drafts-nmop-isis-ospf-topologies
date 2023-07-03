@@ -36,7 +36,7 @@ author:
     org: Huawei
     email: benoit.claise@huawei.com
 
-#contributor:
+contributor:
   -
     fullname: Olga Havel
     org: Huawei
