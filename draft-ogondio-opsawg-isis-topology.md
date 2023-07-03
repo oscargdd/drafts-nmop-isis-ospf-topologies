@@ -97,7 +97,7 @@ Please remove this note.
 
 # Use Cases
 
-This information is required in the IP/MPLS planning process to properly assess the required network resources to meet the traffic demands in normal and failure scenarios. Network operators perform the capacity planning for their networks and run regular what-if scenarios analizys based on representations of the real network. Those what-if analysis and capacity planning processes require, among other information, a topological view (domains, nodes, links, network interconnection) of the deployed network.
+This information is required in the IP/MPLS planning process to properly assess the required network resources to meet the traffic demands in normal and failure scenarios. Network operators perform the capacity planning for their networks and run regular what-if scenarios analysis based on representations of the real network. Those what-if analysis and capacity planning processes require, among other information, a topological view (domains, nodes, links, network interconnection) of the deployed network.
 
 The standardization of an abstracted view of the IS-IS topology model as NorthBound Interface (NBI) of Software Defined Networking (SDN) controllers allows the inject this information into third party tools covering specialized cases.
 
@@ -128,8 +128,8 @@ As such the IGP topology of the Digital Map (in this case, IS-IS) is just one of
 
 # Use of IETF-Topology for Representing an IP/MPLS network domain
 
-IP/MPLS Networks can contain multiple domain IGP domains. We can define an IGP domain as the collection of nodes and links that participate in the same IGP process. The topology information of a domain can be structured according to ietf-topology information model
-For example, if BGP-LS is used to collect the information, the nodes and links that are announced with the same combination of AS number / are considered to belong to the same domain.
+IP/MPLS Networks can contain multiple domain IGP domains. We can define an IGP domain as the collection of nodes and links that participate in the same IGP process. The topology information of a domain can be structured according to ietf-network-topology
+information model {{!RFC8345}}. For example, if BGP-LS is used to collect the information, the nodes and links that are announced with the same combination of AS number / are considered to belong to the same domain.
 
 If a node and/or layer termination point  participates in more than one IGP it will be present in multiple IGP domain networks.
 
@@ -455,7 +455,7 @@ module ietf-l3-isis-topology {
 
 ## Implementation Status in Telefonica Group
    The Yang based topology model proposed in this draft is being used today in one of the Telefonica
-   operations to export the Multi-vendor IP/MPLS topology based on multiple IS-IS areas to several
+   operations to export the Multi-vendor IP/MPLS topology based on multiple IS-IS domains to several
    Operation Support System tools for visualization, capacity planning and simulation. A commercial
    controller has implemented the exposure of the information. It is one of the building blocks to
    expose the network capabilities, together with other models which cover the inventory and service
