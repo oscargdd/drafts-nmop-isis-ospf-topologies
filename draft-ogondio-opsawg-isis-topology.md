@@ -456,7 +456,7 @@ module ietf-l3-isis-topology {
 
    Note to the RFC-Editor: Please remove this section before publishing.
 
-# Implementation Status in Telefonica Group
+## Implementation Status in Telefonica Group
    The Yang based topology model proposed in this draft is being used today in one of the Telefonica
    operations to export the Multi-vendor IP/MPLS topology based on multiple IS-IS areas to several
    Operation Support System tools for visualization, capacity planning and simulation. A commercial
@@ -464,13 +464,13 @@ module ietf-l3-isis-topology {
    expose the network capabilities, together with other models which cover the inventory and service
    provisioning in a vendor-agnostic fashion.
 
-# Huawei Digital Map PoC Status
+## Huawei Digital Map PoC Status
 
    As mentioned in {{?I-D.draft-havel-opsawg-digital-map}}, a Digital Map PoC with a real lab has been built, based on multi-
    vendor devices, with {{!RFC8345}} as the base YANG module for the topology building blocks. This PoC successfully modelled
    IS-IS routing (among other technologies and layers), but it needs to be further aligned with this latest developments in this draft.
 
-# Implementation Status in E-lighthouse Network Solutions
+## Implementation Status in E-lighthouse Network Solutions
 
 E-lighthouse Network Solutions (https://e-lighthouse.com/) implementation is consuming the IS-IS network topology information
 exported by a commercial controller, using the Yang model proposed in this draft. It is able to simulate the network behavior
