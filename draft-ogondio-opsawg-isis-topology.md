@@ -472,7 +472,7 @@ module ietf-l3-isis-topology {
 
 # Implementation Status in E-lighthouse Network Solutions
 
-E-lighthouse Network Solutions (https://e-lighthouse.com/) implementation is consuming the IS-IS network topology information 
+E-lighthouse Network Solutions (https://e-lighthouse.com/) implementation is consuming the IS-IS network topology information
 exported by a commercial controller, using the Yang model proposed in this draft. It is able to simulate the network behavior
 under different changes, covering the what-if, failure analysis, dimensioning and other use cases mentioned in this draft.
 
