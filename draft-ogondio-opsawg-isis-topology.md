@@ -102,7 +102,7 @@ Please remove this note.
 
 This information is required in the IP/MPLS planning process to properly assess the required network resources to meet the traffic demands in normal and failure scenarios. Network operators perform the capacity planning for their networks and run regular what-if scenarios analizys based on representations of the real network. Those what-if analysis and capacity planning processes require, among other information, a topological view (domains, nodes, links, network interconnection) of the deployed network.
 
-The standardization of an abstracted view of the IS-IS topology model as NorthBound Interface (NBI) of Software Defined Networking (SDN) controllers allows the inject this information into third party tools covering specialized cases
+The standardization of an abstracted view of the IS-IS topology model as NorthBound Interface (NBI) of Software Defined Networking (SDN) controllers allows the inject this information into third party tools covering specialized cases.
 
 The IS-IS topological model should export enough IS-IS information to permit these tools simulating the IP routing. By adding the traffic demand, ideally at the IP flow level, we can simulate the traffic growth and its effect on the routing. That is, simulating how IP-level traffic demands would be forwarded, after ISIS convergence is reached, and from there estimating, using appropriate mathematical models, related KPIs like the occupation in the links or end-to-end latencies.
 
@@ -469,7 +469,13 @@ module ietf-l3-isis-topology {
    As mentioned in {{?I-D.draft-havel-opsawg-digital-map}}, a Digital Map PoC with a real lab has been built, based on multi-
    vendor devices, with {{!RFC8345}} as the base YANG module for the topology building blocks. This PoC successfully modelled
    IS-IS routing (among other technologies and layers), but it needs to be further aligned with this latest developments in this draft.
-   
+
+# Implementation Status in E-lighthouse Network Solutions
+
+E-lighthouse Network Solutions (https://e-lighthouse.com/) implementation is consuming the IS-IS network topology information 
+exported by a commercial controller, using the Yang model proposed in this draft. It is able to simulate the network behavior
+under different changes, covering the what-if, failure analysis, dimensioning and other use cases mentioned in this draft.
+
 --- back
 
 {: numbered="false"}
