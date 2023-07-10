@@ -449,6 +449,12 @@ module ietf-l3-isis-topology {
     reference:    RFC XXXX
     --------------------------------------------------------------------
 
+
+
+--- back
+
+{: numbered="true"}
+
 # Implementation Status
 
    Note to the RFC-Editor: Please remove this section before publishing.
@@ -473,10 +479,7 @@ E-lighthouse Network Solutions (https://e-lighthouse.com/) implementation is con
 exported by a commercial controller, using the Yang model proposed in this draft. It is able to simulate the network behavior
 under different changes, covering the what-if, failure analysis, dimensioning and other use cases mentioned in this draft.
 
---- back
-
-{: numbered="false"}
-
 # Acknowledgments
+{:numbered="false"}
 
 This work is partially supported by the European Commission under Horizon 2020 Secured autonomic traffic management for a Tera of SDN flows (Teraflow) project (grant agreement number 101015857).
