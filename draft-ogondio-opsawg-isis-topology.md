@@ -171,21 +171,29 @@ There is a second set of parameters and augmentations are included at the termin
 
 ~~~~
 module: ietf-l3-isis-topology
+
   augment /nw:networks/nw:network/nw:network-types:
     +--rw isis-topology!
   augment /nw:networks/nw:network/nw:node/l3t:l3-node-attributes:
     +--rw isis-timer-attributes
-    |  +--rw lsp-lifetime?           string
-    |  +--rw lsp-refresh-interval?   string
+    |  +--rw lsp-lifetime?           uint16
+    |  +--rw lsp-refresh-interval?   uint16
     +--rw isis-status
        +--rw level?          ietf-isis:level
        +--rw area-address*   ietf-isis:area-address
-       +--ro neighbours*     inet:ip-address
-  augment .../nt:termination-point/l3t:l3-termination-point-attributes:
+       +--rw system-id?      ietf-isis:system-id
+       +--ro neighbors*      inet:ip-address
+  augment /nw:networks/nw:network/nt:link/l3t:l3-link-attributes:
     +--rw isis-termination-point-attributes
-       +--rw interface-type?   identityref
+       +--rw interface-type?   ietf-isis:interface-type
        +--rw level?            ietf-isis:level
-       +--rw metric?           uint64
+       +--rw metric?           uint32
+       +--rw is-passive?       boolean
+  augment /nw:networks/nw:network/nw:node/nt:termination-point/l3t:l3-termination-point-attributes:
+    +--rw isis-termination-point-attributes
+       +--rw interface-type?   ietf-isis:interface-type
+       +--rw level?            ietf-isis:level
+       +--rw metric?           uint32
        +--rw is-passive?       boolean
 ~~~~
 {: #fig-ietf-l3-isis-topology-tree title="IS-IS Topology tree diagram"}
