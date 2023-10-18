@@ -61,6 +61,8 @@ Network operators perform the capacity planning for their networks and run regul
 
 This document defines a YANG data model representing an abstracted view of a network topology containing Intermediate System to Intermediate System (IS-IS). It covers the topology of IP/MPLS networks running IS-IS as Interior Gateway Protocol (IGP) protocol. The proposed YANG mode augments the "A YANG Data Model for Network Topologies" {{!RFC8345}} and"A YANG Data Model for Layer 3 Topologies" {{!RFC8346}} by adding IS-IS concepts. This YANG data model is used to export the IS-IS related topology directly from a network controller to an Operation Support System (OSS) tools.
 
+Note that the YANG model is in this document strictly adhere to the concepts (and the YANG module) in "A YANG Data Model for Network Topologies" {{!RFC8345}} and"A YANG Data Model for Layer 3 Topologies" {{!RFC8346}}. While investigating the IS-IS topology, some limitations have discovered in {{!RFC8345}}, regarding how the digital map can be represented. Those limitations (and potential improvements) are covered in {{?I-D.draft-havel-opsawg-digital-map}}.
+
 This document explains the scope and purpose of the IS-IS topology model and how the topology and service models fit together.
 The YANG data model defined in this document conforms to the Network Management Datastore Architecture {{!RFC8342}}.
 
