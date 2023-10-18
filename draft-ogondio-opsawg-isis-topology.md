@@ -103,7 +103,7 @@ This information is required in the IP/MPLS planning process to properly assess 
 
 The standardization of an abstracted view of the IS-IS topology model as NorthBound Interface (NBI) of Software Defined Networking (SDN) controllers allows the inject this information into third party tools covering specialized cases.
 
-The IS-IS topological model should export enough IS-IS information to permit these tools simulating the IP routing. By adding the traffic demand, ideally at the IP flow level, we can simulate the traffic growth and its effect on the routing. That is, simulating how IP-level traffic demands would be forwarded, after ISIS convergence is reached, and from there estimating, using appropriate mathematical models, related KPIs like the occupation in the links or end-to-end latencies.
+The IS-IS topological model should export enough IS-IS information to permit these tools simulating the IP routing. By adding the traffic demand, ideally at the IP flow level, we can simulate the traffic growth and its effect on the routing. That is, simulating how IP-level traffic demands would be forwarded, after IS-IS convergence is reached, and from there estimating, using appropriate mathematical models, related KPIs like the occupation in the links or end-to-end latencies.
 
 In summary, the network-wide view of the IS-IS topology enables multiple use cases:
 
@@ -116,7 +116,7 @@ In summary, the network-wide view of the IS-IS topology enables multiple use cas
 
 
 {{!RFC9130}} specifies a YANG data model that can be used to configure and manage the IS-IS protocol on network elements. This data model covers the configuration of an IS-IS routing protocol instance, as well as the retrieval of IS-IS operational states.
-{{!RFC9130}} is still expected to be used for individual network elements configuration and monitoring. On the other hand, the proposed YANG model in this document covers the abstracted view of the entire network topology containing Intermediate System to Intermediate System (IS-IS). As such, this model is available via the NBI of SDN controllers.
+{{!RFC9130}} is still expected to be used for individual network elements configuration and monitoring. On the other hand, the proposed YANG model in this document covers the abstracted view of the entire network topology containing IS-IS. As such, this model is available via the NBI of SDN controllers.
 
 ## Relationship with Digital Map
 
@@ -130,15 +130,14 @@ As such the IGP topology of the Digital Map (in this case, IS-IS) is just one of
 
 # Use of IETF-Topology for Representing an IP/MPLS network domain
 
-IP/MPLS Networks can contain multiple domain IGP domains. We can define an IGP domain as the collection of nodes and links that participate in the same IGP process. The topology information of a domain can be structured according to ietf-network-topology
-information model {{!RFC8345}}. For example, if BGP-LS is used to collect the information, the nodes and links that are announced with the same combination of AS number / are considered to belong to the same domain.
+IP/MPLS Networks can contain multiple domain IGP domains. We can define an IGP domain as the collection of nodes and links that participate in the same IGP process. The topology information of a domain can be structured according to ietf-network-topology data model {{!RFC8345}}. For example, if BGP-LS is used to collect the information, the nodes and links that are announced with the same combination of AS number / are considered to belong to the same domain.
 
 If a node and/or layer termination point  participates in more than one IGP it will be present in multiple IGP domain networks.
 
 The ietf-network instance MUST include the following properties to indicate it is a domain running an IGP instance:
 
 A network-id that uniquely identifies such domain in the network.
-The "network-types property should include the l3t:l3-unicast-topology, to indicate it is a network in which the nodes are capable of forwarding unicast packet. Also, this draft proposed to ade a new property, isis-topology, to indicate the topology being represented is running an IGP process.
+The "network-types" property should include the l3t:l3-unicast-topology, to indicate it is a network in which the nodes are capable of forwarding unicast packet. Also, this draft proposed to add a new property, "isis-topology", to indicate the topology being represented is running the IS-IS IGP process.
 
 Also, should the topology include information such as bandwidth, delay information or color, it must include tet:te-topology.
 To include delay and bandwdith performance measurements , MUST include tet-pkt:te-packet under the previous property
@@ -148,7 +147,7 @@ The ietf-network-topology:link MUST be present, with one link per each IP adjace
 
 # YANG Data Model for IS-IS Topology
 
-The abstract (base) network data model is defined in the "ietf-network" module of {{!RFC8345}}. The ISIS-topology builds on the network data model defined in the "ietf-network" module {{!RFC8345}}, augmenting the nodes with IS-IS information, which anchor the links and are contained in nodes).
+The abstract (base) network data model is defined in the "ietf-network" module of {{!RFC8345}}. The isis-topology builds on the network data model defined in the "ietf-network" module {{!RFC8345}}, augmenting the nodes with IS-IS information, which anchor the links and are contained in nodes).
 
 There is a set of parameters and augmentations that are included at the node level. Each parameter and description are detailed following:
 
