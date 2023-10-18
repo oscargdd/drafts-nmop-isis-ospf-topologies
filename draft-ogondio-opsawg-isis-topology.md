@@ -245,7 +245,7 @@ module ietf-l3-isis-topology {
     Editor:   Samier Barguil
               <mailto:samier.barguilgiraldo.ext@telefonica.com>
     Editor:   Victor Lopez
-              <mailto:victor.lopez@nokia.com>";
+              <mailto:victor.lopez@nokia.com>;
     Editor:   Benoit Claise
               <mailto:benoit.claise@huwaei.com>";
   description
