@@ -146,23 +146,59 @@ The ietf-network-topology:link MUST be present, with one link per each IP adjace
 
 # YANG Data Model for IS-IS Topology
 
-The abstract (base) network data model is defined in the "ietf-network" module of {{!RFC8345}}. The ISIS-topology builds on the network data model defined in the "ietf-network" module {{!RFC8345}}, augmenting the nodes with IS-IS information, which anchor the links and are contained in nodes).
+The abstract (base) network data model is defined in the "ietf-network" and "ietf-network-topology" modules of {{!RFC8345}}. 
+The L3 topology module is defined in the "ietf-l3-unicast-topology" module of {{!RFC8346}}.
+The ISIS-topology builds on the data models defined in {{!RFC8345}} and  {{!RFC8346}}, augmenting the nodes with IS-IS information.
 
+{: #ietf-l3-isis-topology-module-structure}
+                      +-----------------------------+
+                      |  +-----------------------+  |
+                      |  |      ietf-network     |  |
+                      |  +----------^------------+  |
+                      |             |               |
+                      |  +-----------------------+  |
+                      |  | ietf-network-topology |  |
+                      |  +----------+------------+  |
+                      +-------------^---------------+
+                                    |
+                                    |
+                       +------------^-------------+
+                       | ietf-l3-unicast-topology |
+                       +------------^-------------+
+                                    |
+                                    |
+                        +-----------^-----------+
+                        | isis-topology         |
+                        +-----------------------+
+
+{: #fig-ietf-l3-isis-topology-module-structure title="IS-IS Topology module structure"}
+
+Theere are some limitations in the {{!RFC8345}} that are explained in more detail in {{!draft-havel-opsawg-digital-map}}. 
+The current version of the ietf-l3-isis-topology module is based on the current version of {{!RFC8345}}. 
+The following will be addressed when {{!RFC8345}} is extended to support the identified limitations:
+- Both IS-IS domain and IS-IS areas could be modelled as networks
+- The IS-IS Areas will be connected via IS-IS links
+- IS-IS nodes could belong to multiple IS-IS networks
+
+There is a set of parameters and augmentations that are included at the network level.
+- Network-types: Its presence identifies the IS-IS topology type. Thus, the network type MUST be isis-topology.
+  
 There is a set of parameters and augmentations that are included at the node level. Each parameter and description are detailed following:
+- IS-IS node core attributes: contains the IS-IS core attributes (system-id, level, area-address).
+- IS-IS timer attributes: Identifies the node timer attributes configured in the network element. They are LSP lifetime and the LSP refresh interval.
 
-* Network-types: Its presence identifies the IS-IS topology type. Thus, the network type MUST be isis-topology.
-+ IS-IS timer attributes: Identifies the node timer attributes configured in the network element. They are LSP lifetime and the LSP refresh interval.
-- IS-IS status: contains the IS-IS status attributes (level, area-address and neighbours).
-
-
-There is a second set of parameters and augmentations are included at the termination point level. Each parameter is listed as follows:
-
-* Interface-type
-+ Level
-+ Metric
+There is a set of parameters and augmentations that are included at the link level. Each parameter and description are detailed following:
+- IS-IS link level. The level must be the same as the termination points at each end for Level 1 and Level 2 interfaces. There may be 2 links
+between the Level1-2 IS-IS interfaces, one for Level 1 adjacency and one for Level 2 adjacency 
+- IS-IS link metric. Added on top of metric1 and metric2 of the l3-link-attributes
+  
+There is a  set of parameters and augmentations are included at the termination point level. Each parameter is listed as follows:
+- Interface-type: point-to point or braodcast
+- Level. The level must be the same as for the node, except when node is Level 1-2 and the interfaces can only be Level 1 or Level 2.
 - Passive mode
 
 {: #ietf-l3-isis-topology-tree}
+
 
 # IS-IS Topology Tree Diagram
 
@@ -170,21 +206,24 @@ There is a second set of parameters and augmentations are included at the termin
 
 ~~~~
 module: ietf-l3-isis-topology
+
   augment /nw:networks/nw:network/nw:network-types:
     +--rw isis-topology!
   augment /nw:networks/nw:network/nw:node/l3t:l3-node-attributes:
-    +--rw isis-timer-attributes
-    |  +--rw lsp-lifetime?           string
-    |  +--rw lsp-refresh-interval?   string
-    +--rw isis-status
-       +--rw level?          ietf-isis:level
-       +--rw area-address*   ietf-isis:area-address
-       +--ro neighbours*     inet:ip-address
-  augment .../nt:termination-point/l3t:l3-termination-point-attributes:
+    +--rw isis-node-attributes
+       +--rw system-id?              ietf-isis:system-id
+       +--rw level?                  ietf-isis:level
+       +--rw area-address*           ietf-isis:area-address
+       +--rw lsp-lifetime?           uint16
+       +--rw lsp-refresh-interval?   uint16
+  augment /nw:networks/nw:network/nt:link/l3t:l3-link-attributes:
+    +--rw isis-link-attributes
+       +--rw metric?   uint32
+       +--rw level?    ietf-isis:level
+  augment /nw:networks/nw:network/nw:node/nt:termination-point/l3t:l3-termination-point-attributes:
     +--rw isis-termination-point-attributes
-       +--rw interface-type?   identityref
+       +--rw interface-type?   ietf-isis:interface-type
        +--rw level?            ietf-isis:level
-       +--rw metric?           uint64
        +--rw is-passive?       boolean
 ~~~~
 {: #fig-ietf-l3-isis-topology-tree title="IS-IS Topology tree diagram"}
@@ -244,7 +283,7 @@ module ietf-l3-isis-topology {
     Editor:   Samier Barguil
               <mailto:samier.barguilgiraldo.ext@telefonica.com>
     Editor:   Victor Lopez
-              <mailto:victor.lopez@nokia.com>";
+              <mailto:victor.lopez@nokia.com>
     Editor:   Benoit Claise
               <mailto:benoit.claise@huwaei.com>";
   description
@@ -283,12 +322,45 @@ module ietf-l3-isis-topology {
     }
   }
 
+  grouping isis-link-attributes {
+     description "Identifies the IS-IS link attributes.";
+     container isis-link-attributes {
+     leaf metric {
+      type uint32 {
+         range "0 .. 16777215";
+       }
+      description
+        "This type defines wide style format of IS-IS metric.";
+     }
+     leaf level {
+      type ietf-isis:level;
+      description
+        "Level of an IS-IS node - can be level-1,
+        level-2 or level-all.";
+    }
+    } 
+  }
+
   grouping isis-node-attributes {
     description "isis node scope attributes";
-    container isis-timer-attributes {
-      description
-        "Contains node timer attributes";
-      leaf lsp-lifetime {
+    container isis-node-attributes {
+    leaf system-id {
+        type ietf-isis:system-id;
+        description
+          "System-id of the node.";
+      }
+    leaf level {
+        type ietf-isis:level;
+        description
+          "Level of an IS-IS node - can be level-1,
+          level-2 or level-all.";
+      }
+    leaf-list area-address {
+        type ietf-isis:area-address;
+        description
+          "List of areas supported by the protocol instance.";
+      }
+    leaf lsp-lifetime {
         type uint16 {
            range "1..65535";
          }
@@ -296,7 +368,7 @@ module ietf-l3-isis-topology {
         description
           "Lifetime of the router's LSPs in seconds.";
       }
-      leaf lsp-refresh-interval {
+    leaf lsp-refresh-interval {
         type uint16 {
            range "1..65535";
          }
@@ -305,41 +377,12 @@ module ietf-l3-isis-topology {
           "Refresh interval of the router's LSPs in seconds.";
       }
     }
-    container isis-status {
-      description
-        "Contains the IS-IS status attributes";
-      leaf level {
-        type ietf-isis:level;
-        description
-          "Level of an IS-IS node - can be level-1,
-          level-2 or level-all.";
-      }
-
-      leaf-list area-address {
-        type ietf-isis:area-address;
-        description
-          "List of areas supported by the protocol instance.";
-      }
-
-      leaf system-id {
-        type ietf-isis:system-id;
-        description
-          "System-id of the node.";
-      }
-
-      leaf-list neighbors {
-        type inet:ip-address;
-        config false;
-        description
-          "Topology flags";
-      }
-    }
   }
 
   grouping isis-termination-point-attributes {
     description "IS-IS termination point scope attributes";
     container isis-termination-point-attributes {
-      description
+       description
       "Indicates the termination point from the
       which the IS-IS is configured. A termination
       point can be a physical port, an interface, etc.";
@@ -347,8 +390,9 @@ module ietf-l3-isis-topology {
     leaf interface-type {
       type ietf-isis:interface-type;
       description
-        "Type of adjacency to be established for the interface. This
-        dictates the type of hello messages that are used.";
+        "Type of adjacency (broadcast or point-to-point) to be established 
+        for the interface.
+        This dictates the type of hello messages that are used.";
     }
 
     leaf level {
@@ -356,14 +400,6 @@ module ietf-l3-isis-topology {
       description
         "Level of an IS-IS node - can be level-1,
         level-2 or level-all.";
-    }
-
-    leaf metric {
-      type uint32 {
-         range "0 .. 16777215";
-       }
-      description
-        "This type defines wide style format of IS-IS metric.";
     }
 
     leaf is-passive{
@@ -400,8 +436,10 @@ module ietf-l3-isis-topology {
     }
     description
       "Augments topology link configuration";
-    uses isis-termination-point-attributes;
+    uses isis-link-attributes;
   }
+
+
 
   augment "/nw:networks/nw:network/nw:node/nt:termination-point"+
   "/l3t:l3-termination-point-attributes" {
@@ -415,7 +453,6 @@ module ietf-l3-isis-topology {
     uses isis-termination-point-attributes;
   }
 }
-
 <CODE ENDS>
 ~~~~
 {: #fig-ietf-isis-topolopy-yang title="IS-IS Topology YANG module"}
