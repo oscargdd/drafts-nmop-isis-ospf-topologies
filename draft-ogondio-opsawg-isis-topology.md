@@ -148,9 +148,13 @@ The ietf-network-topology:link MUST be present, with one link per each IP adjace
 
 The abstract (base) network data model is defined in the "ietf-network" and "ietf-network-topology" modules of {{!RFC8345}}. 
 The L3 topology module is defined in the "ietf-l3-unicast-topology" module of {{!RFC8346}}.
-The ISIS-topology builds on the data models defined in {{!RFC8345}} and  {{!RFC8346}}, augmenting the nodes with IS-IS information.
+The ietf-l3-isis-topology builds on the data models defined in {{!RFC8345}} and  {{!RFC8346}}, augmenting the nodes with IS-IS information.
+
+The following figure is based on the Figure 1 from {{!RFC8346}}, where the example-ospf-topology is relaced with ietf-l3-isis-topology and where 
+arrows show how the modules augment each other.
 
 {: #ietf-l3-isis-topology-module-structure}
+~~~~
                       +-----------------------------+
                       |  +-----------------------+  |
                       |  |      ietf-network     |  |
@@ -168,9 +172,9 @@ The ISIS-topology builds on the data models defined in {{!RFC8345}} and  {{!RFC8
                                     |
                                     |
                         +-----------^-----------+
-                        | isis-topology         |
+                        | ietf-l3-isis-topology |
                         +-----------------------+
-
+~~~~
 {: #fig-ietf-l3-isis-topology-module-structure title="IS-IS Topology module structure"}
 
 Theere are some limitations in the {{!RFC8345}} that are explained in more detail in {{!draft-havel-opsawg-digital-map}}. 
