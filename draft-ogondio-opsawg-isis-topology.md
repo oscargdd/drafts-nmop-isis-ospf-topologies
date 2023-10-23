@@ -244,7 +244,7 @@ module ietf-l3-isis-topology {
     Editor:   Samier Barguil
               <mailto:samier.barguilgiraldo.ext@telefonica.com>
     Editor:   Victor Lopez
-              <mailto:victor.lopez@nokia.com>";
+              <mailto:victor.lopez@nokia.com>;
     Editor:   Benoit Claise
               <mailto:benoit.claise@huwaei.com>";
   description
@@ -288,22 +288,7 @@ module ietf-l3-isis-topology {
     container isis-timer-attributes {
       description
         "Contains node timer attributes";
-      leaf lsp-lifetime {
-        type uint16 {
-           range "1..65535";
-         }
-        units "seconds";
-        description
-          "Lifetime of the router's LSPs in seconds.";
-      }
-      leaf lsp-refresh-interval {
-        type uint16 {
-           range "1..65535";
-         }
-        units "seconds";
-        description
-          "Refresh interval of the router's LSPs in seconds.";
-      }
+      uses ietf-isis:lsp-parameters;
     }
     container isis-status {
       description
