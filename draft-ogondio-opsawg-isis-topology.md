@@ -170,7 +170,7 @@ There is a second set of parameters and augmentations are included at the termin
 {{fig-ietf-l3-isis-topology-tree}} below shows the tree diagram of the YANG data model defined in module ietf-l3-isis-topology.yang ({{ietf-l3-isis-topology-yang}}).
 
 ~~~~
-{::include ./Yang/ietf-topology.tree}
+{::include ./Yang/ietf-topology.txt}
 ~~~~
 
 {: #fig-ietf-l3-isis-topology-tree title="IS-IS Topology tree diagram"}
