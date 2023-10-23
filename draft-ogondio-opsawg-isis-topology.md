@@ -61,7 +61,7 @@ Network operators perform the capacity planning for their networks and run regul
 
 This document defines a YANG data model representing an abstracted view of a network topology containing Intermediate System to Intermediate System (IS-IS). It covers the topology of IP/MPLS networks running IS-IS as Interior Gateway Protocol (IGP) protocol. The proposed YANG mode augments the "A YANG Data Model for Network Topologies" {{!RFC8345}} and"A YANG Data Model for Layer 3 Topologies" {{!RFC8346}} by adding IS-IS concepts. This YANG data model is used to export the IS-IS related topology directly from a network controller to an Operation Support System (OSS) tools.
 
-Note that the YANG model is in this document strictly adhere to the concepts (and the YANG module) in "A YANG Data Model for Network Topologies" {{!RFC8345}} and"A YANG Data Model for Layer 3 Topologies" {{!RFC8346}}. While investigating the IS-IS topology, some limitations have discovered in {{!RFC8345}}, regarding how the digital map can be represented. Those limitations (and potential improvements) are covered in {{?I-D.draft-havel-opsawg-digital-map}}.
+Note that the YANG model is in this document strictly adheres to the concepts (and the YANG module) in "A YANG Data Model for Network Topologies" {{!RFC8345}} and"A YANG Data Model for Layer 3 Topologies" {{!RFC8346}}. While investigating the IS-IS topology, some limitations have discovered in {{!RFC8345}}, regarding how the digital map can be represented. Those limitations (and potential improvements) are covered in {{?I-D.draft-havel-opsawg-digital-map}}.
 
 This document explains the scope and purpose of the IS-IS topology model and how the topology and service models fit together.
 The YANG data model defined in this document conforms to the Network Management Datastore Architecture {{!RFC8342}}.
@@ -157,7 +157,7 @@ There is a set of parameters and augmentations that are included at the node lev
 + IS-IS timer attributes: Identifies the node timer attributes configured in the network element. They are LSP lifetime and the LSP refresh interval.
 - IS-IS status: contains the IS-IS status attributes (level, area-address and neighbours).
 
-The following figure is based on the Figure 1 from {{!RFC8346}}, where the example-ospf-topology is relaced with ietf-l3-isis-topology and where
+The following figure is based on the Figure 1 from {{!RFC8346}}, where the example-ospf-topology is replaced with ietf-l3-isis-topology and where
 arrows show how the modules augment each other.
 
 {: #ietf-l3-isis-topology-module-structure}
@@ -184,7 +184,7 @@ arrows show how the modules augment each other.
 ~~~~
 {: #fig-ietf-l3-isis-topology-module-structure title="IS-IS Topology module structure"}
 
-Theere are some limitations in the {{!RFC8345}} that are explained in more detail in {{!I-D.draft-havel-opsawg-digital-map}}.
+There are some limitations in the {{!RFC8345}} that are explained in more detail in {{!I-D.draft-havel-opsawg-digital-map}}.
 The current version of the ietf-l3-isis-topology module is based on the current version of {{!RFC8345}}.
 The following will be addressed when {{!RFC8345}} is extended to support the identified limitations:
 - Both IS-IS domain and IS-IS areas could be modelled as networks
@@ -192,9 +192,11 @@ The following will be addressed when {{!RFC8345}} is extended to support the ide
 - IS-IS nodes could belong to multiple IS-IS networks
 
 There is a set of parameters and augmentations that are included at the network level.
+
 - Network-types: Its presence identifies the IS-IS topology type. Thus, the network type MUST be isis-topology.
 
 There is a set of parameters and augmentations that are included at the node level. Each parameter and description are detailed following:
+
 - IS-IS node core attributes: contains the IS-IS core attributes (system-id, level, area-address).
 - IS-IS timer attributes: Identifies the node timer attributes configured in the network element. They are LSP lifetime and the LSP refresh interval.
 
@@ -255,224 +257,8 @@ module: ietf-l3-isis-topology
 This module imports types from {{!RFC8343}} and {{!RFC8345}}. Following the YANG model is presented.
 
 ~~~~
-<CODE BEGINS> file "ietf-l3-isis-topology@2022-10-24.yang"
-module ietf-l3-isis-topology {
-  yang-version 1.1;
-  namespace
-    "urn:ietf:params:xml:ns:yang:ietf-l3-isis-topology";
-  prefix "isisnt";
-
-  import ietf-network {
-    prefix "nw";
-    reference
-      "RFC 8345: A YANG Data Model for Network Topologies";
-  }
-
-  import ietf-network-topology {
-    prefix "nt";
-    reference
-      "RFC 8345: A YANG Data Model for Network Topologies";
-  }
-
-  import ietf-l3-unicast-topology {
-    prefix "l3t";
-    reference
-      "RFC 8346: A YANG Data Model for Layer 3 Topologies";
-  }
-
-  import ietf-isis {
-    prefix "ietf-isis";
-    reference
-      "RFC 9130: YANG Data Model for the IS-IS Protocol";
-  }
-
-  import ietf-inet-types {
-    prefix "inet";
-    reference
-      "RFC 6991: Common YANG Data Types";
-  }
-
-  organization
-    "IETF OPSA (Operations and Management Area) Working Group";
-  contact
-    "WG Web:  <https://datatracker.ietf.org/wg/opsawg/>
-    WG List:  <mailto:opsawg@ietf.org>
-
-    Editor:   Oscar Gonzalez de Dios
-              <mailto:oscar.gonzalezdedios@telefonica.com>
-    Editor:   Samier Barguil
-              <mailto:samier.barguilgiraldo.ext@telefonica.com>
-    Editor:   Victor Lopez
-              <mailto:victor.lopez@nokia.com>
-    Editor:   Benoit Claise
-              <mailto:benoit.claise@huwaei.com>";
-  description
-    "This module defines a model for Layer 3 IS-IS
-     topologies.
-
-     Copyright (c) 2022 IETF Trust and the persons identified as
-     authors of the code.  All rights reserved.
-
-     Redistribution and use in source and binary forms, with or
-     without modification, is permitted pursuant to, and subject to
-     the license terms contained in, the Revised BSD License set
-     forth in Section 4.c of the IETF Trust's Legal Provisions
-     Relating to IETF Documents
-     (https://trustee.ietf.org/license-info).
-
-     This version of this YANG module is part of RFC XXXX
-     (https://www.rfc-editor.org/info/rfcXXXX); see the RFC itself
-     for full legal notices.";
-
-  revision 2022-09-21 {
-    description
-      "Initial version";
-    reference
-      "RFC XXXX: A YANG Data Model for Intermediate System to
-       Intermediate System (IS-IS) Topology";
-  }
-
-  grouping isis-topology-type {
-    description "Identifies the topology type to be IS-IS.";
-    container isis-topology {
-      presence "indicates IS-IS topology";
-      description
-        "The presence of the container node indicates IS-IS
-        topology";
-    }
-  }
-
-  grouping isis-link-attributes {
-     description "Identifies the IS-IS link attributes.";
-     container isis-link-attributes {
-     leaf metric {
-      type uint32 {
-         range "0 .. 16777215";
-       }
-      description
-        "This type defines wide style format of IS-IS metric.";
-     }
-     leaf level {
-      type ietf-isis:level;
-      description
-        "Level of an IS-IS node - can be level-1,
-        level-2 or level-all.";
-    }
-    }
-  }
-
-  grouping isis-node-attributes {
-    description "isis node scope attributes";
-    container isis-node-attributes {
-    leaf system-id {
-        type ietf-isis:system-id;
-        description
-          "System-id of the node.";
-      }
-    leaf level {
-        type ietf-isis:level;
-        description
-          "Level of an IS-IS node - can be level-1,
-          level-2 or level-all.";
-      }
-    leaf-list area-address {
-        type ietf-isis:area-address;
-        description
-          "List of areas supported by the protocol instance.";
-      }
-    leaf lsp-lifetime {
-        type uint16 {
-           range "1..65535";
-         }
-        units "seconds";
-        description
-          "Lifetime of the router's LSPs in seconds.";
-      }
-    leaf lsp-refresh-interval {
-        type uint16 {
-           range "1..65535";
-         }
-        units "seconds";
-        description
-          "Refresh interval of the router's LSPs in seconds.";
-      }
-    }
-  }
-
-  grouping isis-termination-point-attributes {
-    description "IS-IS termination point scope attributes";
-    container isis-termination-point-attributes {
-       description
-      "Indicates the termination point from the
-      which the IS-IS is configured. A termination
-      point can be a physical port, an interface, etc.";
-
-    leaf interface-type {
-      type ietf-isis:interface-type;
-      description
-        "Type of adjacency (broadcast or point-to-point) to be established
-        for the interface.
-        This dictates the type of hello messages that are used.";
-    }
-
-    leaf level {
-      type ietf-isis:level;
-      description
-        "Level of an IS-IS node - can be level-1,
-        level-2 or level-all.";
-    }
-
-    leaf is-passive{
-      type boolean;
-      description
-        "Indicates whether the interface is in passive mode (IS-IS
-        not running but network is advertised).";
-      }
-    }
-  }
-
-  augment "/nw:networks/nw:network/nw:network-types" {
-    description
-      "Introduces new network type for L3 Unicast topology";
-    uses isis-topology-type;
-  }
-
-  augment "/nw:networks/nw:network/nw:node/l3t:l3-node-attributes" {
-    when "/nw:networks/nw:network/nw:network-types/isisnt:isis-topology" {
-      description
-        "Augmentation parameters apply only for networks with
-        isis topology";
-    }
-    description
-      "isis node-level attributes ";
-    uses isis-node-attributes;
-  }
-
-  augment "/nw:networks/nw:network/nt:link/l3t:l3-link-attributes" {
-    when "/nw:networks/nw:network/nw:network-types/isisnt:isis-topology" {
-      description
-        "Augmentation parameters apply only for networks with
-        IS-IS topology";
-    }
-    description
-      "Augments topology link configuration";
-    uses isis-link-attributes;
-  }
-
-
-
-  augment "/nw:networks/nw:network/nw:node/nt:termination-point"+
-  "/l3t:l3-termination-point-attributes" {
-    when "/nw:networks/nw:network/nw:network-types/isisnt:isis-topology" {
-      description
-        "Augmentation parameters apply only for networks with
-        IS-IS topology";
-    }
-    description
-      "Augments topology termination point configuration";
-    uses isis-termination-point-attributes;
-  }
-}
+<CODE BEGINS> file "ietf-l3-isis-topology@2023-10-23.yang"
+{::include ./Yang/ietf-l3-isis-topology.yang}
 <CODE ENDS>
 ~~~~
 {: #fig-ietf-isis-topolopy-yang title="IS-IS Topology YANG module"}
