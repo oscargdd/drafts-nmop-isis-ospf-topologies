@@ -147,7 +147,7 @@ The ietf-network-topology:link MUST be present, with one link per each IP adjace
 
 # YANG Data Model for IS-IS Topology
 
-The abstract (base) network data model is defined in the "ietf-network" and "ietf-network-topology" modules of {{!RFC8345}}. 
+The abstract (base) network data model is defined in the "ietf-network" and "ietf-network-topology" modules of {{!RFC8345}}.
 The L3 topology module is defined in the "ietf-l3-unicast-topology" module of {{!RFC8346}}.
 The ietf-l3-isis-topology builds on the data models defined in {{!RFC8345}} and  {{!RFC8346}}, augmenting the nodes with IS-IS information.
 
@@ -157,7 +157,7 @@ There is a set of parameters and augmentations that are included at the node lev
 + IS-IS timer attributes: Identifies the node timer attributes configured in the network element. They are LSP lifetime and the LSP refresh interval.
 - IS-IS status: contains the IS-IS status attributes (level, area-address and neighbours).
 
-The following figure is based on the Figure 1 from {{!RFC8346}}, where the example-ospf-topology is relaced with ietf-l3-isis-topology and where 
+The following figure is based on the Figure 1 from {{!RFC8346}}, where the example-ospf-topology is relaced with ietf-l3-isis-topology and where
 arrows show how the modules augment each other.
 
 {: #ietf-l3-isis-topology-module-structure}
@@ -184,8 +184,8 @@ arrows show how the modules augment each other.
 ~~~~
 {: #fig-ietf-l3-isis-topology-module-structure title="IS-IS Topology module structure"}
 
-Theere are some limitations in the {{!RFC8345}} that are explained in more detail in {{!draft-havel-opsawg-digital-map}}. 
-The current version of the ietf-l3-isis-topology module is based on the current version of {{!RFC8345}}. 
+Theere are some limitations in the {{!RFC8345}} that are explained in more detail in {{!draft-havel-opsawg-digital-map}}.
+The current version of the ietf-l3-isis-topology module is based on the current version of {{!RFC8345}}.
 The following will be addressed when {{!RFC8345}} is extended to support the identified limitations:
 - Both IS-IS domain and IS-IS areas could be modelled as networks
 - The IS-IS Areas will be connected via IS-IS links
@@ -193,16 +193,16 @@ The following will be addressed when {{!RFC8345}} is extended to support the ide
 
 There is a set of parameters and augmentations that are included at the network level.
 - Network-types: Its presence identifies the IS-IS topology type. Thus, the network type MUST be isis-topology.
-  
+
 There is a set of parameters and augmentations that are included at the node level. Each parameter and description are detailed following:
 - IS-IS node core attributes: contains the IS-IS core attributes (system-id, level, area-address).
 - IS-IS timer attributes: Identifies the node timer attributes configured in the network element. They are LSP lifetime and the LSP refresh interval.
 
 There is a set of parameters and augmentations that are included at the link level. Each parameter and description are detailed following:
 - IS-IS link level. The level must be the same as the termination points at each end for Level 1 and Level 2 interfaces. There may be 2 links
-between the Level1-2 IS-IS interfaces, one for Level 1 adjacency and one for Level 2 adjacency 
+between the Level1-2 IS-IS interfaces, one for Level 1 adjacency and one for Level 2 adjacency.
 - IS-IS link metric. Added on top of metric1 and metric2 of the l3-link-attributes
-  
+
 There is a  set of parameters and augmentations are included at the termination point level. Each parameter is listed as follows:
 - Interface-type: point-to point or braodcast
 - Level. The level must be the same as for the node, except when node is Level 1-2 and the interfaces can only be Level 1 or Level 2.
@@ -361,7 +361,7 @@ module ietf-l3-isis-topology {
         "Level of an IS-IS node - can be level-1,
         level-2 or level-all.";
     }
-    } 
+    }
   }
 
   grouping isis-node-attributes {
@@ -413,7 +413,7 @@ module ietf-l3-isis-topology {
     leaf interface-type {
       type ietf-isis:interface-type;
       description
-        "Type of adjacency (broadcast or point-to-point) to be established 
+        "Type of adjacency (broadcast or point-to-point) to be established
         for the interface.
         This dictates the type of hello messages that are used.";
     }
