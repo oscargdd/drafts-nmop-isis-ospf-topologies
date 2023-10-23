@@ -45,7 +45,9 @@ module ietf-l3-isis-topology {
     Editor:   Samier Barguil
               <mailto:samier.barguil_giraldo@nokia.com>
     Editor:   Victor Lopez
-              <mailto:victor.lopez@nokia.com>";
+              <mailto:victor.lopez@nokia.com>
+    Editor:   Benoit Claise
+              <mailto:benoit.claise@huwaei.com>";
   description
     "This module defines a model for Layer 3 ISIS
      topologies.
