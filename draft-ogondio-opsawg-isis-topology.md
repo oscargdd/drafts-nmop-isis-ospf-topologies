@@ -538,6 +538,6 @@ under different changes, covering the what-if, failure analysis, dimensioning an
 
 # Acknowledgments
 {:numbered="false"}
-The authors would like to thank Pierre Francois for the review and suggestions the document. 
+The authors would like to thank Pierre Francois for the review and suggestions the document.
 
 This work is partially supported by the European Commission under grant agreement No. 101092766  (ALLEGRO Project) and Horizon 2020 Secured autonomic traffic management for a Tera of SDN flows (Teraflow) project (grant agreement number 101015857).
