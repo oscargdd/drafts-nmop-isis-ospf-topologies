@@ -82,6 +82,25 @@ module ietf-l3-isis-topology {
     }
   }
 
+  grouping isis-link-attributes {
+     description "Identifies the IS-IS link attributes.";
+     container isis-link-attributes {
+     leaf metric {
+      type uint32 {
+         range "0 .. 16777215";
+       }
+      description
+        "This type defines wide style format of IS-IS metric.";
+     }
+     leaf level {
+      type ietf-isis:level;
+      description
+        "Level of an IS-IS node - can be level-1,
+        level-2 or level-all.";
+    }
+    } 
+  }
+
   grouping isis-node-attributes {
     description "isis node scope attributes";
     container isis-timer-attributes {
@@ -89,50 +108,56 @@ module ietf-l3-isis-topology {
         "Contains node timer attributes";
       uses ietf-isis:lsp-parameters;
     }
-    container isis-status {
-      description
-        "Contains the ISIS status attributes";
-      leaf level {
-        type ietf-isis:level;
-        description
-          "Level of an IS-IS node - can be level-1,
-          level-2 or level-all.";
-      }
-
-      leaf-list area-address {
-        type ietf-isis:area-address;
-        description
-          "List of areas supported by the protocol instance.";
-      }
-
+    container isis-node-attributes {
       leaf system-id {
-        type ietf-isis:system-id;
-        description 
-          "System-id of the node.";
+          type ietf-isis:system-id;
+          description
+            "System-id of the node.";
+        }
+      leaf level {
+          type ietf-isis:level;
+          description
+            "Level of an IS-IS node - can be level-1,
+            level-2 or level-all.";
+        }
+      leaf-list area-address {
+          type ietf-isis:area-address;
+          description
+            "List of areas supported by the protocol instance.";
+        }
+      leaf lsp-lifetime {
+          type uint16 {
+             range "1..65535";
+           }
+          units "seconds";
+          description
+            "Lifetime of the router's LSPs in seconds.";
+        }
+      leaf lsp-refresh-interval {
+          type uint16 {
+             range "1..65535";
+           }
+          units "seconds";
+          description
+            "Refresh interval of the router's LSPs in seconds.";
+        }
       }
-
-      leaf-list neighbors {
-        type inet:ip-address;
-        config false;
-        description
-          "Topology flags";
-      }
-    }
   }
 
-  grouping isis-termination-point-attributes {
-    description "ISIS termination point scope attributes";
+grouping isis-termination-point-attributes {
+    description "IS-IS termination point scope attributes";
     container isis-termination-point-attributes {
-      description
+       description
       "Indicates the termination point from the
-      which the ISIS is configured. A termination
+      which the IS-IS is configured. A termination
       point can be a physical port, an interface, etc.";
 
     leaf interface-type {
       type ietf-isis:interface-type;
       description
-        "Type of adjacency to be established for the interface. This
-        dictates the type of hello messages that are used.";
+        "Type of adjacency (broadcast or point-to-point) to be established 
+        for the interface.
+        This dictates the type of hello messages that are used.";
     }
 
     leaf level {
@@ -140,14 +165,6 @@ module ietf-l3-isis-topology {
       description
         "Level of an IS-IS node - can be level-1,
         level-2 or level-all.";
-    }
-
-    leaf metric {
-      type uint32 {
-         range "0 .. 16777215";
-       }
-      description
-        "This type defines wide style format of IS-IS metric.";
     }
 
     leaf is-passive{
@@ -164,7 +181,7 @@ module ietf-l3-isis-topology {
       "Introduces new network type for L3 Unicast topology";
     uses isis-topology-type;
   }
-  
+
   augment "/nw:networks/nw:network/nw:node/l3t:l3-node-attributes" {
     when "/nw:networks/nw:network/nw:network-types/isisnt:isis-topology" {
       description
@@ -180,22 +197,24 @@ module ietf-l3-isis-topology {
     when "/nw:networks/nw:network/nw:network-types/isisnt:isis-topology" {
       description
         "Augmentation parameters apply only for networks with
-        ISIS topology";
+        IS-IS topology";
     }
-    description 
+    description
       "Augments topology link configuration";
-    uses isis-termination-point-attributes;
+    uses isis-link-attributes;
   }
 
-  augment "/nw:networks/nw:network/nw:node/nt:termination-point/l3t:l3-termination-point-attributes" {
+
+
+  augment "/nw:networks/nw:network/nw:node/nt:termination-point"+
+  "/l3t:l3-termination-point-attributes" {
     when "/nw:networks/nw:network/nw:network-types/isisnt:isis-topology" {
       description
         "Augmentation parameters apply only for networks with
-        ISIS topology";
+        IS-IS topology";
     }
-    description 
+    description
       "Augments topology termination point configuration";
     uses isis-termination-point-attributes;
   }
 }
-
