@@ -130,7 +130,7 @@ As such the IGP topology of the Digital Map (in this case, IS-IS) is just one of
 
 # Use of IETF-Topology for Representing an IP/MPLS network domain
 
-IP/MPLS Networks can contain multiple domain IGP domains. We can define an IGP domain as the collection of nodes and links that participate in the same IGP process. The topology information of a domain can be structured according to ietf-network-topology data model {{!RFC8345}}. For example, if BGP-LS is used to collect the information, the nodes and links that are announced with the same combination of AS number / are considered to belong to the same domain.
+IP/MPLS Networks can contain multiple domain IGP domains. We can define an IGP domain as the collection of nodes and links that participate in the same IGP process. The topology information of a domain can be structured according to ietf-network-topology data model {{!RFC8345}}. For example, if BGP-LS is used to collect the information, the nodes and links that are announced with the same combination of AS number / domain ID are considered to belong to the same domain.
 
 If a node and/or layer termination point  participates in more than one IGP it will be present in multiple IGP domain networks.
 
@@ -184,7 +184,7 @@ arrows show how the modules augment each other.
 ~~~~
 {: #fig-ietf-l3-isis-topology-module-structure title="IS-IS Topology module structure"}
 
-Theere are some limitations in the {{!RFC8345}} that are explained in more detail in {{!draft-havel-opsawg-digital-map}}.
+Theere are some limitations in the {{!RFC8345}} that are explained in more detail in {{!I-D.draft-havel-opsawg-digital-map}}.
 The current version of the ietf-l3-isis-topology module is based on the current version of {{!RFC8345}}.
 The following will be addressed when {{!RFC8345}} is extended to support the identified limitations:
 - Both IS-IS domain and IS-IS areas could be modelled as networks
@@ -248,10 +248,7 @@ module: ietf-l3-isis-topology
        +--rw metric?           uint32
        +--rw is-passive?       boolean
 ~~~~
-
 {: #fig-ietf-l3-isis-topology-tree title="IS-IS Topology tree diagram"}
-
-{: #ietf-l3-isis-topology-yang}
 
 # YANG Model for IS-IS topology
 
@@ -541,5 +538,6 @@ under different changes, covering the what-if, failure analysis, dimensioning an
 
 # Acknowledgments
 {:numbered="false"}
+The authors would like to thank Pierre Francois for the review and suggestions the document. 
 
-This work is partially supported by the European Commission under Horizon 2020 Secured autonomic traffic management for a Tera of SDN flows (Teraflow) project (grant agreement number 101015857).
+This work is partially supported by the European Commission under grant agreement No. 101092766  (ALLEGRO Project) and Horizon 2020 Secured autonomic traffic management for a Tera of SDN flows (Teraflow) project (grant agreement number 101015857).
