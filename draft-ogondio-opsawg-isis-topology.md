@@ -132,8 +132,7 @@ As such the IGP topology of the Digital Map (in this case, IS-IS) is just one of
 
 IP/MPLS networks can contain multiple domain IGP domains. We can define an IGP domain as the collection of nodes and links that participate in the same IGP process. The topology information of a domain can be structured according to ietf-network-topology data model {{!RFC8345}}. For example, if BGP-LS {{?RFC9552}} is used to collect the information, the nodes and links that are announced with the same combination of AS number / domain ID are considered to belong to the same domain.
 
-If a node and/or layer termination point participates in more than one IGP, it will be present in multiple IGP domain networks. As the basic components from {{!RFC8345}} (node, links, termination points), it is therefore possible to joint the different different IGP topologies from a digital map point of view. 
-The ietf-network instance MUST include the following properties to indicate it is a domain running an IGP instance:
+If a node and/or layer termination point participates in more than one IGP, it will be present in multiple IGP domain networks. As the basic components, node/links/termination points {{!RFC8345}}, it is therefore possible to joint the different different IGP topologies from a digital map modeling point of view. The ietf-network instance MUST include the following properties to indicate it is a domain running an IGP instance:
 
 A network-id that uniquely identifies such domain in the network.
 The "network-types" property should include the l3t:l3-unicast-topology, to indicate it is a network in which the nodes are capable of forwarding unicast packet. Also, this draft proposed to add a new property, "isis-topology", to indicate the topology being represented is running the IS-IS IGP process.
