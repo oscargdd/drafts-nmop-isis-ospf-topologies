@@ -80,7 +80,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ## Tree Diagram
 
-Authors include a simplified graphical representation of the data model is used in {{ietf-l3-isis-topology-tree}} of this document.
+Authors include a simplified graphical representation of the data model specified in {{ietf-l3-isis-topology-tree}} of this document.
 The meaning of the symbols in these diagrams is defined in {{!RFC8340}}.
 
 ## Prefix in Data Node Names
@@ -101,16 +101,16 @@ Please remove this note.
 
 This information is required in the IP/MPLS planning process to properly assess the required network resources to meet the traffic demands in normal and failure scenarios. Network operators perform the capacity planning for their networks and run regular what-if scenarios analysis based on representations of the real network. Those what-if analysis and capacity planning processes require, among other information, a topological view (domains, nodes, links, network interconnection) of the deployed network.
 
-The standardization of an abstracted view of the IS-IS topology model as NorthBound Interface (NBI) of Software Defined Networking (SDN) controllers allows the inject this information into third party tools covering specialized cases.
+The standardization of an abstracted view of the IS-IS topology model as NorthBound Interface (NBI) of Software Defined Networking (SDN) controllers allows the unified query of the IS-IS topology in order to inject this information into third party tools covering specialized cases.
 
-The IS-IS topological model should export enough IS-IS information to permit these tools simulating the IP routing. By adding the traffic demand, ideally at the IP flow level, we can simulate the traffic growth and its effect on the routing. That is, simulating how IP-level traffic demands would be forwarded, after IS-IS convergence is reached, and from there estimating, using appropriate mathematical models, related KPIs like the occupation in the links or end-to-end latencies.
+The IS-IS topological model should export enough IS-IS information to permit these tools to simulate the IP routing. By mapping the traffic demand, ideally at the IP flow level, to the topology, we can simulate the traffic growth, evaluating this way its effect on the routing and quality of service. That is, simulating how IP-level traffic demands would be forwarded, after IS-IS convergence is reached, and from there estimating, using appropriate mathematical models, related KPIs like the occupation in the links or end-to-end latencies.
 
 In summary, the network-wide view of the IS-IS topology enables multiple use cases:
 
-* Network design: verifying that the actual deployed IS-IS network conforms to the planned design
-+ Failure analysis. Systematic and massive test of the network under multiple simulated failure situations, evaluating the network fault tolerance properties, and using mathematical models to derive statistical network availability metrics.
-+ What-if analysis. Estimation of the network KPIs in modified network situations. For instance, failure situations, traffic anomaly situations, addition or deletion of new adjacencies, IGP weight reconfigurations.
-- Capacity planning. Dimensioning or redesign of the IP infrastructure to satisfy target KPI metrics under existing or forecasted traffic demands.
+* Network design: verifying that the actual deployed IS-IS network conforms to the planned design.
++ Capacity planning. Dimensioning or redesign of the IP infrastructure to satisfy target KPI metrics under existing or forecasted traffic demands.
++ What-if analysis. Estimation of the network KPIs in modified network situations. For instance, failure situations, traffic anomaly situations, addition or deletion of new adjacencies, IGP weight reconfigurations, etc.
+- Failure analysis. Systematic and massive test of the network under multiple simulated failure situations, evaluating the network fault tolerance properties, and using mathematical models to derive statistical network availability metrics.
 
 ## Relationship with the IS-IS YANG Model
 
@@ -130,16 +130,15 @@ As such the IGP topology of the Digital Map (in this case, IS-IS) is just one of
 
 # Use of IETF-Topology for Representing an IP/MPLS network domain
 
-IP/MPLS Networks can contain multiple domain IGP domains. We can define an IGP domain as the collection of nodes and links that participate in the same IGP process. The topology information of a domain can be structured according to ietf-network-topology data model {{!RFC8345}}. For example, if BGP-LS is used to collect the information, the nodes and links that are announced with the same combination of AS number / domain ID are considered to belong to the same domain.
+IP/MPLS networks can contain multiple domain IGP domains. We can define an IGP domain as the collection of nodes and links that participate in the same IGP process. The topology information of a domain can be structured according to ietf-network-topology data model {{!RFC8345}}. For example, if BGP-LS {{?RFC9552}} is used to collect the information, the nodes and links that are announced with the same combination of AS number / domain ID are considered to belong to the same domain.
 
-If a node and/or layer termination point  participates in more than one IGP it will be present in multiple IGP domain networks.
-
+If a node and/or layer termination point participates in more than one IGP, it will be present in multiple IGP domain networks. As the basic components from {{!RFC8345}} (node, links, termination points), it is therefore possible to joint the different different IGP topologies from a digital map point of view. 
 The ietf-network instance MUST include the following properties to indicate it is a domain running an IGP instance:
 
 A network-id that uniquely identifies such domain in the network.
 The "network-types" property should include the l3t:l3-unicast-topology, to indicate it is a network in which the nodes are capable of forwarding unicast packet. Also, this draft proposed to add a new property, "isis-topology", to indicate the topology being represented is running the IS-IS IGP process.
 
-Also, should the topology include information such as bandwidth, delay information or color, it must include tet:te-topology.
+Also, should the topology include information such as bandwidth, delay information or color, it must include the "YANG Data Model for Traffic Engineering" {{!RFC8795}} te-topology YANG data model.
 To include delay and bandwdith performance measurements , MUST include tet-pkt:te-packet under the previous property
 The supporting-network property can include the network-id of a base layer-3 network.
 The node property should include the list of nodes as described below.
@@ -184,13 +183,6 @@ arrows show how the modules augment each other.
 ~~~~
 {: #fig-ietf-l3-isis-topology-module-structure title="IS-IS Topology module structure"}
 
-There are some limitations in the {{!RFC8345}} that are explained in more detail in {{!I-D.draft-havel-opsawg-digital-map}}.
-The current version of the ietf-l3-isis-topology module is based on the current version of {{!RFC8345}}.
-The following will be addressed when {{!RFC8345}} is extended to support the identified limitations:
-
-* Both IS-IS domain and IS-IS areas could be modelled as networks
-* The IS-IS Areas will be connected via IS-IS links
-* IS-IS nodes could belong to multiple IS-IS networks
 
 There is a set of parameters and augmentations that are included at the network level.
 
@@ -214,6 +206,16 @@ There is a  set of parameters and augmentations are included at the termination 
 * Passive mode
 
 {: #ietf-l3-isis-topology-tree}
+
+# RFC8345 Limitations for the IS-IS Modeling
+
+There are some limitations in the {{!RFC8345}} that are explained in more detail in {{!I-D.draft-havel-opsawg-digital-map}}.
+The current version of the ietf-l3-isis-topology module is based on the current version of {{!RFC8345}}.
+The following will be addressed when {{!RFC8345}} is extended to support the identified limitations:
+
+* Both IS-IS domain and IS-IS areas could be modelled as networks
+* The IS-IS Areas will be connected via IS-IS links
+* IS-IS nodes could belong to multiple IS-IS networks
 
 
 # IS-IS Topology Tree Diagram
