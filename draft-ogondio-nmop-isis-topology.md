@@ -6,7 +6,7 @@ docname: draft-ogondio-opsawg-isis-topology-latest
 stand_alone: true
 ipr: trust200902
 area: "Operations and Management"
-wg: opsawg
+wg: nmop
 category: std
 submissiontype: IETF  # also: "independent", "IAB", or "IRTF"
 
