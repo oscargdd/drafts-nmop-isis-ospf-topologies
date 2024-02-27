@@ -48,7 +48,7 @@ contributor:
 
 --- abstract
 
-This document defines a YANG data model for representing an abstracted view of a network topology that contains Intermediate System to Intermediate System (IS-IS). This document augments the 'ietf-network' data model by adding IS-IS concepts and explains how the data model can be used to represent the IS-IS topology.
+This document defines a YANG data model for representing an abstracted view of a network topology that contains Intermediate System to Intermediate System (IS-IS). This document augments the 'ietf-network' and 'ietf-network-topology' data models by adding IS-IS concepts and explains how the data model can be used to represent the IS-IS topology.
 
 The YANG data model defined in this document conforms to the Network Management Datastore Architecture (NMDA).
 
