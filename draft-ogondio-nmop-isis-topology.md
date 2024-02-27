@@ -1,7 +1,7 @@
 ---
 title: A YANG Data Model for Intermediate System to intermediate System (IS-IS) Topology
 abbrev: IS-IS Topology YANG
-docname: draft-ogondio-opsawg-isis-topology-latest
+docname: draft-ogondio-nmop-isis-topology-latest
 
 stand_alone: true
 ipr: trust200902
