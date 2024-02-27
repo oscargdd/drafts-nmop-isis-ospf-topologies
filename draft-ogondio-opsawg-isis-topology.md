@@ -221,37 +221,7 @@ There is a  set of parameters and augmentations are included at the termination 
 {{fig-ietf-l3-isis-topology-tree}} below shows the tree diagram of the YANG data model defined in module ietf-l3-isis-topology.yang ({{fig-ietf-isis-topolopy-yang}}).
 
 ~~~~
-module: ietf-l3-isis-topology
-
-  augment /nw:networks/nw:network/nw:network-types:
-    +--rw isis-topology!
-  augment /nw:networks/nw:network/nw:node/l3t:l3-node-attributes:
-    +--rw isis-node-attributes
-       +--rw system-id?              ietf-isis:system-id
-       +--rw level?                  ietf-isis:level
-       +--rw area-address*           ietf-isis:area-address
-       +--rw lsp-lifetime?           uint16
-       +--rw lsp-refresh-interval?   uint16
-    +--rw isis-timer-attributes
-    |  +--rw lsp-lifetime?           uint16
-    |  +--rw lsp-refresh-interval?   uint16
-    +--rw isis-status
-       +--rw level?          ietf-isis:level
-       +--rw area-address*   ietf-isis:area-address
-       +--rw system-id?      ietf-isis:system-id
-       +--ro neighbors*      inet:ip-address
-  augment /nw:networks/nw:network/nt:link/l3t:l3-link-attributes:
-    +--rw isis-termination-point-attributes
-       +--rw interface-type?   ietf-isis:interface-type
-       +--rw level?            ietf-isis:level
-       +--rw metric?           uint32
-       +--rw is-passive?       boolean
-  augment /nw:networks/nw:network/nw:node/nt:termination-point/l3t:l3-termination-point-attributes:
-    +--rw isis-termination-point-attributes
-       +--rw interface-type?   ietf-isis:interface-type
-       +--rw level?            ietf-isis:level
-       +--rw metric?           uint32
-       +--rw is-passive?       boolean
+{::include ./yang/Tree/isis-tree.txt}
 ~~~~
 {: #fig-ietf-l3-isis-topology-tree title="IS-IS Topology tree diagram"}
 
