@@ -59,7 +59,9 @@ The YANG data model defined in this document conforms to the Network Management 
 
 Network operators perform the capacity planning for their networks and run regular what-if scenarios analysis based on representations of the real network. Those what-if analysis and capacity planning processes require, among other information, a topological view (domains, nodes, links, network interconnection) of the deployed network.
 
-This document defines a YANG data model representing an abstracted view of a network topology containing Intermediate System to Intermediate System (IS-IS). It covers the topology of IP/MPLS networks running IS-IS as Interior Gateway Protocol (IGP) protocol. The proposed YANG mode augments the "A YANG Data Model for Network Topologies" {{!RFC8345}} and"A YANG Data Model for Layer 3 Topologies" {{!RFC8346}} by adding IS-IS concepts. This YANG data model is used to export the IS-IS related topology directly from a network controller to an Operation Support System (OSS) tools.
+This document defines a YANG data model representing an abstracted view of a network topology containing Intermediate System to Intermediate System (IS-IS). It covers the topology of IP/MPLS networks running IS-IS as Interior Gateway Protocol (IGP) protocol. The proposed YANG model augments the "A YANG Data Model for Network Topologies" {{!RFC8345}} and "A YANG Data Model for Layer 3 Topologies" {{!RFC8346}} by adding IS-IS concepts. It is worth to highlight that the Yang model can also be used together with {{!RFC8795}} and {{?I-ID.draft-ietf-teas-yang-l3-te-topo}} when Traffic engineering characteristics are required in the topological view.
+
+This YANG data model can be used to export the IS-IS related topology directly from a network controller to Operation Support System (OSS) tools or to a higher level controller.
 
 Note that the YANG model is in this document strictly adheres to the concepts (and the YANG module) in "A YANG Data Model for Network Topologies" {{!RFC8345}} and"A YANG Data Model for Layer 3 Topologies" {{!RFC8346}}. While investigating the IS-IS topology, some limitations have discovered in {{!RFC8345}}, regarding how the digital map can be represented. Those limitations (and potential improvements) are covered in {{?I-D.draft-havel-opsawg-digital-map}}.
 
@@ -114,9 +116,8 @@ In summary, the network-wide view of the IS-IS topology enables multiple use cas
 
 ## Relationship with the IS-IS YANG Model
 
-
 {{!RFC9130}} specifies a YANG data model that can be used to configure and manage the IS-IS protocol on network elements. This data model covers the configuration of an IS-IS routing protocol instance, as well as the retrieval of IS-IS operational states.
-{{!RFC9130}} is still expected to be used for individual network elements configuration and monitoring. On the other hand, the proposed YANG model in this document covers the abstracted view of the entire network topology containing IS-IS. As such, this model is available via the NBI of SDN controllers.
+{{!RFC9130}} is still expected to be used for individual network elements configuration and monitoring. On the other hand, the proposed YANG model in this document covers the abstracted view of the entire network topology containing IS-IS. As such, this model is aimed at being available via the NBI of an SDN controller.
 
 ## Relationship with Digital Map
 
@@ -200,7 +201,7 @@ between the Level1-2 IS-IS interfaces, one for Level 1 adjacency and one for Lev
 
 There is a  set of parameters and augmentations are included at the termination point level. Each parameter is listed as follows:
 
-* Interface-type: point-to point or braodcast
+* Interface-type: point-to point or broadcast
 * Level. The level must be the same as for the node, except when node is Level 1-2 and the interfaces can only be Level 1 or Level 2.
 * Passive mode
 
