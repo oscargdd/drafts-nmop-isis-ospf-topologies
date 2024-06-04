@@ -3,11 +3,6 @@ module: ietf-l3-isis-topology
   augment /nw:networks/nw:network/nw:network-types:
     +--rw isis-topology!
   augment /nw:networks/nw:network/nw:node/l3t:l3-node-attributes:
-    +--rw isis-timer-attributes
-    |  +--rw lsp-mtu?        uint16
-    |  +--rw lsp-lifetime?   uint16
-    |  +--rw lsp-refresh?    rt-types:timer-value-seconds16 {lsp-refresh}?
-    |  +--rw poi-tlv?        boolean {poi-tlv}?
     +--rw isis-node-attributes
        +--rw system-id?              ietf-isis:system-id
        +--rw level?                  ietf-isis:level
@@ -23,3 +18,4 @@ module: ietf-l3-isis-topology
        +--rw interface-type?   ietf-isis:interface-type
        +--rw level?            ietf-isis:level
        +--rw is-passive?       boolean
+
