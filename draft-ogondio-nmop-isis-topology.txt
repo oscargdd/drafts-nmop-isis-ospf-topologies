@@ -5,13 +5,13 @@
 nmop                                                       O. G. D. Dios
 Internet-Draft                                                Telefonica
 Intended status: Standards Track                           S. B. Giraldo
-Expires: 5 September 2024                                       V. Lopez
+Expires: 6 December 2024                                        V. Lopez
                                                                    Nokia
                                                            D. Ceccarelli
                                                                    Cisco
                                                                B. Claise
                                                                   Huawei
-                                                            4 March 2024
+                                                             4 June 2024
 
 
 A YANG Data Model for Intermediate System to intermediate System (IS-IS)
@@ -23,8 +23,9 @@ Abstract
    This document defines a YANG data model for representing an
    abstracted view of a network topology that contains Intermediate
    System to Intermediate System (IS-IS).  This document augments the
-   'ietf-network' data model by adding IS-IS concepts and explains how
-   the data model can be used to represent the IS-IS topology.
+   'ietf-network' and 'ietf-network-topology' data models by adding IS-
+   IS concepts and explains how the data model can be used to represent
+   the IS-IS topology.
 
    The YANG data model defined in this document conforms to the Network
    Management Datastore Architecture (NMDA).
@@ -44,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 September 2024.
+   This Internet-Draft will expire on 6 December 2024.
 
 Copyright Notice
 
@@ -400,11 +401,6 @@ module: ietf-l3-isis-topology
   augment /nw:networks/nw:network/nw:network-types:
     +--rw isis-topology!
   augment /nw:networks/nw:network/nw:node/l3t:l3-node-attributes:
-    +--rw isis-timer-attributes
-    |  +--rw lsp-mtu?        uint16
-    |  +--rw lsp-lifetime?   uint16
-    |  +--rw lsp-refresh?    rt-types:timer-value-seconds16 {lsp-refresh}?
-    |  +--rw poi-tlv?        boolean {poi-tlv}?
     +--rw isis-node-attributes
        +--rw system-id?              ietf-isis:system-id
        +--rw level?                  ietf-isis:level
@@ -511,7 +507,7 @@ module: ietf-l3-isis-topology
      }
 
      grouping isis-link-attributes {
-        description "Identifies the IS-IS link attributes.";
+        description "Defines the IS-IS link attributes.";
         container isis-link-attributes {
          description
            "Main Container to identify the ISIS Link Attributes";
@@ -532,12 +528,7 @@ module: ietf-l3-isis-topology
      }
 
      grouping isis-node-attributes {
-       description "isis node scope attributes";
-       container isis-timer-attributes {
-         description
-           "Contains node timer attributes";
-         uses ietf-isis:lsp-parameters;
-       }
+       description "IS-IS node scope attributes";
        container isis-node-attributes {
            description
              "Main Container to identify the ISIS Node Attributes";
@@ -621,7 +612,7 @@ module: ietf-l3-isis-topology
            isis topology";
        }
        description
-         "isis node-level attributes ";
+         "Augments L3 topology node attributes for IS-IS";
        uses isis-node-attributes;
      }
 
@@ -632,7 +623,7 @@ module: ietf-l3-isis-topology
            IS-IS topology";
        }
        description
-         "Augments topology link configuration";
+         "Augments L3 topology link attributes for IS-IS";
        uses isis-link-attributes;
      }
 
@@ -646,7 +637,7 @@ module: ietf-l3-isis-topology
            IS-IS topology";
        }
        description
-         "Augments topology termination point configuration";
+         "Augments L3 topology termination point attributes for IS-IS";
        uses isis-termination-point-attributes;
      }
    }
