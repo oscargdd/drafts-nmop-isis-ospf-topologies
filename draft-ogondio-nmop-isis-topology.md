@@ -114,12 +114,7 @@ In summary, the network-wide view of the IS-IS topology enables multiple use cas
 + What-if analysis. Estimation of the network KPIs in modified network situations. For instance, failure situations, traffic anomaly situations, addition or deletion of new adjacencies, IGP weight reconfigurations, etc.
 - Failure analysis. Systematic and massive test of the network under multiple simulated failure situations, evaluating the network fault tolerance properties, and using mathematical models to derive statistical network availability metrics.
 
-## Relationship with the IS-IS YANG Model
-
-{{!RFC9130}} specifies a YANG data model that can be used to configure and manage the IS-IS protocol on network elements. This data model covers the configuration of an IS-IS routing protocol instance, as well as the retrieval of IS-IS operational states.
-{{!RFC9130}} is still expected to be used for individual network elements configuration and monitoring. On the other hand, the proposed YANG model in this document covers the abstracted view of the entire network topology containing IS-IS. As such, this model is aimed at being available via the NBI of an SDN controller.
-
-## Relationship with Digital Map
+## Digital Map
 
 As described in {{?I-D.draft-havel-opsawg-digital-map}}, the Digital Map provides the core multi-layer topology model and data for the digital twin and connects them to the other digital twin models and data.
 
@@ -128,6 +123,28 @@ The Digital Map Modelling defines the core topological entities, their role in t
 The Digital Map Model is a basic topological model that is linked to other functional parts of the digital twin and connects them all: configuration, maintenance, assurance (KPIs, status, health, symptoms), Traffic Engineering (TE), different behaviors and actions,  simulation, emulation, mathematical abstractions, AI algorithms, etc.
 
 As such the IGP topology of the Digital Map (in this case, IS-IS) is just one of the layers of the Digital Map, for specific user (the network operator in charge of the IGP) for specific IGP use cases as described before.
+
+## Multi-Topology IS-IS
+
+Multi-Topology IS-IS (MT IS-IS) {{!RFC5120}}  allows the creation of different topologies within IS-IS at the router level. This enables to specify routes in each of the route tables in the network element. MT ISIS route can be configure for IPv4 unicast, IPv6 unicast, IPv4 multicast, and IPv6 multicast.
+
+MT IS-IS makes possible the following use cases for network operators:
++ IPv4 and IPv6 Coexistence: Supports dual-stack environments where both IPv4 and IPv6 routing protocols operate simultaneously and independently within the same network infrastructure.
++ Unicast and Multicast Routing: Differentiates between unicast and multicast traffic by creating separate topologies. This ensures that multicast traffic is managed differently from unicast traffic, improving efficiency and performance for both types of traffic.
+
+Utilization of IS-IS topology model facilitates exporting the topological information to a third party without requiring exposing the specific MT IS-IS parameters.
+
+## Flex-Algo
+
+Flex-Algo {{!RFC9350}} allows the creation of customized routing algorithms within the IS-IS protocol at the router level. This enables the specification of routes tailored to specific network requirements, such as low latency or high bandwidth, in each of the route tables in the network element. Flex-Algo routes can be configured to meet diverse traffic engineering goals.
+
+Flex-Algo enables the following use cases for network operators:
+
++ Customized Traffic Engineering: Supports the creation of routing paths optimized for specific criteria, such as minimizing latency or maximizing bandwidth, allowing for more efficient and effective network performance.
++ Service Differentiation: Enables the definition of separate routing policies for different types of services, ensuring that critical services receive the required performance levels while maintaining overall network efficiency.
+
+Utilization of IS-IS topology model facilitates exporting the topological information to a third party without requiring exposing the specific Flex-Algo parameters.
+
 
 # Use of IETF-Topology for Representing an IP/MPLS network domain
 
@@ -217,6 +234,10 @@ The following will be addressed when {{!RFC8345}} is extended to support the ide
 * The IS-IS Areas will be connected via IS-IS links
 * IS-IS nodes could belong to multiple IS-IS networks
 
+## Relationship with the IS-IS YANG Model
+
+{{!RFC9130}} specifies a YANG data model that can be used to configure and manage the IS-IS protocol on network elements. This data model covers the configuration of an IS-IS routing protocol instance, as well as the retrieval of IS-IS operational states.
+{{!RFC9130}} is still expected to be used for individual network elements configuration and monitoring. On the other hand, the proposed YANG model in this document covers the abstracted view of the entire network topology containing IS-IS. As such, this model is aimed at being available via the NBI of an SDN controller.
 
 # IS-IS Topology Tree Diagram
 
