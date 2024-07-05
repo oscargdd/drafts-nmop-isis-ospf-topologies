@@ -2,16 +2,16 @@
 
 This is the working area for the individual Internet-Draft, "TODO - Your title".
 
-* [Editor's Copy](https://oscargdd.github.io/draft-ogondio-opsawg-isis-topology/#go.draft-ogondio-opsawg-isis-topology.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-ogondio-opsawg-isis-topology)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-ogondio-opsawg-isis-topology)
-* [Compare Editor's Copy to Individual Draft](https://oscargdd.github.io/draft-ogondio-opsawg-isis-topology/#go.draft-ogondio-opsawg-isis-topology.diff)
+* [Editor's Copy](https://oscargdd.github.io/drafts-nmop-isis-ospf-topologies/#go.draft-ogondio-opsawg-isis-topology.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/drafts-nmop-isis-ospf-topologies)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/drafts-nmop-isis-ospf-topologies)
+* [Compare Editor's Copy to Individual Draft](https://oscargdd.github.io/drafts-nmop-isis-ospf-topologies/#go.draft-ogondio-opsawg-isis-topology.diff)
 
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/oscargdd/draft-ogondio-opsawg-isis-topology/blob/main/CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/blob/main/CONTRIBUTING.md).
 
 Contributions can be made by creating pull requests.
 The GitHub interface supports creating pull requests using the Edit (✏) button.
