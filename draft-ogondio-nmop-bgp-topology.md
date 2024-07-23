@@ -119,7 +119,7 @@ The Digital Map Model is a basic topological model that is linked to other funct
 
 As such the BGP topology of the Digital Map is just one of the layers of the Digital Map, for specific user (the network operator in charge of the BGP) for the specific use cases as described before.
 
-# YANG Data Model for BGP Topology
+# Description of the YANG Data Model for BGP Topology
 
 The abstract (base) network data model is defined in the "ietf-network" module of {{!RFC8345}}. The BGP-topology builds on the network data model defined in the "ietf-network" module {{!RFC8345}}, augmenting the nodes with BGP information, which anchor the links and are contained in nodes.
 
