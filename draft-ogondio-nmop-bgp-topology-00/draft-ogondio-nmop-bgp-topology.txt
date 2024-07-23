@@ -68,7 +68,7 @@ Table of Contents
      2.1.  Relationship with the BGP YANG Model
      2.2.  Relationship with Digital Map
    3.  YANG Data Model for BGP Topology
-   4.  OSPF Topology Tree Diagram
+   4.  BGP Topology Tree Diagram
    5.  YANG Model for BGP topology
    6.  Security Considerations
    7.  IANA Considerations
@@ -91,8 +91,8 @@ Table of Contents
    This document defines a YANG data model representing an abstracted
    view of a network topology containing Border Gateway Protocol (BGP)
    with the following assumption: * Areas can be explicit, depending on
-   which IGP protocol is used.  * Metrics can be provided to the
-   operations team for greater control of the network.  * A view of the
+   which IGP protocol is used. + Metrics can be provided to the
+   operations team for greater control of the network. - A view of the
    topology of the network built on the basis of the neighbors can be
    presented.
 
@@ -112,7 +112,7 @@ Table of Contents
 
 1.1.  Terminology and Notations
 
-   This document assumes that the reader is familiar with OSPF and the
+   This document assumes that the reader is familiar with BGP and the
    contents of [RFC8345].  The document uses terms from those documents.
 
    The terminology for describing YANG data models is found in
@@ -210,15 +210,7 @@ Table of Contents
 
 2.1.  Relationship with the BGP YANG Model
 
-   [RFC9129] specifies a YANG data model that can be used to configure
-   and manage the OSPF protocol on network elements.  This data model
-   covers the configuration of an OSPF routing protocol instance, as
-   well as the retrieval of OSPF operational states.  [RFC9129] is still
-   expected to be used for individual network elements configuration and
-   monitoring.  On the other hand, the proposed YANG model in this
-   document covers the abstracted view of the entire network topology
-   containing OSPF.  As such, this model is aimed at being available via
-   the NBI of an SDN controller.
+   TBD
 
 2.2.  Relationship with Digital Map
 
@@ -299,12 +291,12 @@ Table of Contents
                                        |
                                        |
                            +-----------^-----------+
-                           | ietf-l3-bgp-topology |
+                           | ietf-l3-bgp-topology  |
                            +-----------------------+
 
                   Figure 1: BGP Topology module structure
 
-4.  OSPF Topology Tree Diagram
+4.  BGP Topology Tree Diagram
 
    Figure 2 below shows the tree diagram of the YANG data model defined
    in module ietf-l3-bgp-topology.yang (Figure 3).
@@ -345,10 +337,10 @@ Table of Contents
        prefix "inet";
      }
      organization
-       "IETF OPSA (Operations and Management Area) Working Group";
+       "IETF NMOP (Network Management Operations) Working Group";
      contact
-       "WG Web:  <https://datatracker.ietf.org/wg/opsawg/>
-       WG List:  <mailto:opsawg@ietf.org>
+       "WG Web:  <https://datatracker.ietf.org/wg/nmop/>
+       WG List:  <mailto:nmop@ietf.org>
 
        Editor:   Oscar Gonzalez de Dios
                  <mailto:oscar.gonzalezdedios@telefonica.com>
@@ -668,11 +660,6 @@ Table of Contents
               Engineering (TE) Topologies", RFC 8795,
               DOI 10.17487/RFC8795, August 2020,
               <https://www.rfc-editor.org/rfc/rfc8795>.
-
-   [RFC9129]  Yeung, D., Qu, Y., Zhang, Z., Chen, I., and A. Lindem,
-              "YANG Data Model for the OSPF Protocol", RFC 9129,
-              DOI 10.17487/RFC9129, October 2022,
-              <https://www.rfc-editor.org/rfc/rfc9129>.
 
 9.2.  Informative References
 

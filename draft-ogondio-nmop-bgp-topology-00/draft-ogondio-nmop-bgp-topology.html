@@ -1152,7 +1152,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-yang-data-model-for-bgp-top" class="internal xref">YANG Data Model for BGP Topology</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-ospf-topology-tree-diagram" class="internal xref">OSPF Topology Tree Diagram</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-bgp-topology-tree-diagram" class="internal xref">BGP Topology Tree Diagram</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-yang-model-for-bgp-topology" class="internal xref">YANG Model for BGP topology</a></p>
@@ -1194,9 +1194,9 @@ svg :is([fill="white"], [fill^="#fff"]) {
       </h2>
 <p id="section-1-1">Network operators perform the capacity planning for their networks and run regular what-if scenarios analysis based on representations of the real network. Those what-if analysis and capacity planning processes require, among other information, a topological view (domains, nodes, links, network interconnection) of the deployed network.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">This document defines a YANG data model representing an abstracted view of a network topology containing Border Gateway Protocol (BGP) with the following assumption:
-  *  Areas can be explicit, depending on which IGP protocol is used.
-  *  Metrics can be provided to the operations team for greater control of the network.
-  *  A view of the topology of the network built on the basis of the neighbors can be presented.<a href="#section-1-2" class="pilcrow">¶</a></p>
+* Areas can be explicit, depending on which IGP protocol is used.
++ Metrics can be provided to the operations team for greater control of the network.
+- A view of the topology of the network built on the basis of the neighbors can be presented.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">This YANG data model can be used to export the BGP related topology directly from a network controller to Operation Support System (OSS) tools or to a higher level controller.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">This document defines a YANG data model for representing, managing and controlling the BGP topology. The data model augments ietf-network module <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> by adding the BGP information.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">This document explains the scope and purpose of the BGP  topology model and how the topology and service models fit together.<a href="#section-1-5" class="pilcrow">¶</a></p>
@@ -1206,7 +1206,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         <h3 id="name-terminology-and-notations">
 <a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-terminology-and-notations" class="section-name selfRef">Terminology and Notations</a>
         </h3>
-<p id="section-1.1-1">This document assumes that the reader is familiar with OSPF and the contents of <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span>. The document uses terms from those documents.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+<p id="section-1.1-1">This document assumes that the reader is familiar with BGP and the contents of <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span>. The document uses terms from those documents.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
 <p id="section-1.1-2">The terminology for describing YANG data models is found in <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span>, <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span> and <span>[<a href="#RFC8346" class="cite xref">RFC8346</a>]</span>.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
 <p id="section-1.1-3">The term Digital Twin, Digital Map, Digital Map Modelling, Digital Map Model, Digital Map Data, and Topology are specified in <span>[<a href="#I-D.draft-havel-nmop-digital-map" class="cite xref">I-D.draft-havel-nmop-digital-map</a>]</span>.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
 </section>
@@ -1299,8 +1299,7 @@ Please remove this note.<a href="#section-1.4-3" class="pilcrow">¶</a></p>
         <h3 id="name-relationship-with-the-bgp-y">
 <a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-relationship-with-the-bgp-y" class="section-name selfRef">Relationship with the BGP YANG Model</a>
         </h3>
-<p id="section-2.1-1"><span>[<a href="#RFC9129" class="cite xref">RFC9129</a>]</span> specifies a YANG data model that can be used to configure and manage the OSPF protocol on network elements. This data model covers the configuration of an OSPF routing protocol instance, as well as the retrieval of OSPF operational states.
-<span>[<a href="#RFC9129" class="cite xref">RFC9129</a>]</span> is still expected to be used for individual network elements configuration and monitoring. On the other hand, the proposed YANG model in this document covers the abstracted view of the entire network topology containing OSPF. As such, this model is aimed at being available via the NBI of an SDN controller.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+<p id="section-2.1-1">TBD<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="relationship-with-digital-map">
@@ -1366,7 +1365,7 @@ arrows show how the modules augment each other.<a href="#section-3-4" class="pil
                                     |
                                     |
                         +-----------^-----------+
-                        | ietf-l3-bgp-topology |
+                        | ietf-l3-bgp-topology  |
                         +-----------------------+
 </pre>
 </div>
@@ -1378,11 +1377,11 @@ arrows show how the modules augment each other.<a href="#section-3-4" class="pil
 </div>
 <div id="ietf-l3-bgp-topology-tree">
 <section id="section-4">
-      <h2 id="name-ospf-topology-tree-diagram">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-ospf-topology-tree-diagram" class="section-name selfRef">OSPF Topology Tree Diagram</a>
+      <h2 id="name-bgp-topology-tree-diagram">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-bgp-topology-tree-diagram" class="section-name selfRef">BGP Topology Tree Diagram</a>
       </h2>
 <p id="section-4-1"><a href="#fig-ietf-l3-bgp-topology-tree" class="auto internal xref">Figure 2</a> below shows the tree diagram of the YANG data model defined in module ietf-l3-bgp-topology.yang (<a href="#fig-ietf-l3-bgp-topolopy-yang" class="auto internal xref">Figure 3</a>).<a href="#section-4-1" class="pilcrow">¶</a></p>
-<span id="name-bgp-topology-tree-diagram"></span><div id="fig-ietf-l3-bgp-topology-tree">
+<span id="name-bgp-topology-tree-diagram-2"></span><div id="fig-ietf-l3-bgp-topology-tree">
 <figure id="figure-2">
         <div class="alignLeft art-text artwork" id="section-4-2.1">
 <pre>
@@ -1399,7 +1398,7 @@ module: ietf-l3-bgp-topology
 </pre>
 </div>
 <figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
-<a href="#name-bgp-topology-tree-diagram" class="selfRef">BGP Topology tree diagram</a>
+<a href="#name-bgp-topology-tree-diagram-2" class="selfRef">BGP Topology tree diagram</a>
         </figcaption></figure>
 </div>
 </section>
@@ -1433,10 +1432,10 @@ module ietf-l3-bgp-topology {
     prefix "inet";
   }
   organization
-    "IETF OPSA (Operations and Management Area) Working Group";
+    "IETF NMOP (Network Management Operations) Working Group";
   contact
-    "WG Web:  &lt;https://datatracker.ietf.org/wg/opsawg/&gt;
-    WG List:  &lt;mailto:opsawg@ietf.org&gt;
+    "WG Web:  &lt;https://datatracker.ietf.org/wg/nmop/&gt;
+    WG List:  &lt;mailto:nmop@ietf.org&gt;
 
     Editor:   Oscar Gonzalez de Dios
               &lt;mailto:oscar.gonzalezdedios@telefonica.com&gt;
@@ -1754,12 +1753,8 @@ reference:    RFC XXXX
 <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8446">https://www.rfc-editor.org/rfc/rfc8446</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8795">[RFC8795]</dt>
-        <dd>
-<span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Bryskin, I.</span>, <span class="refAuthor">Beeram, V.</span>, <span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Shah, H.</span>, and <span class="refAuthor">O. Gonzalez de Dios</span>, <span class="refTitle">"YANG Data Model for Traffic Engineering (TE) Topologies"</span>, <span class="seriesInfo">RFC 8795</span>, <span class="seriesInfo">DOI 10.17487/RFC8795</span>, <time datetime="2020-08" class="refDate">August 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8795">https://www.rfc-editor.org/rfc/rfc8795</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC9129">[RFC9129]</dt>
       <dd>
-<span class="refAuthor">Yeung, D.</span>, <span class="refAuthor">Qu, Y.</span>, <span class="refAuthor">Zhang, Z.</span>, <span class="refAuthor">Chen, I.</span>, and <span class="refAuthor">A. Lindem</span>, <span class="refTitle">"YANG Data Model for the OSPF Protocol"</span>, <span class="seriesInfo">RFC 9129</span>, <span class="seriesInfo">DOI 10.17487/RFC9129</span>, <time datetime="2022-10" class="refDate">October 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9129">https://www.rfc-editor.org/rfc/rfc9129</a>&gt;</span>. </dd>
+<span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Bryskin, I.</span>, <span class="refAuthor">Beeram, V.</span>, <span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Shah, H.</span>, and <span class="refAuthor">O. Gonzalez de Dios</span>, <span class="refTitle">"YANG Data Model for Traffic Engineering (TE) Topologies"</span>, <span class="seriesInfo">RFC 8795</span>, <span class="seriesInfo">DOI 10.17487/RFC8795</span>, <time datetime="2020-08" class="refDate">August 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8795">https://www.rfc-editor.org/rfc/rfc8795</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
