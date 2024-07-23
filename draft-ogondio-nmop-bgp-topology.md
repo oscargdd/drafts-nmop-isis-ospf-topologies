@@ -165,7 +165,7 @@ arrows show how the modules augment each other.
 
 # OSPF Topology Tree Diagram
 
-{{fig-ietf-l3-bgp-topology-tree}} below shows the tree diagram of the YANG data model defined in module ietf-l3-bgp-topology.yang ({{ietf-l3-bgp-topology-yang}}).
+{{fig-ietf-l3-bgp-topology-tree}} below shows the tree diagram of the YANG data model defined in module ietf-l3-bgp-topology.yang ({{fig-ietf-l3-bgp-topolopy-yang}}).
 
 ~~~~
 {::include Yang/Tree/ietf-l3-bgp-topology.tree}
@@ -180,7 +180,7 @@ This module imports types from {{!RFC8343}} and {{!RFC8345}}.
 <CODE BEGINS> file "ietf-l3-bgp-topology@2024-07-23.yang"
 {::include Yang/ietf-l3-bgp-topology.yang}<CODE ENDS>
 ~~~~
-{: #fig-ietf-bgp-topolopy-yang title="BGP Topology YANG module"}
+{: #fig-ietf-l3-bgp-topolopy-yang title="BGP Topology YANG module"}
 
 # Security Considerations
 
