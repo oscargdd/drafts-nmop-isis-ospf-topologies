@@ -45,9 +45,9 @@ The YANG data model defined in this document conforms to the Network Management 
 Network operators perform the capacity planning for their networks and run regular what-if scenarios analysis based on representations of the real network. Those what-if analysis and capacity planning processes require, among other information, a topological view (domains, nodes, links, network interconnection) of the deployed network.
 
 This document defines a YANG data model representing an abstracted view of a network topology containing Border Gateway Protocol (BGP) with the following assumption:
-  *  Areas can be explicit, depending on which IGP protocol is used.
-  *  Metrics can be provided to the operations team for greater control of the network.
-  *  A view of the topology of the network built on the basis of the neighbors can be presented.
+* Areas can be explicit, depending on which IGP protocol is used.
++ Metrics can be provided to the operations team for greater control of the network.
+- A view of the topology of the network built on the basis of the neighbors can be presented.
 
 This YANG data model can be used to export the BGP related topology directly from a network controller to Operation Support System (OSS) tools or to a higher level controller.
 
@@ -59,7 +59,7 @@ The YANG data model defined in this document conforms to the Network Management 
 
 ## Terminology and Notations
 
-This document assumes that the reader is familiar with OSPF and the contents of {{!RFC8345}}. The document uses terms from those documents.
+This document assumes that the reader is familiar with BGP and the contents of {{!RFC8345}}. The document uses terms from those documents.
 
 The terminology for describing YANG data models is found in {{!RFC7950}}, {{!RFC8795}} and {{!RFC8346}}.
 
@@ -107,8 +107,7 @@ In summary, the network-wide view of the BGP topology enables multiple use cases
 
 ## Relationship with the BGP YANG Model
 
-{{!RFC9129}} specifies a YANG data model that can be used to configure and manage the OSPF protocol on network elements. This data model covers the configuration of an OSPF routing protocol instance, as well as the retrieval of OSPF operational states.
-{{!RFC9129}} is still expected to be used for individual network elements configuration and monitoring. On the other hand, the proposed YANG model in this document covers the abstracted view of the entire network topology containing OSPF. As such, this model is aimed at being available via the NBI of an SDN controller.
+TBD
 
 ## Relationship with Digital Map
 
@@ -155,7 +154,7 @@ arrows show how the modules augment each other.
                                     |
                                     |
                         +-----------^-----------+
-                        | ietf-l3-bgp-topology |
+                        | ietf-l3-bgp-topology  |
                         +-----------------------+
 ~~~~
 {: #fig-ietf-l3-bgp-topology-module-structure title="BGP Topology module structure"}
@@ -163,7 +162,7 @@ arrows show how the modules augment each other.
 
 {: #ietf-l3-bgp-topology-tree}
 
-# OSPF Topology Tree Diagram
+# BGP Topology Tree Diagram
 
 {{fig-ietf-l3-bgp-topology-tree}} below shows the tree diagram of the YANG data model defined in module ietf-l3-bgp-topology.yang ({{fig-ietf-l3-bgp-topolopy-yang}}).
 
