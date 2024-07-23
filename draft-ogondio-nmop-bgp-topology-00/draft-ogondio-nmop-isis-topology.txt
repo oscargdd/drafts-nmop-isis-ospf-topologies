@@ -5,13 +5,13 @@
 nmop                                                       O. G. D. Dios
 Internet-Draft                                                Telefonica
 Intended status: Standards Track                           S. B. Giraldo
-Expires: 6 December 2024                                        V. Lopez
+Expires: 24 January 2025                                        V. Lopez
                                                                    Nokia
                                                            D. Ceccarelli
                                                                    Cisco
                                                                B. Claise
                                                                   Huawei
-                                                             4 June 2024
+                                                            23 July 2024
 
 
 A YANG Data Model for Intermediate System to intermediate System (IS-IS)
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 December 2024.
+   This Internet-Draft will expire on 24 January 2025.
 
 Copyright Notice
 
@@ -785,9 +785,9 @@ module: ietf-l3-isis-topology
               Liu, X., Bryskin, I., Beeram, V. P., Saad, T., Shah, H.
               C., and O. G. de Dios, "YANG Data Model for Layer 3 TE
               Topologies", Work in Progress, Internet-Draft, draft-ietf-
-              teas-yang-l3-te-topo-16, 2 March 2024,
+              teas-yang-l3-te-topo-18, 7 July 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
-              yang-l3-te-topo-16>.
+              yang-l3-te-topo-18>.
 
    [RFC9552]  Talaulikar, K., Ed., "Distribution of Link-State and
               Traffic Engineering Information Using BGP", RFC 9552,
