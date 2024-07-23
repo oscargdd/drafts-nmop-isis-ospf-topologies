@@ -67,7 +67,7 @@ Table of Contents
    2.  Use Cases
      2.1.  Relationship with the BGP YANG Model
      2.2.  Relationship with Digital Map
-   3.  YANG Data Model for BGP Topology
+   3.  Description of the YANG Data Model for BGP Topology
    4.  BGP Topology Tree Diagram
    5.  YANG Model for BGP topology
    6.  Security Considerations
@@ -232,7 +232,7 @@ Table of Contents
    of the Digital Map, for specific user (the network operator in charge
    of the BGP) for the specific use cases as described before.
 
-3.  YANG Data Model for BGP Topology
+3.  Description of the YANG Data Model for BGP Topology
 
    The abstract (base) network data model is defined in the "ietf-
    network" module of [RFC8345].  The BGP-topology builds on the network
