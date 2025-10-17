@@ -27,9 +27,11 @@ author:
     org: Nokia
     email: victor.lopez@nokia.com
 
-#contributor:
-#  -
-
+contributor:
+  -
+    fullname: Olga Havel
+    org: Huawei
+    email: olga.havel@huawei.com
 
 --- abstract
 
