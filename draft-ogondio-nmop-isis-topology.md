@@ -33,7 +33,7 @@ author:
     email: dceccare@cisco.com
   -
     fullname: Benoit Claise
-    org: Everything-Ops
+    org: Everything OPS
     email: benoit@everything-ops.net
 
 contributor:
