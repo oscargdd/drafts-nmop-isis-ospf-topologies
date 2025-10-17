@@ -50,7 +50,7 @@ This document defines a YANG data model representing an abstracted view of a net
 
 This YANG data model can be used to export the OSPF related topology directly from a network controller to Operation Support System (OSS) tools or to a higher level controller.
 
-Note that the YANG model is in this document strictly adheres to the concepts (and the YANG module) in "A YANG Data Model for Network Topologies" {{!RFC8345}} and "A YANG Data Model for Layer 3 Topologies" {{!RFC8346}}. While investigating the OSFP topology, some limitations have discovered in {{!RFC8345}}, regarding how the digital map can be represented. Those limitations (and potential improvements) are covered in {{?I-D.draft-havel-nmop-digital-map}}.
+Note that the YANG model is in this document strictly adheres to the concepts (and the YANG module) in "A YANG Data Model for Network Topologies" {{!RFC8345}} and "A YANG Data Model for Layer 3 Topologies" {{!RFC8346}}. While working on SIMAP requirements {{?I-D.draft-ietf-nmop-simap-concept}} and investigating the OSPF topology, some limitations have been discovered in {{!RFC8345}}, regarding how the topology can be represented. Those limitations (and potential improvements) are covered in {{?I-D.draft-havel-nmop-simap-yang}}.
 
 This document explains the scope and purpose of the OSPF topology model and how the topology and service models fit together.
 The YANG data model defined in this document conforms to the Network Management Datastore Architecture {{!RFC8342}}.
@@ -61,7 +61,7 @@ This document assumes that the reader is familiar with OSPF and the contents of 
 
 The terminology for describing YANG data models is found in {{!RFC7950}}, {{!RFC8795}} and {{!RFC8346}}.
 
-The term Digital Twin, Digital Map, Digital Map Modelling, Digital Map Model, Digital Map Data, and Topology are specified in {{?I-D.draft-havel-nmop-digital-map}}.
+The terms SIMAP, SIMAP modelling, SIMAP data, topology, multi-layered topology and topology layer are specified in {{?I-D.draft-ietf-nmop-simap-concept}}.
 
 ## Requirements Language
 
@@ -108,15 +108,15 @@ In summary, the network-wide view of the OSFP topology enables multiple use case
 {{!RFC9129}} specifies a YANG data model that can be used to configure and manage the OSPF protocol on network elements. This data model covers the configuration of an OSPF routing protocol instance, as well as the retrieval of OSPF operational states.
 {{!RFC9129}} is still expected to be used for individual network elements configuration and monitoring. On the other hand, the proposed YANG model in this document covers the abstracted view of the entire network topology containing OSPF. As such, this model is aimed at being available via the NBI of an SDN controller.
 
-## Relationship with Digital Map
+## Relationship with SIMAP
 
-As described in {{?I-D.draft-havel-nmop-digital-map}}, the Digital Map provides the core multi-layer topology model and data for the digital twin and connects them to the other digital twin models and data.
+As described in {{?I-D.draft-ietf-nmop-simap-concept}}, SIMAP is the data model that provides a view of the operator's network and services and specifically provides an approach to model multi-layered topology and an appropriate mechanism to navigate amongst layers and correlate between them.
+SIMAP defines the core topological entities, their roles within the network, essential properties, and relationships—both within individual layers and across multiple layers.
+It serves as a foundational topological model that links and integrates other models, including those for configuration, maintenance, assurance (e.g., KPIs, status, health, symptoms), traffic engineering (TE), behavioral modeling, simulation, emulation, mathematical abstractions, and AI algorithms.
 
-The Digital Map Modelling defines the core topological entities, their role in the network, core properties, and relationships both inside each layer and between the layers.
+Within SIMAP, the IGP topology (in this case, OSPF) is just one of the layers of the multi-layered topology, for specific user (the network operator in charge of the IGP) for specific IGP use cases as described before. All the use cases and requirements specified in {{?I-D.draft-ietf-nmop-simap-concept}} are also applicable to OSPF topology as well. 
 
-The Digital Map Model is a basic topological model that is linked to other functional parts of the digital twin and connects them all: configuration, maintenance, assurance (KPIs, status, health, symptoms), Traffic Engineering (TE), different behaviors and actions,  simulation, emulation, mathematical abstractions, AI algorithms, etc.
-
-As such the IGP topology of the Digital Map (in this case, OSPF) is just one of the layers of the Digital Map, for specific user (the network operator in charge of the IGP) for specific IGP use cases as described before.
+{{?I-D.draft-havel-nmop-simap-yang}} specifies what requirements are supported by RFC8345, identifies the gaps and proposes the solutions for these gaps. This will have impact on OSPF topology modelling and will provide the mechanism to model IGP areas as networks, have relation between AS and areas, have bidirectional links, etc.
 
 # YANG Data Model for OSPF Topology
 
@@ -166,7 +166,7 @@ A second set of parameters, along with augmentations, is included at the link an
 
 # RFC8345 Limitations for the OSPF Modeling
 
-There are some limitations in the {{!RFC8345}} that are explained in more detail in {{!I-D.draft-havel-nmop-digital-map}}.
+There are some limitations in the {{!RFC8345}} that are explained in more detail in {{!I-D.draft-havel-nmop-simap-yang}}.
 The current version of the ietf-l3-ospf-topology module is based on the current version of {{!RFC8345}}.
 
 # OSPF Topology Tree Diagram
