@@ -63,7 +63,7 @@ This document defines a YANG data model representing an abstracted view of a net
 
 This YANG data model can be used to export the IS-IS related topology directly from a network controller to Operation Support System (OSS) tools or to a higher level controller.
 
-Note that the YANG model is in this document strictly adheres to the concepts (and the YANG module) in "A YANG Data Model for Network Topologies" {{!RFC8345}} and"A YANG Data Model for Layer 3 Topologies" {{!RFC8346}}. While investigating the IS-IS topology, some limitations have discovered in {{!RFC8345}}, regarding how the digital map can be represented. Those limitations (and potential improvements) are covered in {{?I-D.draft-havel-opsawg-digital-map}}.
+Note that the YANG model is in this document strictly adheres to the concepts (and the YANG module) in "A YANG Data Model for Network Topologies" {{!RFC8345}} and "A YANG Data Model for Layer 3 Topologies" {{!RFC8346}}. While working on SIMAP requirements {{?I-D.draft-ietf-nmop-simap-concept}} and investigating the IS-IS topology, some limitations have been discovered in {{!RFC8345}}, regarding how the topology can be represented.  Those limitations (and potential improvements) are covered in {{?I-D.draft-havel-nmop-simap-yang}}.
 
 This document explains the scope and purpose of the IS-IS topology model and how the topology and service models fit together.
 The YANG data model defined in this document conforms to the Network Management Datastore Architecture {{!RFC8342}}.
@@ -74,7 +74,7 @@ This document assumes that the reader is familiar with IS-IS and the contents of
 
 The terminology for describing YANG data models is found in {{!RFC7950}}, {{!RFC8795}} and {{!RFC8346}}.
 
-The term Digital Twin, Digital Map, Digital Map Modelling, Digital Map Model, Digital Map Data, and Topology are specified in {{?I-D.draft-havel-opsawg-digital-map}}.
+The terms SIMAP, SIMAP modelling, SIMAP data, topology, multi-layered topology, topology layer, SIMAP, and Topology are specified in {{?I-D.draft-ietf-nmop-simap-concept}}.
 
 ## Requirements Language
 
@@ -114,26 +114,28 @@ In summary, the network-wide view of the IS-IS topology enables multiple use cas
 + What-if analysis. Estimation of the network KPIs in modified network situations. For instance, failure situations, traffic anomaly situations, addition or deletion of new adjacencies, IGP weight reconfigurations, etc.
 - Failure analysis. Systematic and massive test of the network under multiple simulated failure situations, evaluating the network fault tolerance properties, and using mathematical models to derive statistical network availability metrics.
 
+
 ## Relationship with the IS-IS YANG Model
 
 {{!RFC9130}} specifies a YANG data model that can be used to configure and manage the IS-IS protocol on network elements. This data model covers the configuration of an IS-IS routing protocol instance, as well as the retrieval of IS-IS operational states.
 {{!RFC9130}} is still expected to be used for individual network elements configuration and monitoring. On the other hand, the proposed YANG model in this document covers the abstracted view of the entire network topology containing IS-IS. As such, this model is aimed at being available via the NBI of an SDN controller.
 
-## Relationship with Digital Map
+## Relationship with SIMAP
 
-As described in {{?I-D.draft-havel-opsawg-digital-map}}, the Digital Map provides the core multi-layer topology model and data for the digital twin and connects them to the other digital twin models and data.
+As described in {{?I-D.draft-ietf-nmop-simap-concept}}, SIMAP is the data model that provides a view of the operator's network and services and specifically provides an approach to model multi-layered topology and an appropriate mechanism to navigate amongst layers and correlate between them.
+SIMAP defines the core topological entities, their roles within the network, essential properties, and relationships—both within individual layers and across multiple layers.
+It serves as a foundational topological model that links and integrates other models, including those for configuration, maintenance, assurance (e.g., KPIs, status, health, symptoms), traffic engineering (TE), behavioral modeling, simulation, emulation, mathematical abstractions, and AI algorithms.
 
-The Digital Map Modelling defines the core topological entities, their role in the network, core properties, and relationships both inside each layer and between the layers.
+Within SIMAP, the IGP topology (in this case, IS-IS) is just one of the layers of the multi-layered topology, for specific user (the network operator in charge of the IGP) for specific IGP use cases as described before. All the use cases and requirements specified in {{?I-D.draft-ietf-nmop-simap-concept}} are also applicable to IS-IS topology as well. 
 
-The Digital Map Model is a basic topological model that is linked to other functional parts of the digital twin and connects them all: configuration, maintenance, assurance (KPIs, status, health, symptoms), Traffic Engineering (TE), different behaviors and actions,  simulation, emulation, mathematical abstractions, AI algorithms, etc.
+{{?I-D.draft-havel-nmop-simap-yang}} specifies what requirements are supported by RFC8345, identifies the gaps and proposes the solutions for these gaps. This will have impact on IS-IS topology modelling and will provide the mechanism to model IGP areas as networks, have relation between AS and areas, have bidirectional links, etc.
 
-As such the IGP topology of the Digital Map (in this case, IS-IS) is just one of the layers of the Digital Map, for specific user (the network operator in charge of the IGP) for specific IGP use cases as described before.
 
 # Use of IETF-Topology for Representing an IP/MPLS network domain
 
 IP/MPLS networks can contain multiple domain IGP domains. We can define an IGP domain as the collection of nodes and links that participate in the same IGP process. The topology information of a domain can be structured according to ietf-network-topology data model {{!RFC8345}}. For example, if BGP-LS {{?RFC9552}} is used to collect the information, the nodes and links that are announced with the same combination of AS number / domain ID are considered to belong to the same domain.
 
-If a node and/or layer termination point participates in more than one IGP, it will be present in multiple IGP domain networks. As the basic components, node/links/termination points {{!RFC8345}}, it is therefore possible to joint the different different IGP topologies from a digital map modeling point of view. The ietf-network instance MUST include the following properties to indicate it is a domain running an IGP instance:
+If a node and/or layer termination point participates in more than one IGP, it will be present in multiple IGP domain networks. As the basic components, node/links/termination points {{!RFC8345}}, it is therefore possible to joint the different different IGP topologies from SIMAP modeling point of view. The ietf-network instance MUST include the following properties to indicate it is a domain running an IGP instance:
 
 A network-id that uniquely identifies such domain in the network.
 The "network-types" property should include the l3t:l3-unicast-topology, to indicate it is a network in which the nodes are capable of forwarding unicast packet. Also, this draft proposed to add a new property, "isis-topology", to indicate the topology being represented is running the IS-IS IGP process.
@@ -209,7 +211,7 @@ There is a  set of parameters and augmentations are included at the termination 
 
 # RFC8345 Limitations for the IS-IS Modeling
 
-There are some limitations in the {{!RFC8345}} that are explained in more detail in {{!I-D.draft-havel-opsawg-digital-map}}.
+There are some limitations in the {{!RFC8345}} that are explained in more detail in {{!I-D.draft-havel-nmop-simap-yang}}.
 The current version of the ietf-l3-isis-topology module is based on the current version of {{!RFC8345}}.
 The following will be addressed when {{!RFC8345}} is extended to support the identified limitations:
 
@@ -285,11 +287,11 @@ This module imports types from {{!RFC8343}} and {{!RFC8345}}. Following the YANG
    expose the network capabilities, together with other models which cover the inventory and service
    provisioning in a vendor-agnostic fashion.
 
-## Huawei Digital Map PoC Status
+## SIMAP Hackathon Status
 
-   As mentioned in {{?I-D.draft-havel-opsawg-digital-map}}, a Digital Map PoC with a real lab has been built, based on multi-
-   vendor devices, with {{!RFC8345}} as the base YANG module for the topology building blocks. This PoC successfully modelled
-   IS-IS routing (among other technologies and layers), but it needs to be further aligned with this latest developments in this draft.
+   SIMAP PoC with a real lab has been built, based on multi-vendor devices, with {{!RFC8345}} as the base YANG module for the topology building blocks. 
+   This Hackathon successfully modelled IS-IS routing (among other technologies and layers), but it needs to be further aligned with the latest developments in this draft and in
+   {{?I-D.draft-havel-nmop-simap-yang}}.
 
 ## Implementation Status in E-lighthouse Network Solutions
 
