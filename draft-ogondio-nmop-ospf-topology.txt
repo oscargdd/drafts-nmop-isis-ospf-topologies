@@ -76,6 +76,7 @@ Table of Contents
      10.1.  Normative References
      10.2.  Informative References
    Acknowledgments
+   Contributors
    Authors' Addresses
 
 1.  Introduction
@@ -759,6 +760,13 @@ Acknowledgments
 
    This work is partially supported by the European Commission under
    Horizon 2020 ALLEGRO project.
+
+Contributors
+
+   Olga Havel
+   Huawei
+   Email: olga.havel@huawei.com
+
 
 Authors' Addresses
 
