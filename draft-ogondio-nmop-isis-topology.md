@@ -33,8 +33,8 @@ author:
     email: dceccare@cisco.com
   -
     fullname: Benoit Claise
-    org: Huawei
-    email: benoit.claise@huawei.com
+    org: Everything-Ops
+    email: benoit@everything-ops.net
 
 contributor:
   -
