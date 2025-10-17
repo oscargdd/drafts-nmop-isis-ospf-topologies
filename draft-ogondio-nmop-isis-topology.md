@@ -74,7 +74,7 @@ This document assumes that the reader is familiar with IS-IS and the contents of
 
 The terminology for describing YANG data models is found in {{!RFC7950}}, {{!RFC8795}} and {{!RFC8346}}.
 
-The terms SIMAP, SIMAP modelling, SIMAP data, topology, multi-layered topology, topology layer, SIMAP, and Topology are specified in {{?I-D.draft-ietf-nmop-simap-concept}}.
+The terms SIMAP, SIMAP modelling, SIMAP data, topology, multi-layered topology and topology layer are specified in {{?I-D.draft-ietf-nmop-simap-concept}}.
 
 ## Requirements Language
 
