@@ -1,7 +1,7 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-07-11T01:01:28.525155+00:00",
-  "repo": "oscargdd/draft-ogondio-opsawg-isis-topology",
+  "timestamp": "2025-10-19T01:09:41.763710+00:00",
+  "repo": "oscargdd/drafts-nmop-isis-ospf-topologies",
   "labels": [
     {
       "name": "bug",
@@ -47,6 +47,11 @@
       "name": "wontfix",
       "description": "This will not be worked on",
       "color": "ffffff"
+    },
+    {
+      "name": "is-is-draft",
+      "description": "",
+      "color": "BF93BE"
     }
   ],
   "issues": [
@@ -54,10 +59,10 @@
       "number": 1,
       "id": "I_kwDOJ0NkWM5p7UGQ",
       "title": "RFC 6991 import: inet versus yang prefix",
-      "url": "https://github.com/oscargdd/draft-ogondio-opsawg-isis-topology/issues/1",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/1",
       "state": "CLOSED",
       "author": "bclaise",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "\r\n| Prefix | Yang Module            | Reference    |\r\n| ------ | ---------------------- | ------------ |\r\n| isisnt | ietf-l3-isis-topology  | RFCXXX       |\r\n| yang   | ietf-yang-types        | {{!RFC6991}} |\r\n\r\nIn most YANG modules, the prefix for RFC6991 import is \"inet\".\r\nEx: see https://datatracker.ietf.org/doc/html/rfc9398#name-tree-diagrams section 1.3",
@@ -67,7 +72,7 @@
       "comments": [
         {
           "author": "bclaise",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "After doing a few grep into https://github.com/YangModels/yang/tree/main/standard/ietf/RFC, I stand corrected.\r\nyang is for ietf-yang-types\r\ninet is for ietf-inet-types",
           "createdAt": "2023-06-27T20:49:33Z",
           "updatedAt": "2023-06-27T20:49:33Z"
@@ -78,23 +83,30 @@
       "number": 2,
       "id": "I_kwDOJ0NkWM5p7Xos",
       "title": "ietf-topology information model?",
-      "url": "https://github.com/oscargdd/draft-ogondio-opsawg-isis-topology/issues/2",
-      "state": "OPEN",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/2",
+      "state": "CLOSED",
       "author": "bclaise",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "\"The topology information of a domain can be structured according to ietf-topology information model\"\r\n\r\nDo we mean:\r\nThe topology information of a domain can be structured according to ietf-network-topology YANG (RFC 8345)",
       "createdAt": "2023-06-27T14:55:55Z",
-      "updatedAt": "2023-07-10T15:50:13Z",
-      "closedAt": null,
+      "updatedAt": "2023-10-18T13:52:33Z",
+      "closedAt": "2023-10-18T13:52:32Z",
       "comments": [
         {
           "author": "bclaise",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "Hi Oscar, my point is that RFC 8345 is data model and not an information model. See https://datatracker.ietf.org/doc/html/rfc3444\r\n",
           "createdAt": "2023-07-10T15:50:13Z",
           "updatedAt": "2023-07-10T15:50:13Z"
+        },
+        {
+          "author": "bclaise",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I changed information model to data model.\r\nNote: that was the only occurence",
+          "createdAt": "2023-10-18T13:52:32Z",
+          "updatedAt": "2023-10-18T13:52:32Z"
         }
       ]
     },
@@ -102,16 +114,16 @@
       "number": 4,
       "id": "I_kwDOJ0NkWM5p75Ww",
       "title": "ISIS Links / neighbors",
-      "url": "https://github.com/oscargdd/draft-ogondio-opsawg-isis-topology/issues/4",
-      "state": "OPEN",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/4",
+      "state": "CLOSED",
       "author": "OlgaHuawei",
-      "authorAssociation": "NONE",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "I shared my comments with Pablo at the last meeting about the ISIS Links:\r\n- ISIS Topology Diagram does not have augmentation for links, although the YANG module later does show it\r\n- why do we have neighbors in node if we have links?\r\n- metric1 and metric2 is already in the link in RFC8346, why do we have metric added as a property of the tp? ",
       "createdAt": "2023-06-27T16:07:26Z",
-      "updatedAt": "2023-06-27T16:41:55Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T12:01:37Z",
+      "closedAt": "2025-10-17T12:01:37Z",
       "comments": [
         {
           "author": "ppavon",
@@ -119,6 +131,20 @@
           "body": "Hi!\r\n\r\nAgree in removing neighbors: redundant with the existence of links (i.e. adjacencies)\r\n\r\nAs for the metrics:\r\n- Suggest to keep the ISIS weight there in ISIS YANG. The metric1 and metric2 may be used by other protocols for any reason (e.g an estiation of the latency, not related to ISIS operation)\r\n\r\n",
           "createdAt": "2023-06-27T16:41:55Z",
           "updatedAt": "2023-06-27T16:41:55Z"
+        },
+        {
+          "author": "OlgaHuawei",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Hi, we are creating the branch and will send for your and Oscar's review for all changes. I suggest that we move metric to the link-attributes, to be aligned with the base model in l3-topology. We would propose all changes in the new module that we will submit soon.\r\n",
+          "createdAt": "2023-10-19T10:36:32Z",
+          "updatedAt": "2023-10-19T10:36:32Z"
+        },
+        {
+          "author": "oscargdd",
+          "authorAssociation": "OWNER",
+          "body": "Is all solved here @OlgaHuawei  @ppavon ?",
+          "createdAt": "2024-06-04T12:50:00Z",
+          "updatedAt": "2024-06-04T12:50:00Z"
         }
       ]
     },
@@ -126,32 +152,51 @@
       "number": 5,
       "id": "I_kwDOJ0NkWM5p769-",
       "title": "IS-IS Topology Tree Diagram",
-      "url": "https://github.com/oscargdd/draft-ogondio-opsawg-isis-topology/issues/5",
-      "state": "OPEN",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/5",
+      "state": "CLOSED",
       "author": "OlgaHuawei",
-      "authorAssociation": "NONE",
-      "assignees": [],
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "sbarguil"
+      ],
       "labels": [],
       "body": "Is the IS-IS Topology Tree Diagram version aligned with the version of the module afterwards. Examples:\r\n- Link is missing\r\n- Is it intentional that we have tp attributes for both TP and Link? Mismatch between the tree and module\r\n \r\n augment \"/nw:networks/nw:network/nt:link/l3t:l3-link-attributes\" {\r\n    when \"/nw:networks/nw:network/nw:network-types/isisnt:isis-topology\" {\r\n      description\r\n        \"Augmentation parameters apply only for networks with\r\n        IS-IS topology\";\r\n    }\r\n    description\r\n      \"Augments topology link configuration\";\r\n    uses isis-termination-point-attributes;\r\n  }",
       "createdAt": "2023-06-27T16:11:25Z",
-      "updatedAt": "2023-06-27T16:11:25Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-06-04T12:53:02Z",
+      "closedAt": "2024-06-04T12:53:02Z",
+      "comments": [
+        {
+          "author": "bclaise",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I incorported the latest YANG tree, as of today, based on the YANG module in the .md file",
+          "createdAt": "2023-10-18T15:32:54Z",
+          "updatedAt": "2023-10-18T15:32:54Z"
+        },
+        {
+          "author": "oscargdd",
+          "authorAssociation": "OWNER",
+          "body": "FIXED",
+          "createdAt": "2024-06-04T12:53:02Z",
+          "updatedAt": "2024-06-04T12:53:02Z"
+        }
+      ]
     },
     {
       "number": 6,
       "id": "I_kwDOJ0NkWM5p787V",
       "title": "isis-status",
-      "url": "https://github.com/oscargdd/draft-ogondio-opsawg-isis-topology/issues/6",
-      "state": "OPEN",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/6",
+      "state": "CLOSED",
       "author": "OlgaHuawei",
-      "authorAssociation": "NONE",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "is-is-draft"
+      ],
       "body": "Node has attributes split into isis-timer-attributes and isis-status, where isis-status has some rw attributes. Why do we have status for something that has write access?\r\nTP has isis-termination-point-attributes\r\nLink has isis-termination-point-attributes\r\n\r\nIs there a good reason to have  level in isis-status for node and that it is not in isis-status in tp?\r\nMy suggestion is to just have isis-node-attributes, this simplifies and can be done as a recommendation for the basic extensions.",
       "createdAt": "2023-06-27T16:17:04Z",
-      "updatedAt": "2023-06-27T16:22:59Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T12:07:09Z",
+      "closedAt": "2025-10-17T12:07:09Z",
       "comments": [
         {
           "author": "ppavon",
@@ -159,6 +204,13 @@
           "body": "As for the level attribute, I would suggest (following a conversation with\r\nOlga the last day):\r\n- Having a level attribute at node level, that is mandatory.\r\n- Optionally, when the node has Level1-2, each TP may have a level\r\nattribute. This is to cover the (relatively frequent) situations when a\r\nLevel-1-2 node, has some interfaces restricted to be just of one level.\r\n\r\nPablo\r\n\r\n\r\nEl mar, 27 jun 2023 a las 18:17, OlgaHuawei ***@***.***>)\r\nescribi\u00f3:\r\n\r\n> Node has attributes split into isis-timer-attributes and isis-status,\r\n> where isis-status has some rw attributes. Why do we have status for\r\n> something that has write access?\r\n> TP has isis-termination-point-attributes\r\n> Link has isis-termination-point-attributes\r\n>\r\n> Is there a good reason to have level in isis-status for node and that it\r\n> is not in isis-status in tp?\r\n> My suggestion is to just have isis-node-attributes, this simplifies and\r\n> can be done as a recommendation for the basic extensions.\r\n>\r\n> \u2014\r\n> Reply to this email directly, view it on GitHub\r\n> <https://urldefense.com/v3/__https://github.com/oscargdd/draft-ogondio-opsawg-isis-topology/issues/6__;!!D9dNQwwGXtA!RnP6a-EPPBMFvmiaS0xcYiz-kaps5Bc-Nfz-obPSUs-7jW9xkSqNZN-8j00c5MhYDSgsQYhIoTQKEpaOMBh4Dy4wnaE$>,\r\n> or unsubscribe\r\n> <https://urldefense.com/v3/__https://github.com/notifications/unsubscribe-auth/ADFX6XRSXEPRVRHZ47XQSW3XNMBQVANCNFSM6AAAAAAZV2ZA5E__;!!D9dNQwwGXtA!RnP6a-EPPBMFvmiaS0xcYiz-kaps5Bc-Nfz-obPSUs-7jW9xkSqNZN-8j00c5MhYDSgsQYhIoTQKEpaOMBh4cyWGCJ8$>\r\n> .\r\n> You are receiving this because you are subscribed to this thread.Message\r\n> ID: ***@***.***>\r\n>\r\n\r\n\r\n-- \r\n\r\n---------------------------------------------------------\r\n\r\nPablo Pav\u00f3n Mari\u00f1o, PhD\r\n\r\nFull Professor, Technical University of Cartagena (Spain)\r\n\r\nCo-founder E-lighthouse Network Solutions (www.e-lighthouse.com)\r\n\r\nPlaza del Hospital 1, Edif. Antiguones, 30202 Cartagena (Spain)\r\n\r\nTlf: +34 968325952 ; Fax: +34 968325973\r\n\r\n*http://girtel.upct.es/~ppavon <http://girtel.upct.es/~ppavon>*\r\n\r\n***@***.*** ***@***.***>\r\n\r\n***@***.*** ***@***.***>\r\n",
           "createdAt": "2023-06-27T16:22:59Z",
           "updatedAt": "2023-06-27T16:22:59Z"
+        },
+        {
+          "author": "oscargdd",
+          "authorAssociation": "OWNER",
+          "body": "@OlgaHuawei @ppavon is all fixed?",
+          "createdAt": "2024-06-04T12:53:32Z",
+          "updatedAt": "2024-06-04T12:53:32Z"
         }
       ]
     },
@@ -166,23 +218,38 @@
       "number": 7,
       "id": "I_kwDOJ0NkWM5p8DcS",
       "title": "OSPF Area and RFC8345 Issue",
-      "url": "https://github.com/oscargdd/draft-ogondio-opsawg-isis-topology/issues/7",
-      "state": "OPEN",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/7",
+      "state": "CLOSED",
       "author": "OlgaHuawei",
-      "authorAssociation": "NONE",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "IS-IS model can be changed to have OSPF areas as networks when RFC8345 is improved.\r\n\r\nThe draft draft-havel-opsawg-digital-map-00 talks about the Digital Map modelling experience and what we believe is missing in the basic RFC8345 model. One of the things identified as missing is links between networks, as links can belong to 1 network only. We modelled IS-IS areas as networks in our PoC and there was an issue how to model the links between different OSPF areas. We added network-id as ref as well for the destination . IS-IS model can be changed to have OSPF areas as networks when RFC8345 is improved, the effort has started to come up with drafts to propose backward compatible solutions for all of the things identified as missing from RFC8345. The links between the networks will be one of the proposals.\r\n\r\nThe following is the text from the draft-havel-opsawg-digital-map-00 draft:\r\n[6.1.3. ][Links Between Networks]\r\nThe RFC8345 defines all links as belonging to one network instance and having the source and destination as node and termination point only, not allowing to link to termination point of another network. This does not allow for links between networks in the case of multi-domains or partitioning. The only way would be to model each domain as node and have links between them.\r\n\r\nWe modelled OSPF and IS-IS Areas as networks during the PoC and we needed to extend the capability to have links between different areas. We added network reference as well to the source / destination of the link. The RFC8795 also augments links with external-domain info for the case of links that connect different domains.",
       "createdAt": "2023-06-27T16:33:48Z",
-      "updatedAt": "2023-06-27T16:33:48Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2025-10-17T12:00:41Z",
+      "closedAt": "2025-10-17T12:00:41Z",
+      "comments": [
+        {
+          "author": "OlgaHuawei",
+          "authorAssociation": "COLLABORATOR",
+          "body": "We will not address this comment in yang this until the RFC8345 is extended to support links between multiple areas. ",
+          "createdAt": "2023-10-19T10:48:18Z",
+          "updatedAt": "2023-10-19T10:48:18Z"
+        },
+        {
+          "author": "OlgaHuawei",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closed and replaced with - Modelling of domains and areas #36, that is applicable to both ISIS and OSPF\n",
+          "createdAt": "2025-10-17T12:00:18Z",
+          "updatedAt": "2025-10-17T12:00:18Z"
+        }
+      ]
     },
     {
       "number": 8,
       "id": "I_kwDOJ0NkWM5p8EaX",
       "title": "Paragraph on simulation and on use cases",
-      "url": "https://github.com/oscargdd/draft-ogondio-opsawg-isis-topology/issues/8",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/8",
       "state": "CLOSED",
       "author": "ppavon",
       "authorAssociation": "COLLABORATOR",
@@ -195,7 +262,7 @@
       "comments": [
         {
           "author": "bclaise",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "In order to speed up the process, I took the freedom to take your proposal into account, modify it, add some other sections in  https://github.com/oscargdd/draft-ogondio-opsawg-isis-topology/pull/12\r\n",
           "createdAt": "2023-06-28T12:47:43Z",
           "updatedAt": "2023-06-28T12:57:13Z"
@@ -213,10 +280,10 @@
       "number": 9,
       "id": "I_kwDOJ0NkWM5p9wR0",
       "title": "Implementation Status",
-      "url": "https://github.com/oscargdd/draft-ogondio-opsawg-isis-topology/issues/9",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/9",
       "state": "CLOSED",
       "author": "bclaise",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "I updated (in my temp version) the Implementation Status section with \r\n\r\n# Implementation Status\r\n\r\n   Note to the RFC-Editor: Please remove this section before publishing.\r\n\r\n# Huawei Digital Map PoC Status\r\n\r\n   As mentioned in {{?draft-havel-opsawg-digital-map}},  a Digital Map PoC with a real lab has been built, based on multi-\r\n   vendor devices, with {{!RFC8345}} as the base YANG module for the topology building blocks. This PoC successfully modelled\r\n   IS-IS routing (among other technologies and layers), but it needs to be further aligned with this latest developments in this draft.\r\n\r\n\r\nPablo, did I hear correctly about a second implementation?",
@@ -233,7 +300,7 @@
         },
         {
           "author": "bclaise",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "Hi, \r\n\r\nGreat. Please write a new sub section.\r\n\r\nThis is what I added. https://github.com/oscargdd/draft-ogondio-opsawg-isis-topology/pull/12/files\r\n => Implementation Status\r\n\r\nFirst, Oscar needs to accept this OR",
           "createdAt": "2023-06-28T15:26:44Z",
           "updatedAt": "2023-06-28T15:26:44Z"
@@ -258,15 +325,287 @@
       "number": 10,
       "id": "I_kwDOJ0NkWM5p9zGL",
       "title": "Write YANG objects",
-      "url": "https://github.com/oscargdd/draft-ogondio-opsawg-isis-topology/issues/10",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/10",
       "state": "OPEN",
       "author": "bclaise",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "First, I updated the security considerations section with the right references from https://wiki.ietf.org/group/ops/yang-security-guidelines\r\n\r\n\"There are a number of data nodes defined in this YANG module that are writable/creatable/deletable (i.e., config true, which is the default). These data nodes may be considered sensitive or vulnerable in some network environments. Write operations (e.g., edit-config) to these data nodes without proper protection can have a negative effect on network operations.\"\r\n\r\nIf we agree that WRITE is for simulation, then we have no \"negative effect on network operations\".\r\n\r\nAlso, we want to add some information about the readable data (see the template)",
       "createdAt": "2023-06-27T21:54:29Z",
-      "updatedAt": "2023-06-27T21:54:29Z",
+      "updatedAt": "2023-10-19T16:41:05Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "bclaise",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Discussing further with Olga.\r\nI actually wanted to write in the draft a section about \"the rW, so the write capabilities of the YANG objects, is for simulation only ... and would not have any impact on the network IS-IS configuration\". So that this northbound API is read-only for the network, but write, if I want to do offline simulations.\r\nHowever, Olga has a good point: what I can simulate if I don't have all/most of the configuration YANG parameters from the RFC9310? See section  \"Design of the Data Model of RFC9310\", for the list of those parameters.\r\n\r\nRegardless, we must clarify what the W means in the RW for the objects.\r\nWe should collect feedback from operators: should such a techology-specific Digital Map layer be read-only for the network status, or also read-write? If read-write, for which goals? Writing to the network (I don't think this is a good idea) or read-write for simulation?",
+          "createdAt": "2023-10-19T16:41:05Z",
+          "updatedAt": "2023-10-19T16:41:05Z"
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "id": "I_kwDOJ0NkWM5z944B",
+      "title": "Mismatch between the yang structure tree and the YANG module",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/14",
+      "state": "CLOSED",
+      "author": "OlgaHuawei",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "oscargdd"
+      ],
+      "labels": [],
+      "body": "There is the mismatch between the two. Examples: system-id, neighbors/links. Regenerate the tree again.",
+      "createdAt": "2023-10-16T16:07:03Z",
+      "updatedAt": "2025-10-17T12:07:42Z",
+      "closedAt": "2025-10-17T12:07:42Z",
+      "comments": [
+        {
+          "author": "oscargdd",
+          "authorAssociation": "OWNER",
+          "body": "To avoid the mismatch, for the next version, we can link the tree to an external file, and generate the tree after updating the yang. This way, we avoid copy pasting into the md file. ",
+          "createdAt": "2023-10-23T21:43:45Z",
+          "updatedAt": "2023-10-23T21:43:45Z"
+        },
+        {
+          "author": "bclaise",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@OlgaHuawei , is it still an issue with the current draft?\r\n",
+          "createdAt": "2024-02-27T11:58:07Z",
+          "updatedAt": "2024-02-27T11:58:07Z"
+        },
+        {
+          "author": "OlgaHuawei",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Hi Benoit,\r\n\r\nI will push the branch in 10 mins, there are still some minor fixes: timer attributes duplication and yang tree\r\n\r\nBest Regards,\r\nOlga\r\n\r\n\r\nFrom: bclaise ***@***.***\r\nSent: Tuesday 27 February 2024 11:58\r\nTo: oscargdd/draft-ogondio-opsawg-isis-topology ***@***.***>\r\nCc: Olga Havel ***@***.***>; Mention ***@***.***>\r\nSubject: Re: [oscargdd/draft-ogondio-opsawg-isis-topology] Mismatch between the yang structure tree and the YANG module (Issue #14)\r\n\r\n\r\n@OlgaHuawei<https://github.com/OlgaHuawei> , is it still an issue with the current draft?\r\n\r\n\u2014\r\nReply to this email directly, view it on GitHub<https://github.com/oscargdd/draft-ogondio-opsawg-isis-topology/issues/14#issuecomment-1966388691>, or unsubscribe<https://github.com/notifications/unsubscribe-auth/ANYVEPTGB4ABMALEOIW64VLYVXC5VAVCNFSM6AAAAAA6CODYS2VHI2DSMVQWIX3LMV43OSLTON2WKQ3PNVWWK3TUHMYTSNRWGM4DQNRZGE>.\r\nYou are receiving this because you were mentioned.Message ID: ***@***.***>\r\n",
+          "createdAt": "2024-02-27T12:58:05Z",
+          "updatedAt": "2024-02-27T12:58:05Z"
+        },
+        {
+          "author": "sbarguil",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Seems this can be close? @oscargdd \r\n\r\nDuplicated issue #5 ",
+          "createdAt": "2024-02-27T13:08:14Z",
+          "updatedAt": "2024-02-27T13:08:14Z"
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "id": "I_kwDOJ0NkWM50N8U8",
+      "title": "Wrong text parsing",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/16",
+      "state": "CLOSED",
+      "author": "bclaise",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "   Also, should the topology include information such as bandwidth,\r\n   delay information or color, it must include tet:te-topology.  To\r\n   include delay and bandwdith performance measurements , MUST include\r\n   tet-pkt:te-packet under the previous property The supporting-network\r\n   property can include the network-id of a base layer-3 network.  The\r\n   node property should include the list of nodes as described below.\r\n   The ietf-network-topology:link MUST be present, with one link per\r\n   each IP adjacency (one link for each direction of the adjancency).\r\n\r\nThere is something with the parsing of the above.\r\nSince I am not the author, I'll flag this as an issue here",
+      "createdAt": "2023-10-18T13:50:44Z",
+      "updatedAt": "2024-02-27T11:56:26Z",
+      "closedAt": "2024-02-27T11:56:26Z",
+      "comments": [
+        {
+          "author": "bclaise",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Also, what is this \"tet\" prefix YANG module. I guess you mean: RFC 8795.\r\nIt's just weird to include the prefix in the text. I'll improve the text to include RFC 8795.\r\n\r\n\r\n\r\n<!--EndFragment-->\r\n</body>\r\n</html>",
+          "createdAt": "2024-02-26T21:02:40Z",
+          "updatedAt": "2024-02-26T21:02:40Z"
+        },
+        {
+          "author": "bclaise",
+          "authorAssociation": "COLLABORATOR",
+          "body": "And which YANG model does this \"MUST include tet-pkt:te-packet under the previous property\" refer to?   Something around https://datatracker.ietf.org/doc/draft-ietf-teas-yang-l3-te-topo/15/ ? It's not clear",
+          "createdAt": "2024-02-26T21:08:32Z",
+          "updatedAt": "2024-02-26T21:08:32Z"
+        },
+        {
+          "author": "sbarguil",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Also, what is this \"tet\" prefix YANG module. I guess you mean: RFC 8795. It's just weird to include the prefix in the text. I'll improve the text to include RFC 8795.\r\n\r\nI agree dont know why the references come in that way. But \"tet\" refers to RFC 8795. and the \"tet-pkt\" to draft-ietf-teas-yang-l3-te-topo. Corrected by Benoit in #23 ",
+          "createdAt": "2024-02-27T09:36:24Z",
+          "updatedAt": "2024-02-27T10:48:21Z"
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "id": "I_kwDOJ0NkWM50YuJU",
+      "title": "Which read YANG objects do we need?",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/18",
+      "state": "OPEN",
+      "author": "bclaise",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "If I look at those YANG objects, as an example:\r\n       +--rw lsp-lifetime?           uint16\r\n       +--rw lsp-refresh-interval?   uint16\r\n\r\nDo we need those properties for our Digital Map use cases?\r\nIf I look at the use cases described in the draft (design, capacity planning planning, what-if), I am not sure.\r\n\r\nThere is anyway a different way to get the information. From the core model, we have the nodeId instance. This nodeId can point the NE element ISIS YANG module where we could be retrieving/checking any properties.\r\nSo the questions is: how many properties do we need in this IS-IS model? \r\n\r\nWe will have more use cases in the future (ex: config mismatch, such as a hello timer). So, some of those use case-specific augmentation/properties might be required. The question is: where do we stop with this core IS-IS topology YANG model. ",
+      "createdAt": "2023-10-19T16:20:48Z",
+      "updatedAt": "2023-10-19T16:20:48Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 20,
+      "id": "I_kwDOJ0NkWM50tctX",
+      "title": "Fix Yang errors",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/20",
+      "state": "OPEN",
+      "author": "oscargdd",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "sbarguil"
+      ],
+      "labels": [],
+      "body": "When posting the draft a couple of errors and a warning appeared. They are some description missing.  ",
+      "createdAt": "2023-10-23T21:42:27Z",
+      "updatedAt": "2024-02-27T10:56:50Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "sbarguil",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Errors found: \r\n\r\nyangvalidator-v2-workdir-NyJMqKxv/ietf-l3-isis-topology.yang:89: error: RFC 8407: 4.14: statement \"container\" must have a \"description\" substatement\r\nyangvalidator-v2-workdir-NyJMqKxv/ietf-l3-isis-topology.yang:113: error: RFC 8407: 4.14: statement \"container\" must have a \"description\" substatement\r\nyangvalidator-v2-workdir-NyJMqKxv/ietf-l3-isis-topology.yang:25: error: module \"ietf-isis\" not found in search path\r\nyangvalidator-v2-workdir-NyJMqKxv/ietf-l3-isis-topology.yang:31: warning: imported module \"ietf-inet-types\" not used",
+          "createdAt": "2024-02-27T10:56:49Z",
+          "updatedAt": "2024-02-27T10:56:49Z"
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "id": "I_kwDOJ0NkWM6AdcIt",
+      "title": "Not too clear about the separation between section 3 and 4",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/21",
+      "state": "OPEN",
+      "author": "bclaise",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Not too clear about the separation between section 3 and 4. For example, Section 3 mentions some information about the ietf-network and subsequent modeling aspects ... while section 4 mentions some basic information about the IS-IS topology structure (figure 1).  Those basic information should come before paragraph 3, 4, and 5 of section 3. \r\n\r\nSee also my open issue on https://github.com/oscargdd/draft-ogondio-opsawg-isis-topology/issues/16\r\n\r\n",
+      "createdAt": "2024-02-26T21:38:29Z",
+      "updatedAt": "2024-02-26T21:38:29Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 22,
+      "id": "I_kwDOJ0NkWM6Ade4e",
+      "title": "rename the draft to draft-ogondio-nmop-isis-topology",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/22",
+      "state": "CLOSED",
+      "author": "bclaise",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "oscargdd"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-26T21:42:51Z",
+      "updatedAt": "2024-06-04T12:39:01Z",
+      "closedAt": "2024-06-04T12:39:01Z",
+      "comments": [
+        {
+          "author": "oscargdd",
+          "authorAssociation": "OWNER",
+          "body": "done",
+          "createdAt": "2024-06-04T12:39:01Z",
+          "updatedAt": "2024-06-04T12:39:01Z"
+        }
+      ]
+    },
+    {
+      "number": 26,
+      "id": "I_kwDOJ0NkWM6AizdF",
+      "title": "Clarfify relation with the existing topology models",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/26",
+      "state": "OPEN",
+      "author": "oscargdd",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "There were comments in the last IETF about the relationship with TE Topology and L3-TE-topology.\r\n\r\nThe draft CAN be used in combination with the other yang models, but NOT mandatory. \r\n\r\nI suggest adding some paragraphs and examples in which it is seen how an IS-IS topology would look like including TE augments.",
+      "createdAt": "2024-02-27T13:32:06Z",
+      "updatedAt": "2024-02-27T15:58:41Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "bclaise",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Glad that you mentioned this comment. This is not inline with the draft text, which says:\r\n\r\nAlso, should the topology include information such as bandwidth, delay information or color, it must include the \"YANG Data Model for Traffic Engineering\" {{!RFC8795}} te-topology YANG data model. To include delay and bandwdith performance measurements , MUST include tet-pkt:te-packet under the previous property The supporting-network property can include the network-id of a base layer-3 network.",
+          "createdAt": "2024-02-27T15:47:04Z",
+          "updatedAt": "2024-02-27T15:47:04Z"
+        },
+        {
+          "author": "oscargdd",
+          "authorAssociation": "OWNER",
+          "body": "In the draft text I mentioned \" should the topology include information such as bandwidth, delay information or colo\" ....  conditional So... if it is not included...  you don't need it, right?\r\n\r\nI guess it is a matter of being able to combine drafts.... \r\n\r\nPrecisely, with the properties you can indicate the presence of TE.  \r\n\r\nThe problem with topologies in IETF is that there are many yangs that can be combined and what we need is just to give guidance on what to use from each other...\r\n",
+          "createdAt": "2024-02-27T15:58:40Z",
+          "updatedAt": "2024-02-27T15:58:40Z"
+        }
+      ]
+    },
+    {
+      "number": 31,
+      "id": "I_kwDOJ0NkWM6SeoEY",
+      "title": "Prefix name",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/31",
+      "state": "OPEN",
+      "author": "vlopezalvarez",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I see that in the RFC9408 the topology index is defined as ietf-sap-ntw. We're using isisnt for the ISIS topology. Should we align it with SAP nomenclature? Something like ietf-isis-ntw?",
+      "createdAt": "2024-08-09T09:25:17Z",
+      "updatedAt": "2024-08-09T09:25:17Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 34,
+      "id": "I_kwDOJ0NkWM7SJSM7",
+      "title": "Layering Section (Private versus public)",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/34",
+      "state": "OPEN",
+      "author": "OlgaHuawei",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Maybe we need a layering section that would describe how layering works in the case of underlay or overlay? Also, if there are any differences how the operator models / manages the two (Oscar?) . Also for public/private? We can leave this after IETF124 to discuss at SIMAP interim meeting\n\nThis is the requirement from SIMAP:\nREQ-CONTROL-PLANE:  Underlay control plane routing state needs to be\n      correlatable to underlay L3 topology.  Overlay control-plane\n      routing state needs to be correlate-able to overlay L3 network\n      topology.\n\n",
+      "createdAt": "2025-10-17T11:06:12Z",
+      "updatedAt": "2025-10-17T11:26:28Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 35,
+      "id": "I_kwDOJ0NkWM7SJXZj",
+      "title": "Paths/Routes",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/35",
+      "state": "OPEN",
+      "author": "OlgaHuawei",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Do we need some clarification why there is no modelling of routes/paths in the topology?\n\nThis is the quote from the SIMAP requirements that was added by the NMOP, please see the last sentence:\n\nREQ-TOPO-ONLY:  SIMAP should contain only topological information.\n\n      SIMAP is not required to contain all models and data required for\n      all the management and use cases.  However, it should be designed\n      to support adequate pointers to other functional data and models\n      to ease navigating in the overall system.  For example:\n\n      *  ACLs and Route Policies are not required to be supported in the\n         SIMAP, they would be linked to the SIMAP.\n\n      *  Dynamic paths may, depending on the solution, be either inside\n         or outside of the SIMAP.  If outside of SIMAP, dynamic paths\n         could be linked to the SIMAP.\n\n      SIMAP should ensure that it is possible to represent the paths/\n      routes and leave the choice of what level of dynamics to represent\n      to the specific solution/application.  The model needs to be rich\n      enough to represent any level of dynamics.  However, from\n      experience, we suspect it can be the same model for all level of\n      dynamics.",
+      "createdAt": "2025-10-17T11:10:50Z",
+      "updatedAt": "2025-10-17T11:11:30Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 36,
+      "id": "I_kwDOJ0NkWM7SJntj",
+      "title": "Modelling of domains and areas",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/issues/36",
+      "state": "OPEN",
+      "author": "OlgaHuawei",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Post IETF124 we can add an option how we could model IGP routing domains and areas with networks via extended RFC8345 (draft-havel-nmop-simap-yang)",
+      "createdAt": "2025-10-17T11:28:27Z",
+      "updatedAt": "2025-10-17T11:28:27Z",
       "closedAt": null,
       "comments": []
     }
@@ -276,16 +615,16 @@
       "number": 3,
       "id": "PR_kwDOJ0NkWM5UDDoZ",
       "title": "very simple editorial changes, to see if the process works",
-      "url": "https://github.com/oscargdd/draft-ogondio-opsawg-isis-topology/pull/3",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/pull/3",
       "state": "MERGED",
       "author": "bclaise",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2023-06-27T15:01:30Z",
       "updatedAt": "2023-06-27T15:19:15Z",
-      "baseRepository": "oscargdd/draft-ogondio-opsawg-isis-topology",
+      "baseRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
       "baseRefName": "main",
       "baseRefOid": "d2dcb86c639242c056c45cd4e1a3a4d0c1494c79",
       "headRepository": "bclaise/draft-ogondio-opsawg-isis-topology",
@@ -318,16 +657,16 @@
       "number": 11,
       "id": "PR_kwDOJ0NkWM5UFPtp",
       "title": "security considerations + implementation status + editorial",
-      "url": "https://github.com/oscargdd/draft-ogondio-opsawg-isis-topology/pull/11",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/pull/11",
       "state": "CLOSED",
       "author": "bclaise",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2023-06-27T22:04:42Z",
       "updatedAt": "2023-06-28T12:51:02Z",
-      "baseRepository": "oscargdd/draft-ogondio-opsawg-isis-topology",
+      "baseRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
       "baseRefName": "main",
       "baseRefOid": "614676857455a097fe6eb4ed458822d43054fbb3",
       "headRepository": "bclaise/draft-ogondio-opsawg-isis-topology",
@@ -344,16 +683,16 @@
       "number": 12,
       "id": "PR_kwDOJ0NkWM5UI0OF",
       "title": "reworked the intro, use cases, digital map",
-      "url": "https://github.com/oscargdd/draft-ogondio-opsawg-isis-topology/pull/12",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/pull/12",
       "state": "MERGED",
       "author": "bclaise",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2023-06-28T12:54:42Z",
       "updatedAt": "2023-06-28T15:44:17Z",
-      "baseRepository": "oscargdd/draft-ogondio-opsawg-isis-topology",
+      "baseRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
       "baseRefName": "main",
       "baseRefOid": "614676857455a097fe6eb4ed458822d43054fbb3",
       "headRepository": "bclaise/draft-ogondio-opsawg-isis-topology",
@@ -386,7 +725,7 @@
       "number": 13,
       "id": "PR_kwDOJ0NkWM5UKWM1",
       "title": "Update draft-ogondio-opsawg-isis-topology.md",
-      "url": "https://github.com/oscargdd/draft-ogondio-opsawg-isis-topology/pull/13",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/pull/13",
       "state": "MERGED",
       "author": "ppavon",
       "authorAssociation": "COLLABORATOR",
@@ -395,10 +734,10 @@
       "body": "Added the subsection in the implementation status related to Eligthouse POC",
       "createdAt": "2023-06-28T16:44:42Z",
       "updatedAt": "2023-07-03T15:03:59Z",
-      "baseRepository": "oscargdd/draft-ogondio-opsawg-isis-topology",
+      "baseRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
       "baseRefName": "main",
       "baseRefOid": "5a80719a3f2c55c352143d40e5481cb076c787d8",
-      "headRepository": "oscargdd/draft-ogondio-opsawg-isis-topology",
+      "headRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
       "headRefName": "ppavon-poc-statuc",
       "headRefOid": "f3054d24ecc42b8d749a0db24bde20cd1353ffe4",
       "closedAt": "2023-07-03T15:03:55Z",
@@ -409,6 +748,463 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 15,
+      "id": "PR_kwDOJ0NkWM5dJEmz",
+      "title": "explains that this draft deals with the RFC8345 limitations",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/pull/15",
+      "state": "MERGED",
+      "author": "bclaise",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-10-18T13:22:59Z",
+      "updatedAt": "2023-10-23T14:23:04Z",
+      "baseRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
+      "baseRefName": "main",
+      "baseRefOid": "d854df41772f4c4d11293bbbc5278bc0c0e5f186",
+      "headRepository": "bclaise/draft-ogondio-opsawg-isis-topology",
+      "headRefName": "main",
+      "headRefOid": "81130539f145560670035b5e224e430470ca8c3c",
+      "closedAt": "2023-10-23T14:23:04Z",
+      "mergedAt": "2023-10-23T14:23:04Z",
+      "mergedBy": "oscargdd",
+      "mergeCommit": {
+        "oid": "91f0db89d9fda175a07f9255e05a377bf4997505"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ0NkWM5k46qI",
+          "commit": {
+            "abbreviatedOid": "8113053"
+          },
+          "author": "sbarguil",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-10-23T13:55:41Z",
+          "updatedAt": "2023-10-23T13:55:41Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "id": "PR_kwDOJ0NkWM5dQ9qZ",
+      "title": "Update draft-ogondio-opsawg-isis-topology.md",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/pull/17",
+      "state": "MERGED",
+      "author": "OlgaHuawei",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Updated yang based on the comments, added diagram for module structure, updated text around module structure, add list of RFC8345 limitations that would be addressed in the futire versions",
+      "createdAt": "2023-10-19T12:11:16Z",
+      "updatedAt": "2023-10-23T15:04:06Z",
+      "baseRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
+      "baseRefName": "main",
+      "baseRefOid": "91f0db89d9fda175a07f9255e05a377bf4997505",
+      "headRepository": "OlgaHuawei/draft-ogondio-opsawg-isis-topology",
+      "headRefName": "patch-1",
+      "headRefOid": "597990de04a42fe98f54b06003d3de2e53edb5b1",
+      "closedAt": "2023-10-23T15:04:06Z",
+      "mergedAt": "2023-10-23T15:04:06Z",
+      "mergedBy": "oscargdd",
+      "mergeCommit": {
+        "oid": "f7f938860e6b23917d7a3455d997e7d707eefa5c"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 19,
+      "id": "PR_kwDOJ0NkWM5diEN6",
+      "title": "Update based on previous PR",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/pull/19",
+      "state": "MERGED",
+      "author": "sbarguil",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Moving from https://github.com/oscargdd/draft-ogondio-lsr-isis-topology/pull/10/files",
+      "createdAt": "2023-10-23T13:38:40Z",
+      "updatedAt": "2023-10-23T16:46:37Z",
+      "baseRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
+      "baseRefName": "main",
+      "baseRefOid": "f7f938860e6b23917d7a3455d997e7d707eefa5c",
+      "headRepository": "sbarguil/draft-ogondio-opsawg-isis-topology",
+      "headRefName": "ISIS-Timers",
+      "headRefOid": "c6be4e800ab4ea082d8197a357e6f0378ffcfec4",
+      "closedAt": "2023-10-23T16:46:37Z",
+      "mergedAt": "2023-10-23T16:46:37Z",
+      "mergedBy": "oscargdd",
+      "mergeCommit": {
+        "oid": "ad2c4cb9aba84df6c122480767ac59efc8334751"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 23,
+      "id": "PR_kwDOJ0NkWM5n-Twa",
+      "title": "editorial changes",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/pull/23",
+      "state": "MERGED",
+      "author": "bclaise",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-26T22:08:47Z",
+      "updatedAt": "2024-02-27T13:32:52Z",
+      "baseRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
+      "baseRefName": "main",
+      "baseRefOid": "7dba322fbdd14d6c01721ab98d2cd713c3d5eda9",
+      "headRepository": "bclaise/draft-ogondio-opsawg-isis-topology",
+      "headRefName": "main",
+      "headRefOid": "40890a3ce9eaf1deb5da04fab318ff7cc3f92bd0",
+      "closedAt": "2024-02-27T13:32:52Z",
+      "mergedAt": "2024-02-27T13:32:52Z",
+      "mergedBy": "oscargdd",
+      "mergeCommit": {
+        "oid": "489c466bec298966fd7e387944f8b25e2099897d"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ0NkWM5xbS_t",
+          "commit": {
+            "abbreviatedOid": "40890a3"
+          },
+          "author": "sbarguil",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-27T09:27:58Z",
+          "updatedAt": "2024-02-27T09:27:58Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJ0NkWM5xdXIJ",
+          "commit": {
+            "abbreviatedOid": "40890a3"
+          },
+          "author": "oscargdd",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-27T13:32:46Z",
+          "updatedAt": "2024-02-27T13:32:46Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "id": "PR_kwDOJ0NkWM5oCnzT",
+      "title": "Fix Yang Warnings",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/pull/24",
+      "state": "MERGED",
+      "author": "sbarguil",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Add descriptions to containers and Remove unused modules #20 ",
+      "createdAt": "2024-02-27T12:52:48Z",
+      "updatedAt": "2024-02-27T13:34:26Z",
+      "baseRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
+      "baseRefName": "main",
+      "baseRefOid": "7dba322fbdd14d6c01721ab98d2cd713c3d5eda9",
+      "headRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
+      "headRefName": "fix-yang-issues",
+      "headRefOid": "bc5522ba59daf1d559a54cb8c4f09678bcdea2a3",
+      "closedAt": "2024-02-27T13:34:26Z",
+      "mergedAt": "2024-02-27T13:34:26Z",
+      "mergedBy": "oscargdd",
+      "mergeCommit": {
+        "oid": "fd8041a8a53d48be70fd6e6f6f58ad5ad38fbb2a"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ0NkWM5xdX9r",
+          "commit": {
+            "abbreviatedOid": "bc5522b"
+          },
+          "author": "oscargdd",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-27T13:34:21Z",
+          "updatedAt": "2024-02-27T13:34:21Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "id": "PR_kwDOJ0NkWM5oCsr1",
+      "title": "add tree as aux file",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/pull/25",
+      "state": "MERGED",
+      "author": "sbarguil",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "#5",
+      "createdAt": "2024-02-27T13:02:57Z",
+      "updatedAt": "2024-02-27T13:36:02Z",
+      "baseRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
+      "baseRefName": "main",
+      "baseRefOid": "7dba322fbdd14d6c01721ab98d2cd713c3d5eda9",
+      "headRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
+      "headRefName": "Add-tree-as-complementary-file",
+      "headRefOid": "a2f10a127e6f2e5e754588ef08953c6e02649e91",
+      "closedAt": "2024-02-27T13:35:58Z",
+      "mergedAt": "2024-02-27T13:35:57Z",
+      "mergedBy": "oscargdd",
+      "mergeCommit": {
+        "oid": "e47b5ab9a98eff549fe36f5d5c4abbf91398138a"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ0NkWM5xdYvn",
+          "commit": {
+            "abbreviatedOid": "a2f10a1"
+          },
+          "author": "oscargdd",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-27T13:35:51Z",
+          "updatedAt": "2024-02-27T13:35:51Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "id": "PR_kwDOJ0NkWM5oDFg7",
+      "title": "Rename to nmop",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/pull/27",
+      "state": "MERGED",
+      "author": "oscargdd",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-27T13:51:24Z",
+      "updatedAt": "2024-03-04T17:27:32Z",
+      "baseRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
+      "baseRefName": "main",
+      "baseRefOid": "e47b5ab9a98eff549fe36f5d5c4abbf91398138a",
+      "headRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
+      "headRefName": "DRAFT-nmop",
+      "headRefOid": "90571c5e07340e888983eaa789f8ffcfbc643ad5",
+      "closedAt": "2024-03-04T17:27:28Z",
+      "mergedAt": "2024-03-04T17:27:28Z",
+      "mergedBy": "oscargdd",
+      "mergeCommit": {
+        "oid": "da4a87ac8c889793fd8c5cfebe05c873a630ddad"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ0NkWM5xwYzs",
+          "commit": {
+            "abbreviatedOid": "90571c5"
+          },
+          "author": "sbarguil",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-29T10:26:08Z",
+          "updatedAt": "2024-02-29T10:26:08Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 28,
+      "id": "PR_kwDOJ0NkWM5oEgYd",
+      "title": "Removed duplication of timers. Regenerated tree, Minor editorial comment",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/pull/28",
+      "state": "MERGED",
+      "author": "OlgaHuawei",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I removed the dupliction of timers. I think duplication happened as a result of merge few months ago. If you also need mtu and tlv we can keep use from ietf-isis. My recollection is that we said we need only lsp-timeline and lsp-refresh, but if we need them just replace lsp-lifetime and lsp-refresh in node attributes with 'uses ietf-isis:lsp-parameters'\r\n\r\nRegenerated tree\r\n\r\nOne minor editorial comment",
+      "createdAt": "2024-02-27T16:30:50Z",
+      "updatedAt": "2024-06-04T12:24:31Z",
+      "baseRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
+      "baseRefName": "main",
+      "baseRefOid": "da4a87ac8c889793fd8c5cfebe05c873a630ddad",
+      "headRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
+      "headRefName": "olga-27Feb-2024",
+      "headRefOid": "2aaeaeead973a7b46ac3e9cdf20b18d4aa4a7f5e",
+      "closedAt": "2024-06-04T12:24:26Z",
+      "mergedAt": "2024-06-04T12:24:26Z",
+      "mergedBy": "oscargdd",
+      "mergeCommit": {
+        "oid": "de28e4c765f82552042b0c77c6f3ca8c4ab5aa4c"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ0NkWM5xwZEE",
+          "commit": {
+            "abbreviatedOid": "151de65"
+          },
+          "author": "sbarguil",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-29T10:26:39Z",
+          "updatedAt": "2024-02-29T10:26:39Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 29,
+      "id": "PR_kwDOJ0NkWM50hU-V",
+      "title": "Update README.md",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/pull/29",
+      "state": "MERGED",
+      "author": "vlopezalvarez",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "change to the new repo name",
+      "createdAt": "2024-07-05T09:59:45Z",
+      "updatedAt": "2024-07-05T10:49:22Z",
+      "baseRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
+      "baseRefName": "main",
+      "baseRefOid": "52690ba5e7ccebddbe60df5cf0e45bed9f03f0da",
+      "headRepository": null,
+      "headRefName": "patch-1",
+      "headRefOid": "54abc52ba0937328b19917d35c1eb0bd6e8f1a09",
+      "closedAt": "2024-07-05T10:49:22Z",
+      "mergedAt": "2024-07-05T10:49:22Z",
+      "mergedBy": "oscargdd",
+      "mergeCommit": {
+        "oid": "deba1573f637398147810c01b7072ab0c9caa705"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 30,
+      "id": "PR_kwDOJ0NkWM50hmqG",
+      "title": "Adding sections for use cases",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/pull/30",
+      "state": "CLOSED",
+      "author": "vlopezalvarez",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-07-05T10:48:51Z",
+      "updatedAt": "2024-07-05T11:08:59Z",
+      "baseRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
+      "baseRefName": "main",
+      "baseRefOid": "52690ba5e7ccebddbe60df5cf0e45bed9f03f0da",
+      "headRepository": null,
+      "headRefName": "mt-flexalgo-use-cases",
+      "headRefOid": "a6ef69bf6ec421860889d42fcbea23bf5756538f",
+      "closedAt": "2024-07-05T11:08:59Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ0NkWM6AxoG0",
+          "commit": {
+            "abbreviatedOid": "a6ef69b"
+          },
+          "author": "OlgaHuawei",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Reviewed, all is ok",
+          "createdAt": "2024-07-05T11:01:47Z",
+          "updatedAt": "2024-07-05T11:01:47Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 32,
+      "id": "PR_kwDOJ0NkWM6tDjco",
+      "title": "Draft ogondio nmop bgp topology 00",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/pull/32",
+      "state": "MERGED",
+      "author": "vlopezalvarez",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-10-10T10:17:28Z",
+      "updatedAt": "2025-10-17T10:38:47Z",
+      "baseRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
+      "baseRefName": "main",
+      "baseRefOid": "deba1573f637398147810c01b7072ab0c9caa705",
+      "headRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
+      "headRefName": "draft-ogondio-nmop-bgp-topology-00",
+      "headRefOid": "cf0b049b0778f0914c9e7570bfd52d861657fe9b",
+      "closedAt": "2025-10-17T10:38:47Z",
+      "mergedAt": "2025-10-17T10:38:47Z",
+      "mergedBy": "vlopezalvarez",
+      "mergeCommit": {
+        "oid": "fdd2f350d996c9e7ec682396676a93aa267c83f6"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 33,
+      "id": "PR_kwDOJ0NkWM6uQ1-N",
+      "title": "Simap changes ietf124",
+      "url": "https://github.com/oscargdd/drafts-nmop-isis-ospf-topologies/pull/33",
+      "state": "OPEN",
+      "author": "OlgaHuawei",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Changed from digital map to SIMAP, made updates based on the lastest SIMAP drafts",
+      "createdAt": "2025-10-17T09:19:19Z",
+      "updatedAt": "2025-10-17T10:46:34Z",
+      "baseRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
+      "baseRefName": "main",
+      "baseRefOid": "deba1573f637398147810c01b7072ab0c9caa705",
+      "headRepository": "oscargdd/drafts-nmop-isis-ospf-topologies",
+      "headRefName": "SIMAP-changes-IETF124",
+      "headRefOid": "f3eb418cd5588f7524ed0c6c506b89d0b864fb4a",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJ0NkWM7Ho_iH",
+          "commit": {
+            "abbreviatedOid": "844f668"
+          },
+          "author": "vlopezalvarez",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T10:39:59Z",
+          "updatedAt": "2025-10-17T10:39:59Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
