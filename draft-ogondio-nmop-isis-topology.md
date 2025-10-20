@@ -114,7 +114,6 @@ In summary, the network-wide view of the IS-IS topology enables multiple use cas
 + What-if analysis. Estimation of the network KPIs in modified network situations. For instance, failure situations, traffic anomaly situations, addition or deletion of new adjacencies, IGP weight reconfigurations, etc.
 - Failure analysis. Systematic and massive test of the network under multiple simulated failure situations, evaluating the network fault tolerance properties, and using mathematical models to derive statistical network availability metrics.
 
-
 ## Relationship with the IS-IS YANG Model
 
 {{!RFC9130}} specifies a YANG data model that can be used to configure and manage the IS-IS protocol on network elements. This data model covers the configuration of an IS-IS routing protocol instance, as well as the retrieval of IS-IS operational states.
@@ -122,14 +121,11 @@ In summary, the network-wide view of the IS-IS topology enables multiple use cas
 
 ## Relationship with SIMAP
 
-As described in {{?I-D.draft-ietf-nmop-simap-concept}}, SIMAP is the data model that provides a view of the operator's network and services and specifically provides an approach to model multi-layered topology and an appropriate mechanism to navigate amongst layers and correlate between them.
-SIMAP defines the core topological entities, their roles within the network, essential properties, and relationships—both within individual layers and across multiple layers.
-It serves as a foundational topological model that links and integrates other models, including those for configuration, maintenance, assurance (e.g., KPIs, status, health, symptoms), traffic engineering (TE), behavioral modeling, simulation, emulation, mathematical abstractions, and AI algorithms.
+As described in {{?I-D.draft-ietf-nmop-simap-concept}}, SIMAP is the data model that provides a view of the operator's network and services and specifically provides an approach to model multi-layered topology and an appropriate mechanism to navigate amongst layers and correlate between them. SIMAP defines the core topological entities, their roles within the network, essential properties, and relationships—both within individual layers and across multiple layers. It serves as a foundational topological model that links and integrates other models, including those for configuration, maintenance, assurance (e.g., KPIs, status, health, symptoms), traffic engineering (TE), behavioral modeling, simulation, emulation, mathematical abstractions, and AI algorithms.
 
 Within SIMAP, the IGP topology (in this case, IS-IS) is just one of the layers of the multi-layered topology, for specific user (the network operator in charge of the IGP) for specific IGP use cases as described before. All the use cases and requirements specified in {{?I-D.draft-ietf-nmop-simap-concept}} are also applicable to IS-IS topology as well. 
 
 {{?I-D.draft-havel-nmop-simap-yang}} specifies what requirements are supported by RFC8345, identifies the gaps and proposes the solutions for these gaps. This will have impact on IS-IS topology modelling and will provide the mechanism to model IGP areas as networks, have relation between AS and areas, have bidirectional links, etc.
-
 
 # Use of IETF-Topology for Representing an IP/MPLS network domain
 
