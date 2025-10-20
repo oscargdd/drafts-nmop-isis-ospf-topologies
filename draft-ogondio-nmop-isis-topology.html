@@ -1369,11 +1369,9 @@ Please remove this note.<a href="#section-1.4-3" class="pilcrow">¶</a></p>
 <p id="section-3-2">If a node and/or layer termination point participates in more than one IGP, it will be present in multiple IGP domain networks. As the basic components, node/links/termination points <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span>, it is therefore possible to joint the different different IGP topologies from SIMAP modeling point of view. The ietf-network instance MUST include the following properties to indicate it is a domain running an IGP instance:<a href="#section-3-2" class="pilcrow">¶</a></p>
 <p id="section-3-3">A network-id that uniquely identifies such domain in the network.
 The "network-types" property should include the l3t:l3-unicast-topology, to indicate it is a network in which the nodes are capable of forwarding unicast packet. Also, this draft proposed to add a new property, "isis-topology", to indicate the topology being represented is running the IS-IS IGP process.<a href="#section-3-3" class="pilcrow">¶</a></p>
-<p id="section-3-4">Also, should the topology include information such as bandwidth, delay information or color, it must include the "YANG Data Model for Traffic Engineering" <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span> te-topology YANG data model.
-To include delay and bandwdith performance measurements , MUST include tet-pkt:te-packet under the previous property
-The supporting-network property can include the network-id of a base layer-3 network.
-The node property should include the list of nodes as described below.
-The ietf-network-topology:link MUST be present, with one link per each IP adjacency (one link for each direction of the adjancency).<a href="#section-3-4" class="pilcrow">¶</a></p>
+<p id="section-3-4">Also, should the topology include information such as bandwidth, delay information or color, it must include the "YANG Data Model for Traffic Engineering" <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span> te-topology YANG data model. To include delay and bandwdith performance measurements , a domain instance MUST include tet-pkt:te-packet under the network-types property.
+The supporting-network property can include the network-id of a base layer-3 network which can include all nodes/links of all the domains of the network.
+The node property should include the list of nodes as described below. The ietf-network-topology:link MUST be present, with one link per each IP adjacency (one link for each direction of the adjancency).<a href="#section-3-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="yang-data-model-for-is-is-topology">
