@@ -136,11 +136,9 @@ If a node and/or layer termination point participates in more than one IGP, it w
 A network-id that uniquely identifies such domain in the network.
 The "network-types" property should include the l3t:l3-unicast-topology, to indicate it is a network in which the nodes are capable of forwarding unicast packet. Also, this draft proposed to add a new property, "isis-topology", to indicate the topology being represented is running the IS-IS IGP process.
 
-Also, should the topology include information such as bandwidth, delay information or color, it must include the "YANG Data Model for Traffic Engineering" {{!RFC8795}} te-topology YANG data model.
-To include delay and bandwdith performance measurements , MUST include tet-pkt:te-packet under the previous property
-The supporting-network property can include the network-id of a base layer-3 network.
-The node property should include the list of nodes as described below.
-The ietf-network-topology:link MUST be present, with one link per each IP adjacency (one link for each direction of the adjancency).
+Also, should the topology include information such as bandwidth, delay information or color, it must include the "YANG Data Model for Traffic Engineering" {{!RFC8795}} te-topology YANG data model. To include delay and bandwdith performance measurements , a domain instance MUST include tet-pkt:te-packet under the network-types property.
+The supporting-network property can include the network-id of a base layer-3 network which can include all nodes/links of all the domains of the network. 
+The node property should include the list of nodes as described below. The ietf-network-topology:link MUST be present, with one link per each IP adjacency (one link for each direction of the adjancency).
 
 # YANG Data Model for IS-IS Topology
 
