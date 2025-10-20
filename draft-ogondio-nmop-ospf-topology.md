@@ -15,7 +15,7 @@ v: 3
 
 author:
   -
-    fullname: Oscar González de Dios
+    fullname: Oscar Gonzalez de Dios
     org: Telefonica
     email: oscar.gonzalezdedios@telefonica.com
   -
