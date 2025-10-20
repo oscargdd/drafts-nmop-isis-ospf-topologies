@@ -114,7 +114,7 @@ As described in {{?I-D.draft-ietf-nmop-simap-concept}}, SIMAP is the data model 
 SIMAP defines the core topological entities, their roles within the network, essential properties, and relationships—both within individual layers and across multiple layers.
 It serves as a foundational topological model that links and integrates other models, including those for configuration, maintenance, assurance (e.g., KPIs, status, health, symptoms), traffic engineering (TE), behavioral modeling, simulation, emulation, mathematical abstractions, and AI algorithms.
 
-Within SIMAP, the IGP topology (in this case, OSPF) is just one of the layers of the multi-layered topology, for specific user (the network operator in charge of the IGP) for specific IGP use cases as described before. All the use cases and requirements specified in {{?I-D.draft-ietf-nmop-simap-concept}} are also applicable to OSPF topology as well. 
+Within SIMAP, the IGP topology (in this case, OSPF) is just one of the layers of the multi-layered topology, for specific user (the network operator in charge of the IGP) for specific IGP use cases as described before. All the use cases and requirements specified in {{?I-D.draft-ietf-nmop-simap-concept}} are also applicable to OSPF topology as well.
 
 {{?I-D.draft-havel-nmop-simap-yang}} specifies what requirements are supported by RFC8345, identifies the gaps and proposes the solutions for these gaps. This will have impact on OSPF topology modelling and will provide the mechanism to model IGP areas as networks, have relation between AS and areas, have bidirectional links, etc.
 
