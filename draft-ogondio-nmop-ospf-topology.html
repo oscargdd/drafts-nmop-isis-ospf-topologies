@@ -12,21 +12,20 @@
        This document defines a YANG data model for representing an abstracted view of a network topology that contains Open Shortest Path First (OSPF) information. This document augments the 'ietf-network' data model by adding OSPF concepts and explains how the data model can be used to represent the OSPF topology. 
        The YANG data model defined in this document conforms to the Network Management Datastore Architecture (NMDA). 
     " name="description">
-<meta content="xml2rfc 3.30.2" name="generator">
+<meta content="xml2rfc 3.31.0" name="generator">
 <meta content="draft-ogondio-nmop-ospf-topology-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.30.2
-    Python 3.12.11
+  xml2rfc 3.31.0
+    Python 3.12.12
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.6
     lxml 5.3.1
-    platformdirs 4.4.0
+    platformdirs 4.5.0
     pycountry 24.6.1
     PyYAML 6.0.2
     requests 2.32.5
-    setuptools 80.9.0
     wcwidth 0.2.14
 -->
 <link href="draft-ogondio-nmop-ospf-topology.xml" rel="alternate" type="application/rfc+xml">
@@ -1050,7 +1049,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Dios, et al.</td>
-<td class="center">Expires 20 April 2026</td>
+<td class="center">Expires 23 April 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1063,12 +1062,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ogondio-nmop-ospf-topology-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-10-17" class="published">17 October 2025</time>
+<time datetime="2025-10-20" class="published">20 October 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-04-20">20 April 2026</time></dd>
+<dd class="expires"><time datetime="2026-04-23">23 April 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1111,7 +1110,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 20 April 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 23 April 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1164,7 +1163,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-relationship-with-the-ospf-" class="internal xref">Relationship with the OSPF YANG Model</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
-                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-relationship-with-digital-m" class="internal xref">Relationship with Digital Map</a></p>
+                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-relationship-with-simap" class="internal xref">Relationship with SIMAP</a></p>
 </li>
             </ul>
 </li>
@@ -1221,7 +1220,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <p id="section-1-1">Network operators perform the capacity planning for their networks and run regular what-if scenarios analysis based on representations of the real network. Those what-if analysis and capacity planning processes require, among other information, a topological view (domains, nodes, links, network interconnection) of the deployed network.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">This document defines a YANG data model representing an abstracted view of a network topology containing Open Shortest Path First (OSPF). It covers the topology of IP/MPLS networks running OSPF as Interior Gateway Protocol (IGP) protocol. The proposed YANG model augments the "A YANG Data Model for Network Topologies" <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> and "A YANG Data Model for Layer 3 Topologies" <span>[<a href="#RFC8346" class="cite xref">RFC8346</a>]</span> by adding OSPF concepts. It is worth to highlight that the Yang model can also be used together with <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span> and <span>[<a href="#I-D.draft-ietf-teas-yang-l3-te-topo" class="cite xref">I-D.draft-ietf-teas-yang-l3-te-topo</a>]</span> when Traffic engineering characteristics are required in the topological view.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">This YANG data model can be used to export the OSPF related topology directly from a network controller to Operation Support System (OSS) tools or to a higher level controller.<a href="#section-1-3" class="pilcrow">¶</a></p>
-<p id="section-1-4">Note that the YANG model is in this document strictly adheres to the concepts (and the YANG module) in "A YANG Data Model for Network Topologies" <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> and "A YANG Data Model for Layer 3 Topologies" <span>[<a href="#RFC8346" class="cite xref">RFC8346</a>]</span>. While investigating the OSFP topology, some limitations have discovered in <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span>, regarding how the digital map can be represented. Those limitations (and potential improvements) are covered in <span>[<a href="#I-D.draft-havel-nmop-digital-map" class="cite xref">I-D.draft-havel-nmop-digital-map</a>]</span>.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-4">Note that the YANG model is in this document strictly adheres to the concepts (and the YANG module) in "A YANG Data Model for Network Topologies" <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> and "A YANG Data Model for Layer 3 Topologies" <span>[<a href="#RFC8346" class="cite xref">RFC8346</a>]</span>. While working on SIMAP requirements <span>[<a href="#I-D.draft-ietf-nmop-simap-concept" class="cite xref">I-D.draft-ietf-nmop-simap-concept</a>]</span> and investigating the OSPF topology, some limitations have been discovered in <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span>, regarding how the topology can be represented. Those limitations (and potential improvements) are covered in <span>[<a href="#I-D.draft-havel-nmop-simap-yang" class="cite xref">I-D.draft-havel-nmop-simap-yang</a>]</span>.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">This document explains the scope and purpose of the OSPF topology model and how the topology and service models fit together.
 The YANG data model defined in this document conforms to the Network Management Datastore Architecture <span>[<a href="#RFC8342" class="cite xref">RFC8342</a>]</span>.<a href="#section-1-5" class="pilcrow">¶</a></p>
 <div id="terminology-and-notations">
@@ -1231,7 +1230,7 @@ The YANG data model defined in this document conforms to the Network Management 
         </h3>
 <p id="section-1.1-1">This document assumes that the reader is familiar with OSPF and the contents of <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span>. The document uses terms from those documents.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
 <p id="section-1.1-2">The terminology for describing YANG data models is found in <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span>, <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span> and <span>[<a href="#RFC8346" class="cite xref">RFC8346</a>]</span>.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
-<p id="section-1.1-3">The term Digital Twin, Digital Map, Digital Map Modelling, Digital Map Model, Digital Map Data, and Topology are specified in <span>[<a href="#I-D.draft-havel-nmop-digital-map" class="cite xref">I-D.draft-havel-nmop-digital-map</a>]</span>.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
+<p id="section-1.1-3">The terms SIMAP, SIMAP modelling, SIMAP data, topology, multi-layered topology and topology layer are specified in <span>[<a href="#I-D.draft-ietf-nmop-simap-concept" class="cite xref">I-D.draft-ietf-nmop-simap-concept</a>]</span>.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="requirements-language">
@@ -1326,15 +1325,16 @@ Please remove this note.<a href="#section-1.4-3" class="pilcrow">¶</a></p>
 <span>[<a href="#RFC9129" class="cite xref">RFC9129</a>]</span> is still expected to be used for individual network elements configuration and monitoring. On the other hand, the proposed YANG model in this document covers the abstracted view of the entire network topology containing OSPF. As such, this model is aimed at being available via the NBI of an SDN controller.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="relationship-with-digital-map">
+<div id="relationship-with-simap">
 <section id="section-2.2">
-        <h3 id="name-relationship-with-digital-m">
-<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-relationship-with-digital-m" class="section-name selfRef">Relationship with Digital Map</a>
+        <h3 id="name-relationship-with-simap">
+<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-relationship-with-simap" class="section-name selfRef">Relationship with SIMAP</a>
         </h3>
-<p id="section-2.2-1">As described in <span>[<a href="#I-D.draft-havel-nmop-digital-map" class="cite xref">I-D.draft-havel-nmop-digital-map</a>]</span>, the Digital Map provides the core multi-layer topology model and data for the digital twin and connects them to the other digital twin models and data.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
-<p id="section-2.2-2">The Digital Map Modelling defines the core topological entities, their role in the network, core properties, and relationships both inside each layer and between the layers.<a href="#section-2.2-2" class="pilcrow">¶</a></p>
-<p id="section-2.2-3">The Digital Map Model is a basic topological model that is linked to other functional parts of the digital twin and connects them all: configuration, maintenance, assurance (KPIs, status, health, symptoms), Traffic Engineering (TE), different behaviors and actions,  simulation, emulation, mathematical abstractions, AI algorithms, etc.<a href="#section-2.2-3" class="pilcrow">¶</a></p>
-<p id="section-2.2-4">As such the IGP topology of the Digital Map (in this case, OSPF) is just one of the layers of the Digital Map, for specific user (the network operator in charge of the IGP) for specific IGP use cases as described before.<a href="#section-2.2-4" class="pilcrow">¶</a></p>
+<p id="section-2.2-1">As described in <span>[<a href="#I-D.draft-ietf-nmop-simap-concept" class="cite xref">I-D.draft-ietf-nmop-simap-concept</a>]</span>, SIMAP is the data model that provides a view of the operator's network and services and specifically provides an approach to model multi-layered topology and an appropriate mechanism to navigate amongst layers and correlate between them.
+SIMAP defines the core topological entities, their roles within the network, essential properties, and relationships—both within individual layers and across multiple layers.
+It serves as a foundational topological model that links and integrates other models, including those for configuration, maintenance, assurance (e.g., KPIs, status, health, symptoms), traffic engineering (TE), behavioral modeling, simulation, emulation, mathematical abstractions, and AI algorithms.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<p id="section-2.2-2">Within SIMAP, the IGP topology (in this case, OSPF) is just one of the layers of the multi-layered topology, for specific user (the network operator in charge of the IGP) for specific IGP use cases as described before. All the use cases and requirements specified in <span>[<a href="#I-D.draft-ietf-nmop-simap-concept" class="cite xref">I-D.draft-ietf-nmop-simap-concept</a>]</span> are also applicable to OSPF topology as well.<a href="#section-2.2-2" class="pilcrow">¶</a></p>
+<p id="section-2.2-3"><span>[<a href="#I-D.draft-havel-nmop-simap-yang" class="cite xref">I-D.draft-havel-nmop-simap-yang</a>]</span> specifies what requirements are supported by RFC8345, identifies the gaps and proposes the solutions for these gaps. This will have impact on OSPF topology modelling and will provide the mechanism to model IGP areas as networks, have relation between AS and areas, have bidirectional links, etc.<a href="#section-2.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1410,7 +1410,7 @@ arrows show how the modules augment each other.<a href="#section-3-4" class="pil
       <h2 id="name-rfc8345-limitations-for-the">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-rfc8345-limitations-for-the" class="section-name selfRef">RFC8345 Limitations for the OSPF Modeling</a>
       </h2>
-<p id="section-4-1">There are some limitations in the <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> that are explained in more detail in <span>[<a href="#I-D.draft-havel-nmop-digital-map" class="cite xref">I-D.draft-havel-nmop-digital-map</a>]</span>.
+<p id="section-4-1">There are some limitations in the <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> that are explained in more detail in <span>[<a href="#I-D.draft-havel-nmop-simap-yang" class="cite xref">I-D.draft-havel-nmop-simap-yang</a>]</span>.
 The current version of the ietf-l3-ospf-topology module is based on the current version of <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span>.<a href="#section-4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1783,9 +1783,9 @@ reference:    RFC XXXX
 <a href="#section-10.1" class="section-number selfRef">10.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
-<dt id="I-D.draft-havel-nmop-digital-map">[I-D.draft-havel-nmop-digital-map]</dt>
+<dt id="I-D.draft-havel-nmop-simap-yang">[I-D.draft-havel-nmop-simap-yang]</dt>
         <dd>
-<span class="refAuthor">Havel, O.</span>, <span class="refAuthor">Claise, B.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Elhassany, A.</span>, and <span class="refAuthor">T. Graf</span>, <span class="refTitle">"Modeling the Digital Map based on RFC 8345: Sharing Experience and Perspectives"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-havel-nmop-digital-map-02</span>, <time datetime="2024-10-21" class="refDate">21 October 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-havel-nmop-digital-map-02">https://datatracker.ietf.org/doc/html/draft-havel-nmop-digital-map-02</a>&gt;</span>. </dd>
+<span class="refAuthor">Havel, O.</span>, <span class="refAuthor">Davis, N.</span>, <span class="refAuthor">Claise, B.</span>, <span class="refAuthor">de Dios, O. G.</span>, and <span class="refAuthor">T. Graf</span>, <span class="refTitle">"A YANG Data Model for SIMAP"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-havel-nmop-simap-yang-01</span>, <time datetime="2025-10-20" class="refDate">20 October 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-havel-nmop-simap-yang-01">https://datatracker.ietf.org/doc/html/draft-havel-nmop-simap-yang-01</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
@@ -1860,6 +1860,10 @@ reference:    RFC XXXX
 <a href="#section-10.2" class="section-number selfRef">10.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="I-D.draft-ietf-nmop-simap-concept">[I-D.draft-ietf-nmop-simap-concept]</dt>
+        <dd>
+<span class="refAuthor">Havel, O.</span>, <span class="refAuthor">Claise, B.</span>, <span class="refAuthor">de Dios, O. G.</span>, and <span class="refAuthor">T. Graf</span>, <span class="refTitle">"SIMAP: Concept, Requirements, and Use Cases"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-nmop-simap-concept-07</span>, <time datetime="2025-10-18" class="refDate">18 October 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-nmop-simap-concept-07">https://datatracker.ietf.org/doc/html/draft-ietf-nmop-simap-concept-07</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="I-D.draft-ietf-teas-yang-l3-te-topo">[I-D.draft-ietf-teas-yang-l3-te-topo]</dt>
         <dd>
 <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Bryskin, I.</span>, <span class="refAuthor">Beeram, V. P.</span>, <span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Shah, H.</span>, and <span class="refAuthor">O. G. de Dios</span>, <span class="refTitle">"YANG Data Model for Layer 3 TE Topologies"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-yang-l3-te-topo-18</span>, <time datetime="2024-07-07" class="refDate">7 July 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-l3-te-topo-18">https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-l3-te-topo-18</a>&gt;</span>. </dd>

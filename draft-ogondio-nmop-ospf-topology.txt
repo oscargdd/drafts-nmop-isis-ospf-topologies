@@ -5,9 +5,9 @@
 nmop                                                       O. G. D. Dios
 Internet-Draft                                                Telefonica
 Intended status: Standards Track                           S. B. Giraldo
-Expires: 20 April 2026                                          V. Lopez
+Expires: 23 April 2026                                          V. Lopez
                                                                    Nokia
-                                                         17 October 2025
+                                                         20 October 2025
 
 
      A YANG Data Model for Open Shortest Path First (OSPF) Topology
@@ -39,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 April 2026.
+   This Internet-Draft will expire on 23 April 2026.
 
 Copyright Notice
 
@@ -64,7 +64,7 @@ Table of Contents
      1.4.  Prefix in Data Node Names
    2.  Use Cases
      2.1.  Relationship with the OSPF YANG Model
-     2.2.  Relationship with Digital Map
+     2.2.  Relationship with SIMAP
    3.  YANG Data Model for OSPF Topology
    4.  RFC8345 Limitations for the OSPF Modeling
    5.  OSPF Topology Tree Diagram
@@ -106,10 +106,12 @@ Table of Contents
    Note that the YANG model is in this document strictly adheres to the
    concepts (and the YANG module) in "A YANG Data Model for Network
    Topologies" [RFC8345] and "A YANG Data Model for Layer 3 Topologies"
-   [RFC8346].  While investigating the OSFP topology, some limitations
-   have discovered in [RFC8345], regarding how the digital map can be
-   represented.  Those limitations (and potential improvements) are
-   covered in [I-D.draft-havel-nmop-digital-map].
+   [RFC8346].  While working on SIMAP requirements
+   [I-D.draft-ietf-nmop-simap-concept] and investigating the OSPF
+   topology, some limitations have been discovered in [RFC8345],
+   regarding how the topology can be represented.  Those limitations
+   (and potential improvements) are covered in
+   [I-D.draft-havel-nmop-simap-yang].
 
    This document explains the scope and purpose of the OSPF topology
    model and how the topology and service models fit together.  The YANG
@@ -124,9 +126,9 @@ Table of Contents
    The terminology for describing YANG data models is found in
    [RFC7950], [RFC8795] and [RFC8346].
 
-   The term Digital Twin, Digital Map, Digital Map Modelling, Digital
-   Map Model, Digital Map Data, and Topology are specified in
-   [I-D.draft-havel-nmop-digital-map].
+   The terms SIMAP, SIMAP modelling, SIMAP data, topology, multi-layered
+   topology and topology layer are specified in
+   [I-D.draft-ietf-nmop-simap-concept].
 
 1.2.  Requirements Language
 
@@ -226,26 +228,33 @@ Table of Contents
    containing OSPF.  As such, this model is aimed at being available via
    the NBI of an SDN controller.
 
-2.2.  Relationship with Digital Map
+2.2.  Relationship with SIMAP
 
-   As described in [I-D.draft-havel-nmop-digital-map], the Digital Map
-   provides the core multi-layer topology model and data for the digital
-   twin and connects them to the other digital twin models and data.
+   As described in [I-D.draft-ietf-nmop-simap-concept], SIMAP is the
+   data model that provides a view of the operator's network and
+   services and specifically provides an approach to model multi-layered
+   topology and an appropriate mechanism to navigate amongst layers and
+   correlate between them.  SIMAP defines the core topological entities,
+   their roles within the network, essential properties, and
+   relationships—both within individual layers and across multiple
+   layers.  It serves as a foundational topological model that links and
+   integrates other models, including those for configuration,
+   maintenance, assurance (e.g., KPIs, status, health, symptoms),
+   traffic engineering (TE), behavioral modeling, simulation, emulation,
+   mathematical abstractions, and AI algorithms.
 
-   The Digital Map Modelling defines the core topological entities,
-   their role in the network, core properties, and relationships both
-   inside each layer and between the layers.
-
-   The Digital Map Model is a basic topological model that is linked to
-   other functional parts of the digital twin and connects them all:
-   configuration, maintenance, assurance (KPIs, status, health,
-   symptoms), Traffic Engineering (TE), different behaviors and actions,
-   simulation, emulation, mathematical abstractions, AI algorithms, etc.
-
-   As such the IGP topology of the Digital Map (in this case, OSPF) is
-   just one of the layers of the Digital Map, for specific user (the
+   Within SIMAP, the IGP topology (in this case, OSPF) is just one of
+   the layers of the multi-layered topology, for specific user (the
    network operator in charge of the IGP) for specific IGP use cases as
-   described before.
+   described before.  All the use cases and requirements specified in
+   [I-D.draft-ietf-nmop-simap-concept] are also applicable to OSPF
+   topology as well.
+
+   [I-D.draft-havel-nmop-simap-yang] specifies what requirements are
+   supported by RFC8345, identifies the gaps and proposes the solutions
+   for these gaps.  This will have impact on OSPF topology modelling and
+   will provide the mechanism to model IGP areas as networks, have
+   relation between AS and areas, have bidirectional links, etc.
 
 3.  YANG Data Model for OSPF Topology
 
@@ -310,7 +319,7 @@ Table of Contents
 4.  RFC8345 Limitations for the OSPF Modeling
 
    There are some limitations in the [RFC8345] that are explained in
-   more detail in [I-D.draft-havel-nmop-digital-map].  The current
+   more detail in [I-D.draft-havel-nmop-simap-yang].  The current
    version of the ietf-l3-ospf-topology module is based on the current
    version of [RFC8345].
 
@@ -656,13 +665,12 @@ Table of Contents
 
 10.1.  Normative References
 
-   [I-D.draft-havel-nmop-digital-map]
-              Havel, O., Claise, B., de Dios, O. G., Elhassany, A., and
-              T. Graf, "Modeling the Digital Map based on RFC 8345:
-              Sharing Experience and Perspectives", Work in Progress,
-              Internet-Draft, draft-havel-nmop-digital-map-02, 21
-              October 2024, <https://datatracker.ietf.org/doc/html/
-              draft-havel-nmop-digital-map-02>.
+   [I-D.draft-havel-nmop-simap-yang]
+              Havel, O., Davis, N., Claise, B., de Dios, O. G., and T.
+              Graf, "A YANG Data Model for SIMAP", Work in Progress,
+              Internet-Draft, draft-havel-nmop-simap-yang-01, 20 October
+              2025, <https://datatracker.ietf.org/doc/html/draft-havel-
+              nmop-simap-yang-01>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -738,6 +746,14 @@ Table of Contents
               <https://www.rfc-editor.org/rfc/rfc9129>.
 
 10.2.  Informative References
+
+   [I-D.draft-ietf-nmop-simap-concept]
+              Havel, O., Claise, B., de Dios, O. G., and T. Graf,
+              "SIMAP: Concept, Requirements, and Use Cases", Work in
+              Progress, Internet-Draft, draft-ietf-nmop-simap-concept-
+              07, 18 October 2025,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-nmop-
+              simap-concept-07>.
 
    [I-D.draft-ietf-teas-yang-l3-te-topo]
               Liu, X., Bryskin, I., Beeram, V. P., Saad, T., Shah, H.,

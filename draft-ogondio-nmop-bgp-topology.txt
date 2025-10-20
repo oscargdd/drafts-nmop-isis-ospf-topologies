@@ -5,9 +5,9 @@
 nmop                                                       O. G. D. Dios
 Internet-Draft                                                Telefonica
 Intended status: Standards Track                           S. B. Giraldo
-Expires: 20 April 2026                                          V. Lopez
+Expires: 23 April 2026                                          V. Lopez
                                                                    Nokia
-                                                         17 October 2025
+                                                         20 October 2025
 
 
       A YANG Data Model for Border Gateway Protocol (BGP) Topology
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 April 2026.
+   This Internet-Draft will expire on 23 April 2026.
 
 Copyright Notice
 
