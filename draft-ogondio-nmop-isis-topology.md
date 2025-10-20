@@ -123,7 +123,7 @@ In summary, the network-wide view of the IS-IS topology enables multiple use cas
 
 As described in {{?I-D.draft-ietf-nmop-simap-concept}}, SIMAP is the data model that provides a view of the operator's network and services and specifically provides an approach to model multi-layered topology and an appropriate mechanism to navigate amongst layers and correlate between them. SIMAP defines the core topological entities, their roles within the network, essential properties, and relationships—both within individual layers and across multiple layers. It serves as a foundational topological model that links and integrates other models, including those for configuration, maintenance, assurance (e.g., KPIs, status, health, symptoms), traffic engineering (TE), behavioral modeling, simulation, emulation, mathematical abstractions, and AI algorithms.
 
-Within SIMAP, the IGP topology (in this case, IS-IS) is just one of the layers of the multi-layered topology, for specific user (the network operator in charge of the IGP) for specific IGP use cases as described before. All the use cases and requirements specified in {{?I-D.draft-ietf-nmop-simap-concept}} are also applicable to IS-IS topology as well. 
+Within SIMAP, the IGP topology (in this case, IS-IS) is just one of the layers of the multi-layered topology, for specific user (the network operator in charge of the IGP) for specific IGP use cases as described before. All the use cases and requirements specified in {{?I-D.draft-ietf-nmop-simap-concept}} are also applicable to IS-IS topology as well.
 
 {{?I-D.draft-havel-nmop-simap-yang}} specifies what requirements are supported by RFC8345, identifies the gaps and proposes the solutions for these gaps. This will have impact on IS-IS topology modelling and will provide the mechanism to model IGP areas as networks, have relation between AS and areas, have bidirectional links, etc.
 
@@ -285,7 +285,7 @@ This module imports types from {{!RFC8343}} and {{!RFC8345}}. Following the YANG
 
 ## SIMAP Hackathon Status
 
-   SIMAP PoC with a real lab has been built, based on multi-vendor devices, with {{!RFC8345}} as the base YANG module for the topology building blocks. 
+   SIMAP PoC with a real lab has been built, based on multi-vendor devices, with {{!RFC8345}} as the base YANG module for the topology building blocks.
    This Hackathon successfully modelled IS-IS routing (among other technologies and layers), but it needs to be further aligned with the latest developments in this draft and in
    {{?I-D.draft-havel-nmop-simap-yang}}.
 
