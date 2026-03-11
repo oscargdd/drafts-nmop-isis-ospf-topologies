@@ -21,3 +21,4 @@ draft-ogondio-opsawg-isis-topology.xml
 package-lock.json
 report.xml
 !requirements.txt
+.github/.DS_Store
